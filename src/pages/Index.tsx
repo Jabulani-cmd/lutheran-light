@@ -4,8 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import heroImage from "@/assets/hero-church.jpg";
+import { useEffect, useCallback, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import heroImage1 from "@/assets/hero-church.jpg";
+import heroImage2 from "@/assets/hero-church-2.jpg";
+import heroImage3 from "@/assets/hero-church-3.jpg";
+import heroImage4 from "@/assets/hero-church-4.jpg";
 
+const heroSlides = [
+  { image: heroImage1, alt: "Mzilikazi ELCZ church exterior" },
+  { image: heroImage2, alt: "Beautiful church interior with stained glass" },
+  { image: heroImage3, alt: "Congregation worshipping together" },
+  { image: heroImage4, alt: "Community outreach and fellowship" },
+];
 const upcomingEvents = [
   { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", category: "Worship" },
   { title: "Youth Fellowship Retreat", date: "March 15, 2026", time: "8:00 AM", category: "Fellowship" },
@@ -21,31 +32,77 @@ const quickLinks = [
 ];
 
 const Index = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    onSelect();
+
+    // Auto-play every 5 seconds
+    const interval = setInterval(() => emblaApi.scrollNext(), 5000);
+    return () => {
+      clearInterval(interval);
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative h-[85vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Mzilikazi Evangelical Lutheran Church Parish interior with warm golden light"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="relative z-10 text-center px-4 max-w-3xl animate-fade-in">
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
-            Welcome to <span className="text-gradient-purple">Mzilikazi</span> ELCZ
-          </h1>
-          <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">
-            A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-base px-8">
-              <Link to="/about">Learn More</Link>
-            </Button>
-            <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-base px-8">
-              <Link to="/livestream">Watch Live</Link>
-            </Button>
+      {/* Hero Carousel */}
+      <section className="relative h-[85vh] min-h-[500px] overflow-hidden">
+        <div className="absolute inset-0" ref={emblaRef}>
+          <div className="flex h-full">
+            {heroSlides.map((slide, index) => (
+              <div key={index} className="flex-[0_0_100%] min-w-0 relative h-full">
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
+        </div>
+        <div className="absolute inset-0 bg-gradient-hero z-10" />
+        <div className="relative z-20 h-full flex items-center justify-center">
+          <div className="text-center px-4 max-w-3xl animate-fade-in">
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
+              Welcome to <span className="text-gradient-purple">Mzilikazi</span> ELCZ
+            </h1>
+            <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">
+              A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-base px-8">
+                <Link to="/about">Learn More</Link>
+              </Button>
+              <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-base px-8">
+                <Link to="/livestream">Watch Live</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+        {/* Carousel dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                selectedIndex === index
+                  ? "bg-primary-foreground scale-110"
+                  : "bg-primary-foreground/40 hover:bg-primary-foreground/60"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
