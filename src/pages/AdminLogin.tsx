@@ -45,7 +45,7 @@ const AdminLogin = () => {
     <div className="min-h-screen flex items-center justify-center bg-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <img src={logo} alt="Mzilikazi ELCZ" className="h-16 w-16 mx-auto mb-2" />
+          <img src={logo} alt="Mzilikazi ELCZ" className="h-32 w-32 mx-auto mb-2 object-contain" />
           <CardTitle className="font-display text-2xl text-primary">Admin Portal</CardTitle>
           <p className="text-sm text-muted-foreground">Mzilikazi ELCZ Parish</p>
         </CardHeader>
