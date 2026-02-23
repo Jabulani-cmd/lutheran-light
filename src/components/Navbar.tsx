@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LanguageSelector from "@/components/LanguageSelector";
 import logo from "@/assets/umplogo2.png";
 
 const navLinks = [
@@ -10,6 +11,7 @@ const navLinks = [
   { to: "/events", label: "Events" },
   { to: "/ministries", label: "Ministries" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/downloads", label: "Downloads" },
   { to: "/livestream", label: "Livestream" },
   { to: "/appointments", label: "Appointments" },
   { to: "/contact", label: "Contact" },
@@ -47,6 +49,7 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <LanguageSelector />
           </div>
 
           {/* Mobile toggle */}

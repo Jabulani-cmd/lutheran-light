@@ -41,6 +41,42 @@ export type Database = {
         }
         Relationships: []
       }
+      downloadable_resources: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          file_size_bytes: number | null
+          file_url: string
+          id: string
+          language: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          file_size_bytes?: number | null
+          file_url: string
+          id?: string
+          language: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          file_size_bytes?: number | null
+          file_url?: string
+          id?: string
+          language?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           category: string
