@@ -10,8 +10,8 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[100px] w-[100px] object-contain" />
-              <span className="font-display text-lg font-bold">Mzilikazi ELCZ</span>
+              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[100px] w-[100px] object-contain" />
+              <span className="font-display text-lg font-bold">Mzilikazi North Parish Bulawayo</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               A welcoming community of faith rooted in the Lutheran tradition. Come as you are and grow with us.
@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm text-primary-foreground/50">
-          © {new Date().getFullYear()} Mzilikazi Evangelical Lutheran Church Parish. All rights reserved.
+          © {new Date().getFullYear()} Mzilikazi North Parish Bulawayo. All rights reserved.
         </div>
       </div>
     </footer>

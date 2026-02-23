@@ -25,10 +25,10 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[120px] w-[120px] object-contain" />
+            <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[120px] w-[120px] object-contain" />
             <div className="flex flex-col leading-tight">
               <span className="text-3xl sm:text-4xl font-serif font-extrabold tracking-wide text-primary">Mzilikazi</span>
-              <span className="text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-muted-foreground">North Parish</span>
+              <span className="text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-muted-foreground">North Parish · Bulawayo</span>
             </div>
           </Link>
 
