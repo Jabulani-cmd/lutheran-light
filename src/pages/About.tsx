@@ -11,7 +11,7 @@ const beliefs = [
 ];
 
 const leaders = [
-  { name: "Pastor N. Dlamini", role: "Senior Pastor", bio: "Pastor Dlamini has served Mzilikazi ELCP for over 15 years, guiding the congregation with wisdom and compassion." },
+  { name: "Pastor N. Dlamini", role: "Senior Pastor", bio: "Pastor Dlamini has served Mzilikazi ELCZ for over 15 years, guiding the congregation with wisdom and compassion." },
   { name: "Elder J. Moyo", role: "Church Elder", bio: "A dedicated servant leader who oversees church administration and community outreach programs." },
   { name: "Elder T. Ncube", role: "Church Elder", bio: "Elder Ncube leads the worship committee and coordinates midweek prayer services." },
   { name: "Deacon S. Ndlovu", role: "Deacon", bio: "Deacon Ndlovu is passionate about youth ministry and mentoring the next generation of believers." },
@@ -25,7 +25,7 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">About Our Parish</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            Rooted in the Lutheran tradition since 1952, Mzilikazi ELCP has been a beacon of faith, hope, and community.
+            Rooted in the Lutheran tradition since 1952, Mzilikazi ELCZ has been a beacon of faith, hope, and community.
           </p>
         </div>
       </section>
