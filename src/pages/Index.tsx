@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { Clock, MapPin, Calendar, Users, Video, BookOpen } from "lucide-react";
+import { MapPin, Calendar, Users, Video, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useMemo } from "react";
+import { Calendar as CalendarWidget } from "@/components/ui/calendar";
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -13,6 +14,7 @@ import heroImage2 from "@/assets/hero-church-2.jpg";
 import heroImage3 from "@/assets/hero-church-3.jpg";
 import heroImage4 from "@/assets/hero-church-4.jpg";
 import roseLogo from "@/assets/umplogo2.png";
+import purpleClock from "@/assets/purple-clock.png";
 
 const heroSlides = [
   { image: heroImage1, alt: "Mzilikazi North Parish church exterior" },
@@ -55,6 +57,15 @@ const Index = () => {
     { icon: BookOpen, label: t.home_explore_appointments, desc: t.home_explore_appointments_desc, to: "/appointments" },
     { icon: Calendar, label: t.home_explore_events, desc: t.home_explore_events_desc, to: "/events" },
   ];
+
+  const eventDates = useMemo(() => {
+    return upcomingEvents
+      .map((e) => {
+        const parsed = new Date(e.date);
+        return isNaN(parsed.getTime()) ? null : parsed;
+      })
+      .filter(Boolean) as Date[];
+  }, []);
 
   return (
     <Layout>
@@ -100,6 +111,9 @@ const Index = () => {
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
+          <div className="flex justify-center mb-8">
+            <img src={purpleClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
               { day: t.home_sunday_worship, time: "9:00 AM" },
@@ -109,7 +123,6 @@ const Index = () => {
             ].map((s) => (
               <Card key={s.day} className="text-center shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="pt-6">
-                  <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                   <h3 className="font-display font-semibold text-foreground">{s.day}</h3>
                   <p className="text-muted-foreground mt-1">{s.time}</p>
                 </CardContent>
@@ -137,21 +150,32 @@ const Index = () => {
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_events_title} subtitle={t.home_events_subtitle} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {upcomingEvents.map((e) => (
-              <Card key={e.title} className="shadow-soft hover:shadow-medium transition-shadow border-border">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="bg-primary/10 rounded-lg p-3 shrink-0">
-                    <Calendar className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{e.date} · {e.time}</p>
-                    <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Calendar Widget */}
+            <Card className="shadow-soft border-border flex justify-center items-start p-4">
+              <CalendarWidget
+                mode="multiple"
+                selected={eventDates}
+                className="pointer-events-auto"
+              />
+            </Card>
+            {/* Event List */}
+            <div className="flex flex-col gap-4">
+              {upcomingEvents.map((e) => (
+                <Card key={e.title} className="shadow-soft hover:shadow-medium transition-shadow border-border">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="bg-primary/10 rounded-lg p-3 shrink-0">
+                      <Calendar className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{e.date} · {e.time}</p>
+                      <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
           <div className="text-center mt-8">
             <Button asChild variant="outline"><Link to="/events">{t.home_view_all_events}</Link></Button>
