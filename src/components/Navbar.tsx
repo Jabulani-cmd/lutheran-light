@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Cross } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/umplogo2.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -23,7 +24,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <Cross className="h-6 w-6 text-primary" />
+            <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-10 w-10 object-contain" />
             <div className="font-display">
               <span className="text-lg font-bold text-primary">Mzilikazi</span>
               <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCZ</span>
