@@ -4,13 +4,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users } from "lucide-react";
+import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download } from "lucide-react";
 import logo from "@/assets/umplogo2.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
 import AdminEvents from "@/components/admin/AdminEvents";
 import AdminPrayerRequests from "@/components/admin/AdminPrayerRequests";
 import AdminMembers from "@/components/admin/AdminMembers";
+import AdminDownloads from "@/components/admin/AdminDownloads";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
@@ -45,12 +46,13 @@ const Admin = () => {
       {/* Dashboard */}
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="members">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-6 mb-8">
             <TabsTrigger value="members" className="flex items-center gap-2"><Users className="h-4 w-4" /> Members</TabsTrigger>
             <TabsTrigger value="gallery" className="flex items-center gap-2"><Image className="h-4 w-4" /> Gallery</TabsTrigger>
             <TabsTrigger value="announcements" className="flex items-center gap-2"><Megaphone className="h-4 w-4" /> Announcements</TabsTrigger>
             <TabsTrigger value="events" className="flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Events</TabsTrigger>
             <TabsTrigger value="prayers" className="flex items-center gap-2"><HandHeart className="h-4 w-4" /> Prayer Requests</TabsTrigger>
+            <TabsTrigger value="downloads" className="flex items-center gap-2"><Download className="h-4 w-4" /> Downloads</TabsTrigger>
           </TabsList>
 
           <TabsContent value="members"><AdminMembers /></TabsContent>
@@ -58,6 +60,7 @@ const Admin = () => {
           <TabsContent value="announcements"><AdminAnnouncements /></TabsContent>
           <TabsContent value="events"><AdminEvents /></TabsContent>
           <TabsContent value="prayers"><AdminPrayerRequests /></TabsContent>
+          <TabsContent value="downloads"><AdminDownloads /></TabsContent>
         </Tabs>
       </div>
     </div>
