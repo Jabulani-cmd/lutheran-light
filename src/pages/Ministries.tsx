@@ -41,7 +41,7 @@ const leagues = [
 const Ministries = () => {
   return (
     <Layout>
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Ministries & Leagues</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -57,18 +57,18 @@ const Ministries = () => {
               <Card key={l.name} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-secondary/10 rounded-lg p-3">
-                      <l.icon className="h-6 w-6 text-secondary" />
+                    <div className="bg-primary/10 rounded-lg p-3">
+                      <l.icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="font-display text-xl font-bold text-foreground">{l.name}</h3>
                   </div>
                   <p className="text-muted-foreground mb-4">{l.desc}</p>
                   <div className="space-y-2 text-sm">
                     <p className="flex items-center gap-2 text-foreground">
-                      <Clock className="h-4 w-4 text-secondary" /> {l.meetingTime}
+                      <Clock className="h-4 w-4 text-primary" /> {l.meetingTime}
                     </p>
                     <p className="flex items-center gap-2 text-foreground">
-                      <User className="h-4 w-4 text-secondary" /> Contact: {l.contact}
+                      <User className="h-4 w-4 text-primary" /> Contact: {l.contact}
                     </p>
                   </div>
                   <div className="mt-4 pt-4 border-t border-border">

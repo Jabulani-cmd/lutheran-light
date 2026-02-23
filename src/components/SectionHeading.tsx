@@ -14,7 +14,7 @@ const SectionHeading = ({ title, subtitle, centered = true }: SectionHeadingProp
       {subtitle && (
         <p className="mt-3 text-muted-foreground text-lg max-w-2xl mx-auto">{subtitle}</p>
       )}
-      <div className={`mt-4 h-1 w-16 bg-secondary rounded-full ${centered ? "mx-auto" : ""}`} />
+      <div className={`mt-4 h-1 w-16 bg-primary rounded-full ${centered ? "mx-auto" : ""}`} />
     </div>
   );
 };

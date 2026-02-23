@@ -32,17 +32,17 @@ const Index = () => {
         />
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="relative z-10 text-center px-4 max-w-3xl animate-fade-in">
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-4 leading-tight">
-            Welcome to <span className="text-gradient-gold">Mzilikazi</span> ELCZ
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
+            Welcome to <span className="text-gradient-purple">Mzilikazi</span> ELCZ
           </h1>
-          <p className="text-cream/80 text-lg md:text-xl mb-8 leading-relaxed">
+          <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">
             A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-gold-dark font-semibold text-base px-8">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-base px-8">
               <Link to="/about">Learn More</Link>
             </Button>
-            <Button asChild size="lg" className="border-2 border-gold-light text-cream bg-cream/10 hover:bg-cream/20 text-base px-8">
+            <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-base px-8">
               <Link to="/livestream">Watch Live</Link>
             </Button>
           </div>
@@ -62,7 +62,7 @@ const Index = () => {
             ].map((s) => (
               <Card key={s.day} className="text-center shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="pt-6">
-                  <Clock className="h-8 w-8 text-secondary mx-auto mb-3" />
+                  <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                   <h3 className="font-display font-semibold text-foreground">{s.day}</h3>
                   <p className="text-muted-foreground mt-1">{s.time}</p>
                 </CardContent>
@@ -70,7 +70,7 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-8 flex items-center justify-center gap-2 text-muted-foreground">
-            <MapPin className="h-4 w-4 text-secondary" />
+            <MapPin className="h-4 w-4 text-primary" />
             <span>123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</span>
           </div>
         </div>
@@ -98,13 +98,13 @@ const Index = () => {
             {upcomingEvents.map((e) => (
               <Card key={e.title} className="shadow-soft hover:shadow-medium transition-shadow border-border">
                 <CardContent className="p-5 flex items-start gap-4">
-                  <div className="bg-secondary/10 rounded-lg p-3 shrink-0">
-                    <Calendar className="h-5 w-5 text-secondary" />
+                  <div className="bg-primary/10 rounded-lg p-3 shrink-0">
+                    <Calendar className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1">{e.date} · {e.time}</p>
-                    <span className="inline-block mt-2 text-xs bg-secondary/10 text-secondary-foreground px-2 py-0.5 rounded-full">
+                    <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                       {e.category}
                     </span>
                   </div>
@@ -127,9 +127,9 @@ const Index = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {quickLinks.map((l) => (
               <Link key={l.to} to={l.to} className="group">
-                <Card className="text-center shadow-soft hover:shadow-gold transition-all border-border group-hover:border-secondary/40 h-full">
+                <Card className="text-center shadow-soft hover:shadow-purple transition-all border-border group-hover:border-primary/30 h-full">
                   <CardContent className="pt-6">
-                    <l.icon className="h-8 w-8 text-secondary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                    <l.icon className="h-8 w-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
                     <h3 className="font-display font-semibold text-foreground text-sm">{l.label}</h3>
                     <p className="text-xs text-muted-foreground mt-1">{l.desc}</p>
                   </CardContent>

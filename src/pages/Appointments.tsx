@@ -29,7 +29,7 @@ const Appointments = () => {
 
   return (
     <Layout>
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Appointments & Counselling</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -44,13 +44,13 @@ const Appointments = () => {
             {/* Appointment Booking */}
             <div>
               <div className="flex items-center gap-2 mb-6">
-                <Calendar className="h-6 w-6 text-secondary" />
+                <Calendar className="h-6 w-6 text-primary" />
                 <h2 className="font-display text-2xl font-bold text-foreground">Book an Appointment</h2>
               </div>
               {appointmentSubmitted ? (
                 <Card className="shadow-soft border-border">
                   <CardContent className="py-12 text-center">
-                    <CheckCircle className="h-12 w-12 text-secondary mx-auto mb-4" />
+                    <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="font-display text-xl font-semibold text-foreground">Request Submitted</h3>
                     <p className="text-muted-foreground mt-2">We will contact you to confirm your appointment.</p>
                     <Button className="mt-6" variant="outline" onClick={() => setAppointmentSubmitted(false)}>Book Another</Button>
@@ -91,7 +91,7 @@ const Appointments = () => {
                         <Label htmlFor="apt-reason">Reason for Appointment</Label>
                         <Textarea id="apt-reason" placeholder="Briefly describe the purpose..." rows={3} />
                       </div>
-                      <Button type="submit" className="w-full bg-secondary text-secondary-foreground hover:bg-gold-dark">
+                      <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-purple-dark">
                         Request Appointment
                       </Button>
                     </form>
@@ -103,14 +103,14 @@ const Appointments = () => {
             {/* Counselling */}
             <div>
               <div className="flex items-center gap-2 mb-6">
-                <Heart className="h-6 w-6 text-secondary" />
+                <Heart className="h-6 w-6 text-primary" />
                 <h2 className="font-display text-2xl font-bold text-foreground">Counselling Request</h2>
               </div>
               <p className="text-muted-foreground mb-4 text-sm">All counselling submissions are handled with strict confidentiality.</p>
               {counsellingSubmitted ? (
                 <Card className="shadow-soft border-border">
                   <CardContent className="py-12 text-center">
-                    <CheckCircle className="h-12 w-12 text-secondary mx-auto mb-4" />
+                    <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="font-display text-xl font-semibold text-foreground">Request Received</h3>
                     <p className="text-muted-foreground mt-2">A counsellor will contact you confidentially.</p>
                     <Button className="mt-6" variant="outline" onClick={() => setCounsellingSubmitted(false)}>Submit Another</Button>
@@ -149,7 +149,7 @@ const Appointments = () => {
                         <Label htmlFor="c-message">Message</Label>
                         <Textarea id="c-message" placeholder="Share what's on your heart (confidential)..." rows={4} required />
                       </div>
-                      <Button type="submit" className="w-full bg-secondary text-secondary-foreground hover:bg-gold-dark">
+                      <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-purple-dark">
                         Submit Request
                       </Button>
                     </form>

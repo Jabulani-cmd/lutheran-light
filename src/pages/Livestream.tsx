@@ -16,7 +16,7 @@ const pastServices = [
 const Livestream = () => {
   return (
     <Layout>
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Livestream & Past Services</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -32,9 +32,9 @@ const Livestream = () => {
 
           <Card className="shadow-medium border-border mb-8">
             <CardContent className="p-0">
-              <div className="aspect-video bg-navy-dark rounded-t-lg flex items-center justify-center">
+              <div className="aspect-video bg-purple-deep rounded-t-lg flex items-center justify-center">
                 <div className="text-center text-primary-foreground">
-                  <Play className="h-16 w-16 mx-auto mb-4 text-secondary" />
+                  <Play className="h-16 w-16 mx-auto mb-4 text-accent" />
                   <h3 className="font-display text-xl font-semibold">Live Stream</h3>
                   <p className="text-primary-foreground/60 mt-2">Next live service: Sunday at 9:00 AM</p>
                 </div>
@@ -52,7 +52,7 @@ const Livestream = () => {
 
           <div className="bg-muted rounded-lg p-4 text-center mb-4">
             <div className="flex items-center justify-center gap-2 text-foreground font-medium">
-              <Calendar className="h-4 w-4 text-secondary" />
+              <Calendar className="h-4 w-4 text-primary" />
               Live Stream Schedule
             </div>
             <p className="text-sm text-muted-foreground mt-1">Sundays at 9:00 AM · Wednesdays at 6:00 PM</p>
@@ -68,8 +68,8 @@ const Livestream = () => {
             {pastServices.map((s, i) => (
               <Card key={i} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="p-0">
-                  <div className="aspect-video bg-navy-dark/90 rounded-t-lg flex items-center justify-center cursor-pointer group">
-                    <Play className="h-12 w-12 text-secondary group-hover:scale-110 transition-transform" />
+                  <div className="aspect-video bg-purple-deep/90 rounded-t-lg flex items-center justify-center cursor-pointer group">
+                    <Play className="h-12 w-12 text-accent group-hover:scale-110 transition-transform" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-display font-semibold text-foreground text-sm">{s.title}</h3>

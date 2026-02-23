@@ -21,7 +21,7 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">About Our Parish</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -57,7 +57,7 @@ const About = () => {
             {beliefs.map((b) => (
               <Card key={b.title} className="text-center shadow-soft border-border">
                 <CardContent className="pt-6">
-                  <b.icon className="h-10 w-10 text-secondary mx-auto mb-4" />
+                  <b.icon className="h-10 w-10 text-primary mx-auto mb-4" />
                   <h3 className="font-display font-semibold text-foreground mb-2">{b.title}</h3>
                   <p className="text-sm text-muted-foreground">{b.desc}</p>
                 </CardContent>
@@ -79,7 +79,7 @@ const About = () => {
                     <Users className="h-8 w-8 text-muted-foreground" />
                   </div>
                   <h3 className="font-display font-semibold text-foreground">{l.name}</h3>
-                  <p className="text-sm text-secondary font-medium">{l.role}</p>
+                  <p className="text-sm text-primary font-medium">{l.role}</p>
                   <p className="text-sm text-muted-foreground mt-2">{l.bio}</p>
                 </CardContent>
               </Card>

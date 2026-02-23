@@ -21,7 +21,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -38,21 +38,21 @@ const Contact = () => {
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
+                  <MapPin className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-foreground">Address</p>
                     <p className="text-muted-foreground text-sm">123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
+                  <Phone className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
                     <p className="text-muted-foreground text-sm">+263 29 123 4567</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
+                  <Mail className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-foreground">Email</p>
                     <p className="text-muted-foreground text-sm">info@mzilikazielcz.org</p>
@@ -61,10 +61,10 @@ const Contact = () => {
               </div>
 
               <div className="flex gap-3 mb-8">
-                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors" aria-label="Facebook">
+                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
                   <Facebook className="h-5 w-5" /> Facebook
                 </a>
-                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors" aria-label="YouTube">
+                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors" aria-label="YouTube">
                   <Youtube className="h-5 w-5" /> YouTube
                 </a>
               </div>
@@ -90,7 +90,7 @@ const Contact = () => {
               {submitted ? (
                 <Card className="shadow-soft border-border">
                   <CardContent className="py-12 text-center">
-                    <CheckCircle className="h-12 w-12 text-secondary mx-auto mb-4" />
+                    <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="font-display text-xl font-semibold text-foreground">Thank You!</h3>
                     <p className="text-muted-foreground mt-2">Your message has been received. We'll respond shortly.</p>
                     <Button className="mt-6" variant="outline" onClick={() => setSubmitted(false)}>Send Another</Button>
@@ -116,7 +116,7 @@ const Contact = () => {
                         <Label htmlFor="message">Message</Label>
                         <Textarea id="message" placeholder="Your message..." rows={5} required />
                       </div>
-                      <Button type="submit" className="w-full bg-secondary text-secondary-foreground hover:bg-gold-dark">
+                      <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-purple-dark">
                         Send Message
                       </Button>
                     </form>

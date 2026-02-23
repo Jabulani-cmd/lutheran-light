@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Cross className="h-6 w-6 text-secondary" />
+              <Cross className="h-6 w-6 text-accent" />
               <span className="font-display text-lg font-bold">Mzilikazi ELCZ</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
@@ -19,7 +19,7 @@ const Footer = () => {
 
           {/* Service Times */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-secondary">Service Times</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-accent">Service Times</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li>Sunday Worship: 9:00 AM</li>
               <li>Sunday School: 10:30 AM</li>
@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-secondary">Quick Links</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-accent">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               {[
                 { to: "/about", label: "About Us" },
@@ -40,7 +40,7 @@ const Footer = () => {
                 { to: "/appointments", label: "Book Appointment" },
               ].map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-primary-foreground/70 hover:text-secondary transition-colors">
+                  <Link to={link.to} className="text-primary-foreground/70 hover:text-accent transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -50,26 +50,26 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-secondary">Contact Us</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-accent">Contact Us</h4>
             <ul className="space-y-3 text-sm text-primary-foreground/70">
               <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-secondary" />
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
                 <span>123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-secondary" />
+                <Phone className="h-4 w-4 shrink-0 text-accent" />
                 <span>+263 29 123 4567</span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-secondary" />
+                <Mail className="h-4 w-4 shrink-0 text-accent" />
                 <span>info@mzilikazielcz.org</span>
               </li>
             </ul>
             <div className="flex gap-3 mt-4">
-              <a href="#" className="text-primary-foreground/70 hover:text-secondary transition-colors" aria-label="Facebook">
+              <a href="#" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-primary-foreground/70 hover:text-secondary transition-colors" aria-label="YouTube">
+              <a href="#" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="YouTube">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
