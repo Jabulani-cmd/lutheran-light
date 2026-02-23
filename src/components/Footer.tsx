@@ -8,12 +8,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 lg:py-16">
+      <div className="container mx-auto px-4 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[150px] w-[150px] object-contain" />
-              <span className="font-display text-lg font-bold">Mzilikazi North Parish Bulawayo</span>
+              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px] object-contain shrink-0" />
+              <span className="font-display text-base sm:text-lg font-bold">Mzilikazi North Parish Bulawayo</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">{t.footer_description}</p>
           </div>

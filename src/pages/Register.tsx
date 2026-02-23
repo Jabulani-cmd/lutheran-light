@@ -77,9 +77,9 @@ const Register = () => {
 
   return (
     <Layout>
-      <section className="bg-primary text-primary-foreground py-16 text-center">
+      <section className="bg-primary text-primary-foreground py-12 sm:py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.register_title}</h1>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{t.register_title}</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.register_subtitle}</p>
         </div>
       </section>
@@ -89,7 +89,7 @@ const Register = () => {
           <Card className="border-border shadow-soft">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Label>{t.register_first_name}</Label>
                     <Input value={firstName} onChange={(e) => setFirstName(e.target.value)} required maxLength={100} />
@@ -99,7 +99,7 @@ const Register = () => {
                     <Input value={lastName} onChange={(e) => setLastName(e.target.value)} required maxLength={100} />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Label>{t.register_email}</Label>
                     <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
@@ -109,7 +109,7 @@ const Register = () => {
                     <Input value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={20} />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Label>{t.register_gender}</Label>
                     <Select value={gender} onValueChange={setGender}>

@@ -70,7 +70,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Carousel */}
-      <section className="relative h-[85vh] min-h-[500px] overflow-hidden">
+      <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh] min-h-[450px] overflow-hidden">
         <div className="absolute inset-0" ref={emblaRef}>
           <div className="flex h-full">
             {heroSlides.map((slide, index) => (
@@ -83,16 +83,16 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi North Parish Rose Logo" className="h-[120px] w-auto mx-auto mb-4 object-contain" />
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
+            <img src={roseLogo} alt="Mzilikazi North Parish Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain" />
+            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4 leading-tight">
               {t.home_hero_title_prefix} <span className="text-gradient-purple">Mzilikazi</span> {t.home_hero_title_suffix}
             </h1>
-            <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">{t.home_hero_subtitle}</p>
+            <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-base px-8">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-sm sm:text-base px-6 sm:px-8">
                 <Link to="/about">{t.home_learn_more}</Link>
               </Button>
-              <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-base px-8">
+              <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-sm sm:text-base px-6 sm:px-8">
                 <Link to="/livestream">{t.home_watch_live}</Link>
               </Button>
             </div>
@@ -108,7 +108,7 @@ const Index = () => {
       </section>
 
       {/* Service Times */}
-      <section className="py-16 bg-card">
+      <section className="py-10 sm:py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
           <div className="flex justify-center mb-8">
@@ -137,7 +137,7 @@ const Index = () => {
       </section>
 
       {/* Pastor Welcome */}
-      <section className="py-16 bg-background">
+      <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <SectionHeading title={t.home_pastor_title} />
           <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">{t.home_pastor_quote}</blockquote>
@@ -147,7 +147,7 @@ const Index = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-16 bg-card">
+      <section className="py-10 sm:py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_events_title} subtitle={t.home_events_subtitle} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -184,7 +184,7 @@ const Index = () => {
       </section>
 
       {/* Quick Links */}
-      <section className="py-16 bg-background">
+      <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_explore_title} subtitle={t.home_explore_subtitle} />
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">

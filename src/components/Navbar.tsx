@@ -28,12 +28,12 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-soft">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[120px] w-[120px] object-contain" />
-            <div className="flex flex-col leading-tight">
-              <span className="text-3xl sm:text-4xl font-serif font-extrabold tracking-wide text-primary">Mzilikazi</span>
-              <span className="text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-muted-foreground">North Parish · Bulawayo</span>
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+          <Link to="/" className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] lg:h-[100px] lg:w-[100px] object-contain shrink-0" />
+            <div className="flex flex-col leading-tight min-w-0">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-serif font-extrabold tracking-wide text-primary truncate">Mzilikazi</span>
+              <span className="text-[10px] sm:text-xs font-serif tracking-[0.15em] sm:tracking-[0.2em] uppercase text-muted-foreground truncate">North Parish · Bulawayo</span>
             </div>
           </Link>
           <div className="hidden lg:flex items-center gap-1">
