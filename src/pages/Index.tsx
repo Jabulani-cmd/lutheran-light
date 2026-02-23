@@ -13,7 +13,7 @@ import heroImage3 from "@/assets/hero-church-3.jpg";
 import heroImage4 from "@/assets/hero-church-4.jpg";
 
 const heroSlides = [
-  { image: heroImage1, alt: "Mzilikazi ELCZ church exterior" },
+  { image: heroImage1, alt: "Mzilikazi North Parish church exterior" },
   { image: heroImage2, alt: "Beautiful church interior with stained glass" },
   { image: heroImage3, alt: "Congregation worshipping together" },
   { image: heroImage4, alt: "Community outreach and fellowship" },
@@ -74,9 +74,9 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi ELCZ Rose Logo" className="h-[120px] w-auto mx-auto mb-4 object-contain" />
+            <img src={roseLogo} alt="Mzilikazi North Parish Rose Logo" className="h-[120px] w-auto mx-auto mb-4 object-contain" />
             <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
-              Welcome to <span className="text-gradient-purple">Mzilikazi</span> ELCZ
+              Welcome to <span className="text-gradient-purple">Mzilikazi</span> North Parish Bulawayo
             </h1>
             <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 leading-relaxed">
               A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.
@@ -141,7 +141,7 @@ const Index = () => {
           <SectionHeading title="A Word from Our Pastor" />
           <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">
             "Dear friends, whether you are a long‑standing member or visiting for the first time, know that you are welcome here.
-            At Mzilikazi ELCZ, we believe in the power of community, the grace of God, and the call to serve one another.
+            At Mzilikazi North Parish, we believe in the power of community, the grace of God, and the call to serve one another.
             I invite you to join us as we walk together in faith, hope, and love."
           </blockquote>
           <p className="mt-6 font-display font-semibold text-foreground">Pastor N. Dlamini</p>
