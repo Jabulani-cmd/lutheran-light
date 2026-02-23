@@ -48,7 +48,7 @@ const AdminLogin = () => {
           <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors mb-4 self-start">
             ← Back to Home
           </Link>
-          <img src={logo} alt="Mzilikazi ELCZ" className="h-32 w-32 mx-auto mb-2 object-contain" />
+          <img src={logo} alt="Mzilikazi ELCZ" className="h-[320px] w-[320px] mx-auto mb-2 object-contain" />
           <CardTitle className="font-display text-2xl text-primary">Admin Portal</CardTitle>
           <p className="text-sm text-muted-foreground">Mzilikazi ELCZ Parish</p>
         </CardHeader>
