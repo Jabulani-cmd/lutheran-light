@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Youtube, Instagram } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import logo from "@/assets/umplogo2.png";
 
@@ -44,11 +44,12 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold mb-4 text-accent">{t.footer_contact_us}</h4>
             <ul className="space-y-3 text-sm text-primary-foreground/70">
               <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" /><span>123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</span></li>
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-accent" /><span>+263 29 123 4567</span></li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-accent" /><span>+263 71 206 4556 / +263 77 500 7746</span></li>
               <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-accent" /><span>info@mzilikazielcz.org</span></li>
             </ul>
             <div className="flex gap-3 mt-4">
-              <a href="#" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="Facebook"><Facebook className="h-5 w-5" /></a>
+              <a href="https://www.facebook.com/profile.php?id=100064839849337" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="Facebook"><Facebook className="h-5 w-5" /></a>
+              <a href="https://www.instagram.com/elczbyonorthparish_mzilikazi_congregation" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="Instagram"><Instagram className="h-5 w-5" /></a>
               <a href="#" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="YouTube"><Youtube className="h-5 w-5" /></a>
             </div>
           </div>

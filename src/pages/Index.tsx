@@ -7,6 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { useEffect, useCallback, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import heroImage1 from "@/assets/hero-church.jpg";
 import heroImage2 from "@/assets/hero-church-2.jpg";
 import heroImage3 from "@/assets/hero-church-3.jpg";
@@ -177,6 +178,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <FloatingWhatsApp />
     </Layout>
   );
 };
