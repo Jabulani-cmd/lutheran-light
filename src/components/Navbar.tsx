@@ -27,7 +27,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[100px] w-[100px] object-contain" />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl sm:text-2xl font-serif font-bold tracking-wide text-primary">Mzilikazi</span>
+              <span className="text-3xl sm:text-4xl font-serif font-extrabold tracking-wide text-primary">Mzilikazi</span>
               <span className="text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-muted-foreground">North Parish</span>
             </div>
           </Link>
