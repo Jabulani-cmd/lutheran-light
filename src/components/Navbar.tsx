@@ -13,6 +13,7 @@ const navLinks = [
   { to: "/livestream", label: "Livestream" },
   { to: "/appointments", label: "Appointments" },
   { to: "/contact", label: "Contact" },
+  { to: "/admin/login", label: "Admin" },
 ];
 
 const Navbar = () => {
