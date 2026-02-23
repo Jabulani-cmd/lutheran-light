@@ -16,6 +16,7 @@ const Navbar = () => {
     { to: "/about", label: t.nav_about },
     { to: "/events", label: t.nav_events },
     { to: "/ministries", label: t.nav_ministries },
+    { to: "/projects", label: t.nav_projects },
     { to: "/gallery", label: t.nav_gallery },
     { to: "/downloads", label: t.nav_downloads },
     { to: "/livestream", label: t.nav_livestream },
