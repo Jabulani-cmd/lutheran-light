@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[100px] w-[100px] object-contain" />
+              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[150px] w-[150px] object-contain" />
               <span className="font-display text-lg font-bold">Mzilikazi North Parish Bulawayo</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
