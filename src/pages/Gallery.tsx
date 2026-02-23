@@ -36,7 +36,7 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <section className="bg-gradient-navy py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Photo Gallery</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
@@ -49,13 +49,13 @@ const Gallery = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center mb-10">
             <Button variant={filter === "all" ? "default" : "outline"} size="sm" onClick={() => setFilter("all")}
-              className={filter === "all" ? "bg-secondary text-secondary-foreground hover:bg-gold-dark" : ""}>
+              className={filter === "all" ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>
               All
             </Button>
             {albums.map((a) => (
               <Button key={a.category} variant={filter === a.category ? "default" : "outline"} size="sm"
                 onClick={() => setFilter(a.category)}
-                className={filter === a.category ? "bg-secondary text-secondary-foreground hover:bg-gold-dark" : ""}>
+                className={filter === a.category ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>
                 {a.name}
               </Button>
             ))}

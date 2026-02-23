@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <Cross className="h-6 w-6 text-secondary" />
+            <Cross className="h-6 w-6 text-primary" />
             <div className="font-display">
               <span className="text-lg font-bold text-primary">Mzilikazi</span>
               <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCZ</span>
@@ -38,7 +38,7 @@ const Navbar = () => {
                 to={link.to}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   location.pathname === link.to
-                    ? "text-secondary font-semibold"
+                    ? "text-primary font-semibold"
                     : "text-foreground/80 hover:text-primary hover:bg-muted"
                 }`}
               >
@@ -68,7 +68,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                   location.pathname === link.to
-                    ? "text-secondary bg-primary/5 font-semibold"
+                    ? "text-primary bg-primary/5 font-semibold"
                     : "text-foreground/80 hover:text-primary hover:bg-muted"
                 }`}
               >
