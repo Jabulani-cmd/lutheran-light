@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { Download, BookOpen, Book, FileText } from "lucide-react";
+import { Download, BookOpen, Book, FileText, ChevronDown } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { languageNames, type Language } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const Downloads = () => {
   const { t } = useTranslation();
-  const [selectedLang, setSelectedLang] = useState<Language>("en");
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
 
   const categoryLabels: Record<string, { label: string; icon: typeof BookOpen }> = {
     hymn_book: { label: t.downloads_hymn_book, icon: BookOpen },
@@ -29,19 +29,27 @@ const Downloads = () => {
     },
   });
 
-  const filtered = resources.filter((r: any) => r.language === selectedLang);
-  const grouped = filtered.reduce((acc: Record<string, any[]>, r: any) => {
-    const cat = r.category || "other";
-    if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(r);
-    return acc;
-  }, {});
-
   const formatSize = (bytes: number | null) => {
     if (!bytes) return "";
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
+
+  const toggleSection = (key: string) => {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  // Group resources by language, then by category
+  const byLanguage = (Object.keys(languageNames) as Language[]).map((lang) => {
+    const langResources = resources.filter((r: any) => r.language === lang);
+    const grouped = langResources.reduce((acc: Record<string, any[]>, r: any) => {
+      const cat = r.category || "other";
+      if (!acc[cat]) acc[cat] = [];
+      acc[cat].push(r);
+      return acc;
+    }, {});
+    return { lang, name: languageNames[lang], grouped, count: langResources.length };
+  });
 
   return (
     <Layout>
@@ -53,42 +61,43 @@ const Downloads = () => {
       </section>
 
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <Tabs value={selectedLang} onValueChange={(v) => setSelectedLang(v as Language)}>
-            <TabsList className="flex flex-wrap justify-center mb-8">
-              {(Object.entries(languageNames) as [Language, string][]).map(([code, name]) => (
-                <TabsTrigger key={code} value={code}>{name}</TabsTrigger>
-              ))}
-            </TabsList>
-            {(Object.keys(languageNames) as Language[]).map((lang) => (
-              <TabsContent key={lang} value={lang}>
-                {isLoading ? (
-                  <p className="text-center text-muted-foreground">Loading...</p>
-                ) : filtered.length === 0 ? (
-                  <Card className="border-border">
-                    <CardContent className="py-12 text-center text-muted-foreground">
-                      <BookOpen className="h-12 w-12 mx-auto mb-4 opacity-40" />
-                      <p className="text-lg font-medium">{t.downloads_no_resources}</p>
-                      <p className="text-sm mt-1">{t.downloads_no_resources_desc}</p>
+        <div className="container mx-auto px-4 max-w-4xl space-y-4">
+          {isLoading ? (
+            <p className="text-center text-muted-foreground">Loading...</p>
+          ) : (
+            byLanguage.map(({ lang, name, grouped, count }) => (
+              <Collapsible key={lang} open={openSections[lang]} onOpenChange={() => toggleSection(lang)}>
+                <CollapsibleTrigger asChild>
+                  <Card className="cursor-pointer border-border hover:shadow-medium transition-shadow">
+                    <CardContent className="p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <BookOpen className="h-5 w-5 text-primary" />
+                        <h2 className="font-display text-lg font-semibold text-foreground">{name}</h2>
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{count} {count === 1 ? "file" : "files"}</span>
+                      </div>
+                      <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${openSections[lang] ? "rotate-180" : ""}`} />
                     </CardContent>
                   </Card>
-                ) : (
-                  <div className="space-y-8">
-                    {Object.entries(grouped).map(([category, items]) => {
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-2 space-y-4 pl-4">
+                  {count === 0 ? (
+                    <p className="text-sm text-muted-foreground py-4 text-center">{t.downloads_no_resources}</p>
+                  ) : (
+                    Object.entries(grouped).map(([category, items]) => {
                       const catInfo = categoryLabels[category] || categoryLabels.other;
                       const Icon = catInfo.icon;
                       return (
                         <div key={category}>
-                          <h2 className="font-display text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                            <Icon className="h-5 w-5 text-primary" />{catInfo.label}
-                          </h2>
-                          <div className="grid gap-3">
+                          <h3 className="font-display text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                            <Icon className="h-4 w-4 text-primary" />{catInfo.label}
+                          </h3>
+                          <div className="grid gap-2">
                             {(items as any[]).map((r) => (
                               <Card key={r.id} className="border-border shadow-soft hover:shadow-medium transition-shadow">
-                                <CardContent className="p-4 flex items-center justify-between gap-4">
+                                <CardContent className="p-3 flex items-center justify-between gap-4">
                                   <div className="min-w-0">
-                                    <h3 className="font-semibold text-foreground truncate">{r.title}</h3>
-                                    {r.description && <p className="text-sm text-muted-foreground mt-1">{r.description}</p>}
+                                    <h4 className="font-semibold text-foreground text-sm truncate">{r.title}</h4>
+                                    {r.description && <p className="text-xs text-muted-foreground mt-0.5">{r.description}</p>}
                                     {r.file_size_bytes && <span className="text-xs text-muted-foreground">{formatSize(r.file_size_bytes)}</span>}
                                   </div>
                                   <Button asChild size="sm" className="shrink-0">
@@ -102,12 +111,12 @@ const Downloads = () => {
                           </div>
                         </div>
                       );
-                    })}
-                  </div>
-                )}
-              </TabsContent>
-            ))}
-          </Tabs>
+                    })
+                  )}
+                </CollapsibleContent>
+              </Collapsible>
+            ))
+          )}
         </div>
       </section>
     </Layout>

@@ -12,7 +12,6 @@ const Navbar = () => {
   const { t } = useTranslation();
 
   const navLinks = [
-    { to: "/", label: t.nav_home },
     { to: "/about", label: t.nav_about },
     { to: "/events", label: t.nav_events },
     { to: "/ministries", label: t.nav_ministries },
@@ -21,6 +20,7 @@ const Navbar = () => {
     { to: "/downloads", label: t.nav_downloads },
     { to: "/livestream", label: t.nav_livestream },
     { to: "/appointments", label: t.nav_appointments },
+    { to: "/register", label: t.nav_register },
     { to: "/contact", label: t.nav_contact },
     { to: "/admin/login", label: t.nav_admin },
   ];
