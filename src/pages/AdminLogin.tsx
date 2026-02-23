@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,9 +42,12 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
+          <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors mb-4 self-start">
+            ← Back to Home
+          </Link>
           <img src={logo} alt="Mzilikazi ELCZ" className="h-32 w-32 mx-auto mb-2 object-contain" />
           <CardTitle className="font-display text-2xl text-primary">Admin Portal</CardTitle>
           <p className="text-sm text-muted-foreground">Mzilikazi ELCZ Parish</p>
