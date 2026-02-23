@@ -112,7 +112,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
           <div className="flex justify-center mb-8">
-            <img src={blackClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
+            <img src={blackClock} alt="Worship times clock" className="h-42 w-42 object-contain" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[

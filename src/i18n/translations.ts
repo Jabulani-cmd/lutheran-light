@@ -166,6 +166,30 @@ type TranslationKeys = {
   downloads_hymn_book: string;
   downloads_bible: string;
   downloads_other: string;
+  downloads_select_category: string;
+
+  // Registration
+  register_title: string;
+  register_subtitle: string;
+  register_first_name: string;
+  register_last_name: string;
+  register_email: string;
+  register_phone: string;
+  register_gender: string;
+  register_dob: string;
+  register_address: string;
+  register_league: string;
+  register_submit: string;
+  register_success: string;
+  register_success_desc: string;
+  register_male: string;
+  register_female: string;
+  register_no_league: string;
+  register_youth: string;
+  register_men: string;
+  register_women: string;
+  register_sunday_school: string;
+  nav_register: string;
 
   // Footer
   footer_description: string;
@@ -323,6 +347,28 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Hymn Book",
     downloads_bible: "Bible",
     downloads_other: "Other Resources",
+    downloads_select_category: "Select category",
+    register_title: "Member Registration",
+    register_subtitle: "Join our church community by filling out the form below.",
+    register_first_name: "First Name",
+    register_last_name: "Last Name",
+    register_email: "Email",
+    register_phone: "Phone",
+    register_gender: "Gender",
+    register_dob: "Date of Birth",
+    register_address: "Address",
+    register_league: "League",
+    register_submit: "Register",
+    register_success: "Registration Successful!",
+    register_success_desc: "Thank you for registering. We look forward to welcoming you.",
+    register_male: "Male",
+    register_female: "Female",
+    register_no_league: "No League",
+    register_youth: "Youth League",
+    register_men: "Men's League",
+    register_women: "Women's League",
+    register_sunday_school: "Sunday School",
+    nav_register: "Register",
     footer_description: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are and grow with us.",
     footer_service_times: "Service Times",
     footer_quick_links: "Quick Links",
@@ -477,6 +523,28 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Bhuku reNziyo",
     downloads_bible: "Bhaibheri",
     downloads_other: "Zvimwe Zviripo",
+    downloads_select_category: "Sarudza rudzi",
+    register_title: "Kunyoresa Nhengo",
+    register_subtitle: "Batanai neungano yedu nekuzadza fomu iri pazasi.",
+    register_first_name: "Zita Rekutanga",
+    register_last_name: "Zita Rekupedzisira",
+    register_email: "Email",
+    register_phone: "Nhare",
+    register_gender: "Murume/Mukadzi",
+    register_dob: "Zuva Rekuberekwa",
+    register_address: "Kero",
+    register_league: "Rigi",
+    register_submit: "Nyoresa",
+    register_success: "Kunyoresa Kwabudirira!",
+    register_success_desc: "Mazvita nekuzvinyoresa. Tinokutarisai.",
+    register_male: "Murume",
+    register_female: "Mukadzi",
+    register_no_league: "Hapana Rigi",
+    register_youth: "Rigi yeVadiki",
+    register_men: "Rigi yeVarume",
+    register_women: "Rigi yeVakadzi",
+    register_sunday_school: "Chikoro cheSvondo",
+    nav_register: "Nyoresa",
     footer_description: "Ungano inogamuchira yevanhu vanotenda. Uyai sezvamuiri mukure nesu.",
     footer_service_times: "Nguva dzeMisa",
     footer_quick_links: "Chishanyira Chekukurumidza",
@@ -631,6 +699,28 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Ibhuku leNziyo",
     downloads_bible: "IBhayibhili",
     downloads_other: "Okunye Okutholakalayo",
+    downloads_select_category: "Khetha uhlobo",
+    register_title: "Ukubhaliswa Kwelungu",
+    register_subtitle: "Hlanganyela lebandla lethu ngokugcwalisa ifomu engaphansi.",
+    register_first_name: "Ibizo Lokuqala",
+    register_last_name: "Isibongo",
+    register_email: "I-Email",
+    register_phone: "Ucingo",
+    register_gender: "Ubulili",
+    register_dob: "Usuku Lokuzalwa",
+    register_address: "Ikheli",
+    register_league: "Iligi",
+    register_submit: "Bhalisa",
+    register_success: "Ukubhaliswa Kuphumelele!",
+    register_success_desc: "Siyabonga ngokubhaliswa kwakho. Sikulindele.",
+    register_male: "Owesilisa",
+    register_female: "Owesifazana",
+    register_no_league: "Ayikho Iligi",
+    register_youth: "Iligi Yentsha",
+    register_men: "Iligi Yamadoda",
+    register_women: "Iligi Yabesifazana",
+    register_sunday_school: "Isikolo SeSonto",
+    nav_register: "Bhalisa",
     footer_description: "Ibandla elilemukela abantu bonke elilokholo. Woza unjengoba unjalo sikhule ndawonye.",
     footer_service_times: "Izikhathi zeNkonzo",
     footer_quick_links: "Izixhumanisi Eziphangisayo",
@@ -785,6 +875,28 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Buka ya Difela",
     downloads_bible: "Bibele",
     downloads_other: "Tse Ding Tse Fumanehang",
+    downloads_select_category: "Kgetha mofuta",
+    register_title: "Ho Ngodisa Setho",
+    register_subtitle: "Kopana le kereke ea rona ka ho tlatsa foromo e ka tlase.",
+    register_first_name: "Lebitso la Pele",
+    register_last_name: "Fane",
+    register_email: "Imeile",
+    register_phone: "Mohala",
+    register_gender: "Bong",
+    register_dob: "Letsatsi la Tswalo",
+    register_address: "Aterese",
+    register_league: "Liki",
+    register_submit: "Ngodisa",
+    register_success: "Ho Ngodisa Ho Atlehile!",
+    register_success_desc: "Re leboha ho ngodisa ha hao. Re o lebeletse.",
+    register_male: "Monna",
+    register_female: "Mosali",
+    register_no_league: "Ha ho Liki",
+    register_youth: "Liki ya Batjha",
+    register_men: "Liki ya Banna",
+    register_women: "Liki ya Basali",
+    register_sunday_school: "Sekolo sa Sontaha",
+    nav_register: "Ngodisa",
     footer_description: "Seboka se amohelang sa batho ba tumelo. Tla joalo ka ha o le teng o hole le rona.",
     footer_service_times: "Dinako tsa Ditshebeletso",
     footer_quick_links: "Dihokelo tse Potlakileng",
@@ -939,6 +1051,28 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Bugu ya Nyimbo",
     downloads_bible: "Bivhili",
     downloads_other: "Zwiṅwe Zwi Re Hone",
+    downloads_select_category: "Nangani lushaka",
+    register_title: "U Ṅwalisa Muraḓo",
+    register_subtitle: "Ḓadzani fomo i re fhasi u ḓi ṅwalisa kha tshivhidzo tshashu.",
+    register_first_name: "Dzina ḽa u Thoma",
+    register_last_name: "Fani",
+    register_email: "Imeili",
+    register_phone: "Luṱingo",
+    register_gender: "Mbeu",
+    register_dob: "Ḓuvha ḽa u Bebwa",
+    register_address: "Ḓirese",
+    register_league: "Ligi",
+    register_submit: "Ṅwalisa",
+    register_success: "U Ṅwalisa Ho Bvelela!",
+    register_success_desc: "Ri livhuwa u ḓi ṅwalisa haṋu. Ri khou ni lindela.",
+    register_male: "Munna",
+    register_female: "Musadzi",
+    register_no_league: "A hu na Ligi",
+    register_youth: "Ligi ya Vhaswa",
+    register_men: "Ligi ya Vhanna",
+    register_women: "Ligi ya Vhasadzi",
+    register_sunday_school: "Tshikolo tsha Swondaha",
+    nav_register: "Ṅwalisa",
     footer_description: "Tshivhidzo tshi ṱanganedzaho tsha vhathu vha lutendo. Ḓani sa zwe na vha ni aluwe na riṋe.",
     footer_service_times: "Tshifhinga tsha Mishumo",
     footer_quick_links: "Zwishumiswa zwa U Ṱavhanya",
