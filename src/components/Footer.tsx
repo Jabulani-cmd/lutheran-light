@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-10 w-10 object-contain" />
+              <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[100px] w-[100px] object-contain" />
               <span className="font-display text-lg font-bold">Mzilikazi ELCZ</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">

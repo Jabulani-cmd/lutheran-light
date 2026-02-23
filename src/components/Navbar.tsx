@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-10 w-10 object-contain" />
+            <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[100px] w-[100px] object-contain" />
             <div className="font-display">
               <span className="text-lg font-bold text-primary">Mzilikazi</span>
               <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCZ</span>
