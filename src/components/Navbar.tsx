@@ -26,9 +26,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-[100px] w-[100px] object-contain" />
-            <div className="font-display">
-              <span className="text-lg font-bold text-primary">Mzilikazi</span>
-              <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCZ</span>
+            <div className="flex flex-col leading-tight">
+              <span className="text-xl sm:text-2xl font-serif font-bold tracking-wide text-primary">Mzilikazi</span>
+              <span className="text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-muted-foreground">North Parish</span>
             </div>
           </Link>
 
