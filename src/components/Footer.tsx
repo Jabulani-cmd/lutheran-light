@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Cross, MapPin, Phone, Mail, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Youtube } from "lucide-react";
+import logo from "@/assets/umplogo2.png";
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Cross className="h-6 w-6 text-accent" />
+              <img src={logo} alt="Mzilikazi ELCZ Logo" className="h-10 w-10 object-contain" />
               <span className="font-display text-lg font-bold">Mzilikazi ELCZ</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
