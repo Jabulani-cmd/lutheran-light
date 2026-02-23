@@ -26,10 +26,15 @@ const Projects = () => {
 
   return (
     <Layout>
-      <section className="py-16 bg-background">
+      <section className="bg-gradient-purple py-12 sm:py-20 text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{t.nav_projects}</h1>
+          <p className="text-primary-foreground/70 text-base sm:text-lg max-w-2xl mx-auto">{t.home_explore_projects_desc}</p>
+        </div>
+      </section>
+      <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <SectionHeading title={t.nav_projects} subtitle={t.home_explore_projects_desc} />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {projects.map((project) => (
               <Card key={project.title} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="p-6">

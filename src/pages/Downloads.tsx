@@ -53,9 +53,9 @@ const Downloads = () => {
 
   return (
     <Layout>
-      <section className="bg-primary text-primary-foreground py-16 text-center">
+      <section className="bg-primary text-primary-foreground py-12 sm:py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.downloads_title}</h1>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{t.downloads_title}</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.downloads_subtitle}</p>
         </div>
       </section>

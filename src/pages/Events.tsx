@@ -31,9 +31,9 @@ const Events = () => {
 
   return (
     <Layout>
-      <section className="bg-gradient-purple py-20 text-primary-foreground">
+      <section className="bg-gradient-purple py-12 sm:py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.events_title}</h1>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{t.events_title}</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.events_subtitle}</p>
         </div>
       </section>
