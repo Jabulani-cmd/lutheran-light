@@ -66,7 +66,7 @@ const Register = () => {
       <Layout>
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 max-w-lg text-center">
-            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+            <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
             <h2 className="font-display text-2xl font-bold text-foreground mb-2">{t.register_success}</h2>
             <p className="text-muted-foreground">{t.register_success_desc}</p>
           </div>
