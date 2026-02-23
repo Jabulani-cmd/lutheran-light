@@ -1,0 +1,932 @@
+import { Language } from "@/contexts/LanguageContext";
+
+type TranslationKeys = {
+  // Navbar
+  nav_home: string;
+  nav_about: string;
+  nav_events: string;
+  nav_ministries: string;
+  nav_gallery: string;
+  nav_downloads: string;
+  nav_livestream: string;
+  nav_appointments: string;
+  nav_contact: string;
+  nav_admin: string;
+
+  // Home
+  home_hero_title_prefix: string;
+  home_hero_title_suffix: string;
+  home_hero_subtitle: string;
+  home_learn_more: string;
+  home_watch_live: string;
+  home_worship_title: string;
+  home_worship_subtitle: string;
+  home_sunday_worship: string;
+  home_sunday_school: string;
+  home_midweek_service: string;
+  home_youth_service: string;
+  home_pastor_title: string;
+  home_pastor_quote: string;
+  home_pastor_name: string;
+  home_senior_pastor: string;
+  home_events_title: string;
+  home_events_subtitle: string;
+  home_view_all_events: string;
+  home_explore_title: string;
+  home_explore_subtitle: string;
+  home_explore_ministries: string;
+  home_explore_ministries_desc: string;
+  home_explore_livestream: string;
+  home_explore_livestream_desc: string;
+  home_explore_appointments: string;
+  home_explore_appointments_desc: string;
+  home_explore_events: string;
+  home_explore_events_desc: string;
+
+  // About
+  about_title: string;
+  about_subtitle: string;
+  about_history_title: string;
+  about_history_p1: string;
+  about_history_p2: string;
+  about_beliefs_title: string;
+  about_beliefs_subtitle: string;
+  about_grace: string;
+  about_grace_desc: string;
+  about_scripture: string;
+  about_scripture_desc: string;
+  about_faith: string;
+  about_faith_desc: string;
+  about_community: string;
+  about_community_desc: string;
+  about_leadership_title: string;
+  about_leadership_subtitle: string;
+
+  // Events
+  events_title: string;
+  events_subtitle: string;
+  events_all: string;
+  events_worship: string;
+  events_fellowship: string;
+  events_outreach: string;
+  events_youth: string;
+
+  // Ministries
+  ministries_title: string;
+  ministries_subtitle: string;
+  ministries_youth: string;
+  ministries_youth_desc: string;
+  ministries_men: string;
+  ministries_men_desc: string;
+  ministries_women: string;
+  ministries_women_desc: string;
+  ministries_sunday_school: string;
+  ministries_sunday_school_desc: string;
+  ministries_upcoming: string;
+  ministries_contact: string;
+
+  // Gallery
+  gallery_title: string;
+  gallery_subtitle: string;
+  gallery_all: string;
+  gallery_worship: string;
+  gallery_fellowship: string;
+  gallery_outreach: string;
+  gallery_league: string;
+
+  // Livestream
+  livestream_title: string;
+  livestream_subtitle: string;
+  livestream_watch_live: string;
+  livestream_watch_subtitle: string;
+  livestream_live_stream: string;
+  livestream_next_service: string;
+  livestream_youtube: string;
+  livestream_facebook: string;
+  livestream_schedule: string;
+  livestream_schedule_times: string;
+  livestream_past_title: string;
+  livestream_past_subtitle: string;
+  livestream_subscribe: string;
+
+  // Appointments
+  appointments_title: string;
+  appointments_subtitle: string;
+  appointments_book_title: string;
+  appointments_counselling_title: string;
+  appointments_counselling_note: string;
+  appointments_submitted: string;
+  appointments_submitted_desc: string;
+  appointments_book_another: string;
+  appointments_received: string;
+  appointments_received_desc: string;
+  appointments_submit_another: string;
+  appointments_full_name: string;
+  appointments_email: string;
+  appointments_phone: string;
+  appointments_with: string;
+  appointments_date: string;
+  appointments_reason: string;
+  appointments_request: string;
+  appointments_contact_method: string;
+  appointments_type: string;
+  appointments_preferred_dates: string;
+  appointments_message: string;
+  appointments_submit_request: string;
+  appointments_grief: string;
+  appointments_marriage: string;
+  appointments_spiritual: string;
+  appointments_youth_counselling: string;
+  appointments_other: string;
+
+  // Contact
+  contact_title: string;
+  contact_subtitle: string;
+  contact_get_in_touch: string;
+  contact_address: string;
+  contact_phone: string;
+  contact_email_label: string;
+  contact_send_message: string;
+  contact_thank_you: string;
+  contact_received: string;
+  contact_send_another: string;
+  contact_subject: string;
+  contact_your_message: string;
+  contact_send: string;
+
+  // Downloads
+  downloads_title: string;
+  downloads_subtitle: string;
+  downloads_no_resources: string;
+  downloads_no_resources_desc: string;
+  downloads_download: string;
+  downloads_hymn_book: string;
+  downloads_bible: string;
+  downloads_other: string;
+
+  // Footer
+  footer_description: string;
+  footer_service_times: string;
+  footer_quick_links: string;
+  footer_contact_us: string;
+  footer_copyright: string;
+};
+
+const translations: Record<Language, TranslationKeys> = {
+  en: {
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_events: "Events",
+    nav_ministries: "Ministries",
+    nav_gallery: "Gallery",
+    nav_downloads: "Downloads",
+    nav_livestream: "Livestream",
+    nav_appointments: "Appointments",
+    nav_contact: "Contact",
+    nav_admin: "Admin",
+    home_hero_title_prefix: "Welcome to",
+    home_hero_title_suffix: "North Parish Bulawayo",
+    home_hero_subtitle: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.",
+    home_learn_more: "Learn More",
+    home_watch_live: "Watch Live",
+    home_worship_title: "Join Us for Worship",
+    home_worship_subtitle: "Experience the warmth of our community at any of our regular services.",
+    home_sunday_worship: "Sunday Worship",
+    home_sunday_school: "Sunday School",
+    home_midweek_service: "Midweek Service",
+    home_youth_service: "Youth Service",
+    home_pastor_title: "A Word from Our Pastor",
+    home_pastor_quote: "\"Dear friends, whether you are a long‑standing member or visiting for the first time, know that you are welcome here. At Mzilikazi North Parish, we believe in the power of community, the grace of God, and the call to serve one another. I invite you to join us as we walk together in faith, hope, and love.\"",
+    home_pastor_name: "Pastor N. Dlamini",
+    home_senior_pastor: "Senior Pastor",
+    home_events_title: "Upcoming Events",
+    home_events_subtitle: "Stay connected with what's happening in our parish.",
+    home_view_all_events: "View All Events",
+    home_explore_title: "Explore",
+    home_explore_subtitle: "Find what you need quickly.",
+    home_explore_ministries: "Ministries",
+    home_explore_ministries_desc: "Explore our leagues",
+    home_explore_livestream: "Livestream",
+    home_explore_livestream_desc: "Watch live services",
+    home_explore_appointments: "Appointments",
+    home_explore_appointments_desc: "Book a session",
+    home_explore_events: "Events",
+    home_explore_events_desc: "Upcoming activities",
+    about_title: "About Our Parish",
+    about_subtitle: "Rooted in the Lutheran tradition since 1952, Mzilikazi North Parish has been a beacon of faith, hope, and community.",
+    about_history_title: "Our History",
+    about_history_p1: "Mzilikazi North Parish was founded in 1952 in the heart of Bulawayo, Zimbabwe. What began as a small group of faithful believers gathering under a tree has grown into a vibrant congregation serving hundreds of families across the community.",
+    about_history_p2: "Over the decades, our parish has remained steadfast in its commitment to the Gospel, establishing schools, community outreach programs, and ministries that touch lives across all ages. We continue to be guided by the principles of the Lutheran Reformation — grace, faith, and Scripture.",
+    about_beliefs_title: "Our Beliefs",
+    about_beliefs_subtitle: "The core pillars of our Lutheran faith.",
+    about_grace: "Grace Alone",
+    about_grace_desc: "We believe salvation comes through God's grace, not human effort.",
+    about_scripture: "Scripture Alone",
+    about_scripture_desc: "The Bible is the ultimate authority for faith and life.",
+    about_faith: "Faith Alone",
+    about_faith_desc: "Justification is received through faith in Jesus Christ.",
+    about_community: "Community",
+    about_community_desc: "We are called to serve one another in love and fellowship.",
+    about_leadership_title: "Our Leadership",
+    about_leadership_subtitle: "Meet the faithful servants who guide our congregation.",
+    events_title: "Activities & Events",
+    events_subtitle: "Stay connected with everything happening at Mzilikazi North Parish.",
+    events_all: "All",
+    events_worship: "Worship",
+    events_fellowship: "Fellowship",
+    events_outreach: "Outreach",
+    events_youth: "Youth",
+    ministries_title: "Ministries & Leagues",
+    ministries_subtitle: "Get involved and grow in faith through our vibrant ministries.",
+    ministries_youth: "Youth League",
+    ministries_youth_desc: "Empowering young people (ages 13–30) to grow in faith through fellowship, Bible study, community service, and fun activities.",
+    ministries_men: "Men's League",
+    ministries_men_desc: "A brotherhood committed to spiritual growth, family leadership, and community service. All men are welcome.",
+    ministries_women: "Women's League",
+    ministries_women_desc: "A sisterhood of faith dedicated to prayer, fellowship, and outreach. We support each other and serve the community together.",
+    ministries_sunday_school: "Sunday School",
+    ministries_sunday_school_desc: "Biblical education for children and young people. Our trained teachers nurture faith through engaging lessons and activities.",
+    ministries_upcoming: "Upcoming",
+    ministries_contact: "Contact",
+    gallery_title: "Photo Gallery",
+    gallery_subtitle: "Memories of our journey together in faith and fellowship.",
+    gallery_all: "All",
+    gallery_worship: "Worship Services",
+    gallery_fellowship: "Fellowship",
+    gallery_outreach: "Outreach",
+    gallery_league: "League Activities",
+    livestream_title: "Livestream & Past Services",
+    livestream_subtitle: "Join us live or catch up on services you may have missed.",
+    livestream_watch_live: "Watch Live",
+    livestream_watch_subtitle: "Our services are streamed live on YouTube and Facebook.",
+    livestream_live_stream: "Live Stream",
+    livestream_next_service: "Next live service: Sunday at 9:00 AM",
+    livestream_youtube: "Watch on YouTube",
+    livestream_facebook: "Watch on Facebook",
+    livestream_schedule: "Live Stream Schedule",
+    livestream_schedule_times: "Sundays at 9:00 AM · Wednesdays at 6:00 PM",
+    livestream_past_title: "Past Services",
+    livestream_past_subtitle: "Watch our recent recorded services.",
+    livestream_subscribe: "Subscribe on YouTube",
+    appointments_title: "Appointments & Counselling",
+    appointments_subtitle: "Schedule a meeting with our pastor or request confidential counselling support.",
+    appointments_book_title: "Book an Appointment",
+    appointments_counselling_title: "Counselling Request",
+    appointments_counselling_note: "All counselling submissions are handled with strict confidentiality.",
+    appointments_submitted: "Request Submitted",
+    appointments_submitted_desc: "We will contact you to confirm your appointment.",
+    appointments_book_another: "Book Another",
+    appointments_received: "Request Received",
+    appointments_received_desc: "A counsellor will contact you confidentially.",
+    appointments_submit_another: "Submit Another",
+    appointments_full_name: "Full Name",
+    appointments_email: "Email",
+    appointments_phone: "Phone Number",
+    appointments_with: "Appointment With",
+    appointments_date: "Preferred Date",
+    appointments_reason: "Reason for Appointment",
+    appointments_request: "Request Appointment",
+    appointments_contact_method: "Phone or Email",
+    appointments_type: "Type of Counselling",
+    appointments_preferred_dates: "Preferred Dates",
+    appointments_message: "Message",
+    appointments_submit_request: "Submit Request",
+    appointments_grief: "Grief & Bereavement",
+    appointments_marriage: "Marriage & Family",
+    appointments_spiritual: "Spiritual Guidance",
+    appointments_youth_counselling: "Youth Counselling",
+    appointments_other: "Other",
+    contact_title: "Contact Us",
+    contact_subtitle: "We'd love to hear from you. Reach out anytime.",
+    contact_get_in_touch: "Get in Touch",
+    contact_address: "Address",
+    contact_phone: "Phone",
+    contact_email_label: "Email",
+    contact_send_message: "Send a Message",
+    contact_thank_you: "Thank You!",
+    contact_received: "Your message has been received. We'll respond shortly.",
+    contact_send_another: "Send Another",
+    contact_subject: "Subject",
+    contact_your_message: "Your message...",
+    contact_send: "Send Message",
+    downloads_title: "Downloads",
+    downloads_subtitle: "Download hymn books and Bibles in your preferred language.",
+    downloads_no_resources: "No resources available yet",
+    downloads_no_resources_desc: "Resources will appear here once uploaded by an admin.",
+    downloads_download: "Download",
+    downloads_hymn_book: "Hymn Book",
+    downloads_bible: "Bible",
+    downloads_other: "Other Resources",
+    footer_description: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are and grow with us.",
+    footer_service_times: "Service Times",
+    footer_quick_links: "Quick Links",
+    footer_contact_us: "Contact Us",
+    footer_copyright: "Mzilikazi North Parish Bulawayo. All rights reserved.",
+  },
+
+  sn: {
+    nav_home: "Kumba",
+    nav_about: "Nezvedu",
+    nav_events: "Zviitiko",
+    nav_ministries: "Mabasa",
+    nav_gallery: "Mifananidzo",
+    nav_downloads: "Kudhawunirodha",
+    nav_livestream: "Kuona Pachena",
+    nav_appointments: "Misangano",
+    nav_contact: "Tishanyirei",
+    nav_admin: "Admin",
+    home_hero_title_prefix: "Mauya ku",
+    home_hero_title_suffix: "North Parish Bulawayo",
+    home_hero_subtitle: "Ungano inogamuchira yevanhu vanotenda. Uyai sezvamuiri — kukura nesu munyasha nerudo.",
+    home_learn_more: "Dzidza Zvakawanda",
+    home_watch_live: "Tarisa Pachena",
+    home_worship_title: "Batanai Nesu Kunamata",
+    home_worship_subtitle: "Nzwai kudziya kweungano yedu pamisangano yedu nguva dzose.",
+    home_sunday_worship: "Kunamata kweSvondo",
+    home_sunday_school: "Chikoro cheSvondo",
+    home_midweek_service: "Musangano wePakati peVhiki",
+    home_youth_service: "Musangano weVechidiki",
+    home_pastor_title: "Shoko Kubva KuMufundisi Wedu",
+    home_pastor_quote: "\"Shamwari dzangu, kana muri nhengo yenguva refu kana kushanyira kekutanga, zivai kuti muno gamuchirwa pano. KuMzilikazi North Parish, tinotenda musimba reungano, nyasha dzaMwari, nekudana kwekushandira vamwe. Ndinokukokaii kuti tifambe tese mukutenda, tariro, nerudo.\"",
+    home_pastor_name: "Mufundisi N. Dlamini",
+    home_senior_pastor: "Mufundisi Mukuru",
+    home_events_title: "Zviitiko Zvinouya",
+    home_events_subtitle: "Garai makabatana nezviri kuitika muungano yedu.",
+    home_view_all_events: "Ona Zviitiko Zvese",
+    home_explore_title: "Tsvaka",
+    home_explore_subtitle: "Wana zvaunoda nekukurumidza.",
+    home_explore_ministries: "Mabasa",
+    home_explore_ministries_desc: "Tsvaka makomiti edu",
+    home_explore_livestream: "Kuona Pachena",
+    home_explore_livestream_desc: "Tarisa misa pachena",
+    home_explore_appointments: "Misangano",
+    home_explore_appointments_desc: "Ronga musangano",
+    home_explore_events: "Zviitiko",
+    home_explore_events_desc: "Mabasa anouya",
+    about_title: "Nezveungano Yedu",
+    about_subtitle: "Takadzika midzi mutsika yeLutheran kubva muna 1952, Mzilikazi North Parish yakanga iri chiedza chekutenda, tariro, neungano.",
+    about_history_title: "Nhoroondo Yedu",
+    about_history_p1: "Mzilikazi North Parish yakatangwa muna 1952 mumoyo meBulawayo, Zimbabwe. Zvakatangira seboka diki revanotenda vaiunganira pasi pemuti zvakakura kuva ungano ine simba inoshandira mazana emhuri muungano.",
+    about_history_p2: "Mumakore akawanda, ungano yedu yakamira zvakasimba mukuzvipira kwayo kuEvhangeri, ichitanga zvikoro, mabasa eungano, nemabasa anoshandura upenyu hwevese. Tinoenderera mberi nekutungamirwa nemitemo yeReformation yeLutheran — nyasha, kutenda, neMagwaro.",
+    about_beliefs_title: "Zvatinotenda",
+    about_beliefs_subtitle: "Mbiru dzekutenda kwedu kweLutheran.",
+    about_grace: "Nyasha Chete",
+    about_grace_desc: "Tinotenda kuti ruponeso runouya nenyasha dzaMwari, kwete basa remunhu.",
+    about_scripture: "Magwaro Chete",
+    about_scripture_desc: "Bhaibheri ndiro simba guru rekutenda neupenyu.",
+    about_faith: "Kutenda Chete",
+    about_faith_desc: "Kururamiswa kunogamuchirwa nekutenda muna Jesu Kristu.",
+    about_community: "Ungano",
+    about_community_desc: "Takadanwa kushandira vamwe murudo neushamwari.",
+    about_leadership_title: "Vatungamiriri Vedu",
+    about_leadership_subtitle: "Sanganai nevashumiri vakatendeka vanotungamirira ungano yedu.",
+    events_title: "Mabasa neZviitiko",
+    events_subtitle: "Garai makabatana nezvose zviri kuitika kuMzilikazi North Parish.",
+    events_all: "Zvose",
+    events_worship: "Kunamata",
+    events_fellowship: "Ushamwari",
+    events_outreach: "Kubatsira",
+    events_youth: "Vechidiki",
+    ministries_title: "Mabasa neMakomiti",
+    ministries_subtitle: "Batanai mukutenda nemakomiti edu ane simba.",
+    ministries_youth: "Komiti yeVechidiki",
+    ministries_youth_desc: "Kusimbisa vechidiki (makore 13-30) kukura mukutenda nekushamwaridzana, kudzidza Bhaibheri, kubatsira ungano, nemabasa anofadza.",
+    ministries_men: "Komiti yeVarume",
+    ministries_men_desc: "Hukama hwevarume hwakazvipira kukura kwemweya, kutungamirira mhuri, nekushandira ungano. Varume vose vanogamuchirwa.",
+    ministries_women: "Komiti yeVakadzi",
+    ministries_women_desc: "Hukama hwevakadzi hwakazvipira kumunamato, ushamwari, nekubatsira. Tinotsigirana uye tinoshandira ungano pamwe chete.",
+    ministries_sunday_school: "Chikoro cheSvondo",
+    ministries_sunday_school_desc: "Kudzidzisa Bhaibheri kuvana nevechidiki. Vadzidzisi vedu vakadzidza vanorera kutenda nemazvidzidzo anofadza.",
+    ministries_upcoming: "Zvinouya",
+    ministries_contact: "Bata",
+    gallery_title: "Mifananidzo",
+    gallery_subtitle: "Zvandangariro zverugendo rwedu pamwe chete mukutenda neushamwari.",
+    gallery_all: "Zvese",
+    gallery_worship: "Kunamata",
+    gallery_fellowship: "Ushamwari",
+    gallery_outreach: "Kubatsira",
+    gallery_league: "Mabasa eKomiti",
+    livestream_title: "Kuona Pachena neMisa Yakapfuura",
+    livestream_subtitle: "Batanai nesu pachena kana kutarisa misa yamunenge matadza.",
+    livestream_watch_live: "Tarisa Pachena",
+    livestream_watch_subtitle: "Misa yedu inotepfenyurwa pachena paYouTube neFacebook.",
+    livestream_live_stream: "Kutepfenyurwa Pachena",
+    livestream_next_service: "Musangano unotevera pachena: Svondo na 9:00 AM",
+    livestream_youtube: "Tarisa paYouTube",
+    livestream_facebook: "Tarisa paFacebook",
+    livestream_schedule: "Chinangwa cheKutepfenyurwa",
+    livestream_schedule_times: "Svondo na 9:00 AM · Chitatu na 6:00 PM",
+    livestream_past_title: "Misa Yakapfuura",
+    livestream_past_subtitle: "Tarisa misa yedu yakarekodwa.",
+    livestream_subscribe: "Nyoresa paYouTube",
+    appointments_title: "Misangano neCounselling",
+    appointments_subtitle: "Ronga musangano nemufundisi wedu kana kukumbira rubatsiro rweCounselling.",
+    appointments_book_title: "Ronga Musangano",
+    appointments_counselling_title: "Kukumbira Counselling",
+    appointments_counselling_note: "Zvese zvecounselling zvinobatwa nezvakavanzika zvikuru.",
+    appointments_submitted: "Chikumbiro Chatumirwa",
+    appointments_submitted_desc: "Tichakubatai kuti tisimbise musangano wenyu.",
+    appointments_book_another: "Ronga Mumwe",
+    appointments_received: "Chikumbiro Chagamuchirwa",
+    appointments_received_desc: "Mucounselor achakubatai nezvakavanzika.",
+    appointments_submit_another: "Tumira Chimwe",
+    appointments_full_name: "Zita Rizere",
+    appointments_email: "Email",
+    appointments_phone: "Nhamba yeRunhare",
+    appointments_with: "Musangano Na",
+    appointments_date: "Zuva Ramunofarira",
+    appointments_reason: "Chikonzero cheMusangano",
+    appointments_request: "Kumbira Musangano",
+    appointments_contact_method: "Runhare kana Email",
+    appointments_type: "Rudzi rweCounselling",
+    appointments_preferred_dates: "Mazuva Amunofarira",
+    appointments_message: "Shoko",
+    appointments_submit_request: "Tumira Chikumbiro",
+    appointments_grief: "Kuchemera Vakafa",
+    appointments_marriage: "Muchato neMhuri",
+    appointments_spiritual: "Kutungamirira kweMweya",
+    appointments_youth_counselling: "Counselling yeVechidiki",
+    appointments_other: "Zvimwe",
+    contact_title: "Tishanyirei",
+    contact_subtitle: "Tinoda kunzwa kubva kwamuri. Tibatei chero nguva.",
+    contact_get_in_touch: "Tibatei",
+    contact_address: "Kero",
+    contact_phone: "Runhare",
+    contact_email_label: "Email",
+    contact_send_message: "Tumira Shoko",
+    contact_thank_you: "Mazvita!",
+    contact_received: "Shoko renyu ragamuchirwa. Tichapindura nekukurumidza.",
+    contact_send_another: "Tumira Rimwe",
+    contact_subject: "Musoro",
+    contact_your_message: "Shoko renyu...",
+    contact_send: "Tumira Shoko",
+    downloads_title: "Kudhawunirodha",
+    downloads_subtitle: "Dhawunirodha mabhuku enziyo neBhaibheri mumutauro waunoda.",
+    downloads_no_resources: "Hapana zviripo",
+    downloads_no_resources_desc: "Zvikaiswa nemunhu anobata, zvichazoonekwa pano.",
+    downloads_download: "Dhawunirodha",
+    downloads_hymn_book: "Bhuku reNziyo",
+    downloads_bible: "Bhaibheri",
+    downloads_other: "Zvimwe Zviripo",
+    footer_description: "Ungano inogamuchira yevanhu vanotenda. Uyai sezvamuiri mukure nesu.",
+    footer_service_times: "Nguva dzeMisa",
+    footer_quick_links: "Chishanyira Chekukurumidza",
+    footer_contact_us: "Tishanyirei",
+    footer_copyright: "Mzilikazi North Parish Bulawayo. Kodzero dzese dzakachengetwa.",
+  },
+
+  nd: {
+    nav_home: "Ekhaya",
+    nav_about: "Ngathi",
+    nav_events: "Imicimbi",
+    nav_ministries: "Imisebenzi",
+    nav_gallery: "Imifanekiso",
+    nav_downloads: "Ukukhuphela",
+    nav_livestream: "Bukela Buphila",
+    nav_appointments: "Imihlangano",
+    nav_contact: "Xhumana Lathi",
+    nav_admin: "Admin",
+    home_hero_title_prefix: "Siyalemukela e",
+    home_hero_title_suffix: "North Parish Bulawayo",
+    home_hero_subtitle: "Ibandla elilemukela abantu bonke elilokholo. Woza unjengoba unjalo — sikhule ndawonye emuseni lothandweni.",
+    home_learn_more: "Funda Okwengeziwayo",
+    home_watch_live: "Bukela Buphila",
+    home_worship_title: "Hlanganyela Lathi Ekukhonzeni",
+    home_worship_subtitle: "Zwa ubufudumele bebandla lethu emihlanganweni yethu yesikhathi sonke.",
+    home_sunday_worship: "Ukukhonza kweSonto",
+    home_sunday_school: "ISonto School",
+    home_midweek_service: "Umhlangano wePhakathi kweViki",
+    home_youth_service: "Umhlangano weNtsha",
+    home_pastor_title: "Ilizwi Elivela kuMfundisi Wethu",
+    home_pastor_quote: "\"Bangane bami, loba lingumlunga okade loba livakatshelwe okokuqala, yazini ukuthi lisamukelwa lapha. EMzilikazi North Parish, sikholwa emandleni ebandla, emuseni kaNkulunkulu, lekubizweni kwethu ukusebenzela abanye. Ngiyalimema ukuthi sihambe ndawonye ekukholweni, ethembeni, lasothandweni.\"",
+    home_pastor_name: "Umfundisi N. Dlamini",
+    home_senior_pastor: "Umfundisi Omkhulu",
+    home_events_title: "Imicimbi Ezayo",
+    home_events_subtitle: "Hlala uhlanganisiwe lokuqhubeka ebandleni lethu.",
+    home_view_all_events: "Bona Yonke Imicimbi",
+    home_explore_title: "Hlola",
+    home_explore_subtitle: "Thola okudingayo ngokuphangisa.",
+    home_explore_ministries: "Imisebenzi",
+    home_explore_ministries_desc: "Hlola amaqembu ethu",
+    home_explore_livestream: "Bukela Buphila",
+    home_explore_livestream_desc: "Bukela inkonzo buphila",
+    home_explore_appointments: "Imihlangano",
+    home_explore_appointments_desc: "Hlela umhlangano",
+    home_explore_events: "Imicimbi",
+    home_explore_events_desc: "Imisebenzi ezayo",
+    about_title: "Ngebandla Lethu",
+    about_subtitle: "Simi emasikweni eLutheran kusukela ngo-1952, iMzilikazi North Parish ibilikukhanya lokholo, ithemba, lebandla.",
+    about_history_title: "Imbali Yethu",
+    about_history_p1: "IMzilikazi North Parish yasungulwa ngo-1952 enhliziyweni yeBulawayo, eZimbabwe. Okwaqala njengeqembu elincane labakholwayo ababehlangana ngaphansi kwesihlahla sakhula saba libandla elilamandla elisebenzela amakhulu emindeni ebandleni.",
+    about_history_p2: "Eminyakeni eminengi, ibandla lethu lime laqina ekuzinikeni kwalo eVangelini, lisungula izikolo, imisebenzi yebandla, lemisebenzi ethinta impilo zabantu yonke iminyaka. Siqhubeka siqondiswa yimigomo yeReformation yeLutheran — umusa, ukukholwa, leMibhalo.",
+    about_beliefs_title: "Esikukholwayo",
+    about_beliefs_subtitle: "Insika zokukholwa kwethu kweLutheran.",
+    about_grace: "Umusa Kuphela",
+    about_grace_desc: "Sikholwa ukuthi insindiso iza ngomusa kaNkulunkulu, hatshi ngomzamo womuntu.",
+    about_scripture: "IMibhalo Kuphela",
+    about_scripture_desc: "IBhayibhili yigunya eliphezulu lokukholwa lempilo.",
+    about_faith: "Ukukholwa Kuphela",
+    about_faith_desc: "Ukulungisiswa kwemukela ngokukholwa kuJesu Kristu.",
+    about_community: "Ibandla",
+    about_community_desc: "Sibizelwe ukusebenzela abanye ngothando lobungane.",
+    about_leadership_title: "Abakhokheli Bethu",
+    about_leadership_subtitle: "Hlangana lezinceku ezithembekileyo eziqondisa ibandla lethu.",
+    events_title: "Imisebenzi leImicimbi",
+    events_subtitle: "Hlala uhlanganisiwe lakho konke okwenzakalayo eMzilikazi North Parish.",
+    events_all: "Konke",
+    events_worship: "Ukukhonza",
+    events_fellowship: "Ubungane",
+    events_outreach: "Ukunceda",
+    events_youth: "Intsha",
+    ministries_title: "Imisebenzi laMaqembu",
+    ministries_subtitle: "Hlanganyela ukhule ekukholweni ngemisebenzi yethu elamandla.",
+    ministries_youth: "Iqembu leNtsha",
+    ministries_youth_desc: "Ukuqinisa intsha (iminyaka 13-30) ukukhula ekukholweni ngobungane, ukufunda iBhayibhili, ukusebenzela ibandla, lemisebenzi ejabulisayo.",
+    ministries_men: "Iqembu lamaDouza",
+    ministries_men_desc: "Ubuzalwane obuzinikele ekukhuleni komoya, ukukhokhelwa kwemindeni, lekusebenzeni kwebandla. Amadoda wonke ayemukelwa.",
+    ministries_women: "Iqembu labeSimame",
+    ministries_women_desc: "Udadewethu bokukholwa obazinikele emkhulekweni, ebunganini, lekuncedeni. Siyasekana njalo sisebenzele ibandla ndawonye.",
+    ministries_sunday_school: "ISonto School",
+    ministries_sunday_school_desc: "Ukufundiswa kweBhayibhili kubantwana labatsha. Abafdundisi bethu abaqeqetshiweyo bakhulisa ukukholwa ngezifundo ezijabulisayo.",
+    ministries_upcoming: "Okuzayo",
+    ministries_contact: "Xhumana",
+    gallery_title: "Imifanekiso",
+    gallery_subtitle: "Izinkumbulo zohambo lwethu ndawonye ekukholweni lebunganini.",
+    gallery_all: "Konke",
+    gallery_worship: "Ukukhonza",
+    gallery_fellowship: "Ubungane",
+    gallery_outreach: "Ukunceda",
+    gallery_league: "Imisebenzi yamaqembu",
+    livestream_title: "Bukela Buphila leNkonzo Ezedlulayo",
+    livestream_subtitle: "Hlanganyela lathi buphila kumbe ubukele inkonzo owaziphuthelayo.",
+    livestream_watch_live: "Bukela Buphila",
+    livestream_watch_subtitle: "Inkonzo zethu zitshengiswa buphila kuYouTube leFacebook.",
+    livestream_live_stream: "Ukutshengisa Buphila",
+    livestream_next_service: "Inkonzo elandelayo buphila: ISonto ngo 9:00 AM",
+    livestream_youtube: "Bukela kuYouTube",
+    livestream_facebook: "Bukela kuFacebook",
+    livestream_schedule: "Isheduli Yokutshengisa",
+    livestream_schedule_times: "AmaSonto ngo 9:00 AM · OLwesithathu ngo 6:00 PM",
+    livestream_past_title: "Inkonzo Ezedlulayo",
+    livestream_past_subtitle: "Bukela inkonzo zethu eziqoqiweyo.",
+    livestream_subscribe: "Bhalisa kuYouTube",
+    appointments_title: "Imihlangano leCounselling",
+    appointments_subtitle: "Hlela umhlangano lomfundisi wethu kumbe ucele usizo lwecounselling.",
+    appointments_book_title: "Hlela Umhlangano",
+    appointments_counselling_title: "Isicelo seCounselling",
+    appointments_counselling_note: "Konke okwecounselling kuphathwa ngokugcina imfihlo.",
+    appointments_submitted: "Isicelo Sithunyelwe",
+    appointments_submitted_desc: "Sizaxhumana lawe ukuqinisekisa umhlangano wakho.",
+    appointments_book_another: "Hlela Omunye",
+    appointments_received: "Isicelo Semukelwe",
+    appointments_received_desc: "Umcounselor uzaxhumana lawe ngokugcina imfihlo.",
+    appointments_submit_another: "Thumela Esinye",
+    appointments_full_name: "Ibizo Eligcweleyo",
+    appointments_email: "I-Email",
+    appointments_phone: "Inombolo yeRunhare",
+    appointments_with: "Umhlangano Lo",
+    appointments_date: "Usuku Olufunayo",
+    appointments_reason: "Isizatho soMhlangano",
+    appointments_request: "Cela Umhlangano",
+    appointments_contact_method: "Ucingo kumbe I-Email",
+    appointments_type: "Uhlobo lweCounselling",
+    appointments_preferred_dates: "Izinsuku Ozithandayo",
+    appointments_message: "Umlayezo",
+    appointments_submit_request: "Thumela Isicelo",
+    appointments_grief: "Ukudabuka Lokufelwa",
+    appointments_marriage: "Umtshado Lemuli",
+    appointments_spiritual: "Ukuqondiswa Komoya",
+    appointments_youth_counselling: "Counselling yeNtsha",
+    appointments_other: "Okunye",
+    contact_title: "Xhumana Lathi",
+    contact_subtitle: "Singathanda ukuzwa kuwe. Xhumana lathi nganoma yisiphi isikhathi.",
+    contact_get_in_touch: "Xhumana Lathi",
+    contact_address: "Ikheli",
+    contact_phone: "Ucingo",
+    contact_email_label: "I-Email",
+    contact_send_message: "Thumela Umlayezo",
+    contact_thank_you: "Siyabonga!",
+    contact_received: "Umlayezo wakho wemukelwe. Sizaphendula masinyane.",
+    contact_send_another: "Thumela Omunye",
+    contact_subject: "Isihloko",
+    contact_your_message: "Umlayezo wakho...",
+    contact_send: "Thumela Umlayezo",
+    downloads_title: "Ukukhuphela",
+    downloads_subtitle: "Khuphela amabhuku enziyo leBhayibhili ngolimi lwakho.",
+    downloads_no_resources: "Akukho okutholakalayo okwamanje",
+    downloads_no_resources_desc: "Okufakiweyo kuzabonakala lapha nxa sekufakwe ngu-admin.",
+    downloads_download: "Khuphela",
+    downloads_hymn_book: "Ibhuku leNziyo",
+    downloads_bible: "IBhayibhili",
+    downloads_other: "Okunye Okutholakalayo",
+    footer_description: "Ibandla elilemukela abantu bonke elilokholo. Woza unjengoba unjalo sikhule ndawonye.",
+    footer_service_times: "Izikhathi zeNkonzo",
+    footer_quick_links: "Izixhumanisi Eziphangisayo",
+    footer_contact_us: "Xhumana Lathi",
+    footer_copyright: "Mzilikazi North Parish Bulawayo. Wonke amalungelo agcinwe.",
+  },
+
+  st: {
+    nav_home: "Lapeng",
+    nav_about: "Ka Rona",
+    nav_events: "Diketsahalo",
+    nav_ministries: "Ditshebeletso",
+    nav_gallery: "Dinepe",
+    nav_downloads: "Ho Khoasolla",
+    nav_livestream: "Sheba ka Nako",
+    nav_appointments: "Dikopano",
+    nav_contact: "Ikopanye le Rona",
+    nav_admin: "Admin",
+    home_hero_title_prefix: "Re a o amohela ho",
+    home_hero_title_suffix: "North Parish Bulawayo",
+    home_hero_subtitle: "Seboka se amohelang sa batho ba tumelo. Tla joalo ka ha o le teng — hola le rona mohauong le leratong.",
+    home_learn_more: "Ithute Ho Feta",
+    home_watch_live: "Sheba ka Nako",
+    home_worship_title: "Kopana le Rona ho Rapela",
+    home_worship_subtitle: "Utlwa mofuthu wa seboka sa rona ditshebeletsoong tsa rona tsa kamehla.",
+    home_sunday_worship: "Ho Rapela ha Sontaha",
+    home_sunday_school: "Sekolo sa Sontaha",
+    home_midweek_service: "Tshebeletso ya Hara Beke",
+    home_youth_service: "Tshebeletso ya Batjha",
+    home_pastor_title: "Lentswe ho Tswa ho Moruti wa Rona",
+    home_pastor_quote: "\"Metswalle ya ka, le ka ba le setho sa nako e telele kapa le etela lekgetlo la pele, tsebang hore le amohelehile mona. Ho Mzilikazi North Parish, re dumela matleng a seboka, mohauong wa Modimo, le pitsoang ya ho sebeletsa ba bang. Ke le mema hore re tsamaye mmoho tumelong, tshepolong, le leratong.\"",
+    home_pastor_name: "Moruti N. Dlamini",
+    home_senior_pastor: "Moruti e Moholo",
+    home_events_title: "Diketsahalo Tse Tlang",
+    home_events_subtitle: "Dula o hokahane le se etsahalang sebokeng sa rona.",
+    home_view_all_events: "Bona Diketsahalo Tsohle",
+    home_explore_title: "Hlahloba",
+    home_explore_subtitle: "Fumana seo o se hlokang kapele.",
+    home_explore_ministries: "Ditshebeletso",
+    home_explore_ministries_desc: "Hlahloba dihlopha tsa rona",
+    home_explore_livestream: "Sheba ka Nako",
+    home_explore_livestream_desc: "Sheba ditshebeletso ka nako",
+    home_explore_appointments: "Dikopano",
+    home_explore_appointments_desc: "Hlela kopano",
+    home_explore_events: "Diketsahalo",
+    home_explore_events_desc: "Mesebetsi e tlang",
+    about_title: "Ka Seboka sa Rona",
+    about_subtitle: "Re tsitsitse meetlong ya Lutheran ho tloha ka 1952, Mzilikazi North Parish e bile lebone la tumelo, tshepo, le seboka.",
+    about_history_title: "Histori ya Rona",
+    about_history_p1: "Mzilikazi North Parish e thehilwe ka 1952 pelong ya Bulawayo, Zimbabwe. Se qadileng e le sehlopha se senyenyane sa badumedi ba kopanang tlasa sefate se hodile ho ba seboka se matla se sebeletsang makgolo a malapa sebokeng.",
+    about_history_p2: "Dilemong tse ngata, seboka sa rona se ile sa ema se le tiileng boineelong ba sona ho Evangeli, se theha dikolo, mananeo a tshebeletso ya setjhaba, le ditshebeletso tse amang maphelo. Re tswela pele ho laolwa ke melao ya Reformation ya Lutheran — mohau, tumelo, le Mangolo.",
+    about_beliefs_title: "Seo Re Se Dumelang",
+    about_beliefs_subtitle: "Dipilara tsa tumelo ya rona ya Lutheran.",
+    about_grace: "Mohau Feela",
+    about_grace_desc: "Re dumela hore poloko e tla ka mohau wa Modimo, e seng ka boiteko ba motho.",
+    about_scripture: "Mangolo Feela",
+    about_scripture_desc: "Bibele ke matla a phahameng a tumelo le bophelo.",
+    about_faith: "Tumelo Feela",
+    about_faith_desc: "Ho lokafatswa ho amohelwa ka tumelo ho Jesu Kreste.",
+    about_community: "Seboka",
+    about_community_desc: "Re bitsetswa ho sebeletsa ba bang ka lerato le bongata.",
+    about_leadership_title: "Baetapele ba Rona",
+    about_leadership_subtitle: "Kopana le basebeletsi ba tshepehileng ba laolang seboka sa rona.",
+    events_title: "Mesebetsi le Diketsahalo",
+    events_subtitle: "Dula o hokahane le tsohle tse etsahalang ho Mzilikazi North Parish.",
+    events_all: "Tsohle",
+    events_worship: "Ho Rapela",
+    events_fellowship: "Bongata",
+    events_outreach: "Ho Thusa",
+    events_youth: "Batjha",
+    ministries_title: "Ditshebeletso le Dihlopha",
+    ministries_subtitle: "Kena o hole tumelong ka ditshebeletso tsa rona tse matla.",
+    ministries_youth: "Sehlopha sa Batjha",
+    ministries_youth_desc: "Ho matlafatsa batjha (dilemo 13-30) ho hola tumelong ka bongata, ho bala Bibele, ho sebeletsa setjhaba, le mesebetsi e monate.",
+    ministries_men: "Sehlopha sa Banna",
+    ministries_men_desc: "Boena ba banna bo ineetseng ho hola ha moya, ho etella pele malapa, le ho sebeletsa setjhaba. Banna bohle ba amohelehile.",
+    ministries_women: "Sehlopha sa Basadi",
+    ministries_women_desc: "Boena ba basadi ba tumelo ba ineetseng thapelong, bongateng, le ho thuseng. Re tshehetsa e mong le e mong mme re sebeletsa setjhaba mmoho.",
+    ministries_sunday_school: "Sekolo sa Sontaha",
+    ministries_sunday_school_desc: "Thuto ya Bibele bakeng sa bana le batjha. Matichere a rona a koetlisitsweng a hodisa tumelo ka dithuto tse kgahlisang.",
+    ministries_upcoming: "Tse Tlang",
+    ministries_contact: "Ikopanye",
+    gallery_title: "Dinepe",
+    gallery_subtitle: "Dikgopotso tsa leeto la rona mmoho tumelong le bongateng.",
+    gallery_all: "Tsohle",
+    gallery_worship: "Ho Rapela",
+    gallery_fellowship: "Bongata",
+    gallery_outreach: "Ho Thusa",
+    gallery_league: "Mesebetsi ya Dihlopha",
+    livestream_title: "Sheba ka Nako le Ditshebeletso Tse Fetileng",
+    livestream_subtitle: "Kopana le rona ka nako kapa o shebe ditshebeletso tseo o di siyileng.",
+    livestream_watch_live: "Sheba ka Nako",
+    livestream_watch_subtitle: "Ditshebeletso tsa rona di tshengiswa ka nako ho YouTube le Facebook.",
+    livestream_live_stream: "Ho Tshengisa ka Nako",
+    livestream_next_service: "Tshebeletso e latelang ka nako: Sontaha ka 9:00 AM",
+    livestream_youtube: "Sheba ho YouTube",
+    livestream_facebook: "Sheba ho Facebook",
+    livestream_schedule: "Lenaneo la Ho Tshengisa",
+    livestream_schedule_times: "Disontaha ka 9:00 AM · Laboraro ka 6:00 PM",
+    livestream_past_title: "Ditshebeletso Tse Fetileng",
+    livestream_past_subtitle: "Sheba ditshebeletso tsa rona tse rekotilweng.",
+    livestream_subscribe: "Ingolisa ho YouTube",
+    appointments_title: "Dikopano le Counselling",
+    appointments_subtitle: "Hlela kopano le moruti wa rona kapa o kope thuso ya counselling.",
+    appointments_book_title: "Hlela Kopano",
+    appointments_counselling_title: "Kopo ya Counselling",
+    appointments_counselling_note: "Tsohle tsa counselling di tshwarwa ka lekunutu le tiileng.",
+    appointments_submitted: "Kopo E Rometsweng",
+    appointments_submitted_desc: "Re tla ikopanya le wena ho netefatsa kopano ya hao.",
+    appointments_book_another: "Hlela E Nngwe",
+    appointments_received: "Kopo E Amohetsweng",
+    appointments_received_desc: "Mocounselor o tla ikopanya le wena ka lekunutu.",
+    appointments_submit_another: "Romela E Nngwe",
+    appointments_full_name: "Lebitso le Feletseng",
+    appointments_email: "Imeile",
+    appointments_phone: "Nomoro ya Fono",
+    appointments_with: "Kopano Le",
+    appointments_date: "Letsatsi leo o Le Ratang",
+    appointments_reason: "Lebaka la Kopano",
+    appointments_request: "Kopa Kopano",
+    appointments_contact_method: "Fono kapa Imeile",
+    appointments_type: "Mofuta wa Counselling",
+    appointments_preferred_dates: "Matsatsi a o a Ratang",
+    appointments_message: "Molaetsa",
+    appointments_submit_request: "Romela Kopo",
+    appointments_grief: "Maswabi le Lefu",
+    appointments_marriage: "Lenyalo le Lelapa",
+    appointments_spiritual: "Tataiso ya Moya",
+    appointments_youth_counselling: "Counselling ya Batjha",
+    appointments_other: "Tse Ding",
+    contact_title: "Ikopanye le Rona",
+    contact_subtitle: "Re tla thabela ho utlwa ho wena. Ikopanye le rona neng kapa neng.",
+    contact_get_in_touch: "Ikopanye le Rona",
+    contact_address: "Aterese",
+    contact_phone: "Fono",
+    contact_email_label: "Imeile",
+    contact_send_message: "Romela Molaetsa",
+    contact_thank_you: "Re a Leboha!",
+    contact_received: "Molaetsa wa hao o amohetsweng. Re tla araba kapele.",
+    contact_send_another: "Romela O Mong",
+    contact_subject: "Sehlooho",
+    contact_your_message: "Molaetsa wa hao...",
+    contact_send: "Romela Molaetsa",
+    downloads_title: "Ho Khoasolla",
+    downloads_subtitle: "Khoasolla dibuka tsa difela le Bibele ka puo ya hao.",
+    downloads_no_resources: "Ha ho letho ha jwale",
+    downloads_no_resources_desc: "Dintho tse kenngweng ke admin di tla hlaha mona.",
+    downloads_download: "Khoasolla",
+    downloads_hymn_book: "Buka ya Difela",
+    downloads_bible: "Bibele",
+    downloads_other: "Tse Ding Tse Fumanehang",
+    footer_description: "Seboka se amohelang sa batho ba tumelo. Tla joalo ka ha o le teng o hole le rona.",
+    footer_service_times: "Dinako tsa Ditshebeletso",
+    footer_quick_links: "Dihokelo tse Potlakileng",
+    footer_contact_us: "Ikopanye le Rona",
+    footer_copyright: "Mzilikazi North Parish Bulawayo. Ditokelo tsohle di bolokehile.",
+  },
+
+  ve: {
+    nav_home: "Hayani",
+    nav_about: "Nga Ha Riṋe",
+    nav_events: "Nyimele",
+    nav_ministries: "Mishumo",
+    nav_gallery: "Zwifanyiso",
+    nav_downloads: "U Downlouda",
+    nav_livestream: "Vhona Nga Nako",
+    nav_appointments: "Milangano",
+    nav_contact: "Ḓi Kwameni",
+    nav_admin: "Admin",
+    home_hero_title_prefix: "Ri a ni ṱanganedza kha",
+    home_hero_title_suffix: "North Parish Bulawayo",
+    home_hero_subtitle: "Tshivhidzo tshi ṱanganedzaho tsha vhathu vha lutendo. Ḓani sa zwe na vha — aluwe roṱhe nga tshilidzi na lufuno.",
+    home_learn_more: "Gudani Zwinzhi",
+    home_watch_live: "Vhonani Nga Nako",
+    home_worship_title: "Ṱanganelani Na Riṋe U Rabela",
+    home_worship_subtitle: "Pfanani u fhisa ha tshivhidzo tshashu kha mishumo yashu ya tshifhinga tshoṱhe.",
+    home_sunday_worship: "U Rabela ha Swondaha",
+    home_sunday_school: "Tshikolo tsha Swondaha",
+    home_midweek_service: "Mushumo wa Vhukati ha Vhege",
+    home_youth_service: "Mushumo wa Vhaswa",
+    home_pastor_title: "Ipfi Li Bvaho kha Mufunzi Washu",
+    home_pastor_quote: "\"Khonani dzanga, arali ni muraḓo wa tshifhinga tshilapfu kana ni tshi dalela lwa u thoma, ḓivhani uri ni a ṱanganedzwa fhano. Kha Mzilikazi North Parish, ri a tenda kha maanda a tshivhidzo, tshilidzi tsha Mudzimu, na u vhidziwa u shumela vhaṅwe. Ndi a ni ramba uri ri tshimbile roṱhe kha lutendo, fulufhelo, na lufuno.\"",
+    home_pastor_name: "Mufunzi N. Dlamini",
+    home_senior_pastor: "Mufunzi Muhulwane",
+    home_events_title: "Nyimele Dzi Ḓaho",
+    home_events_subtitle: "Dzulani no ṱanganiswa na zwo itaho tshivhidzoni tshashu.",
+    home_view_all_events: "Vhonani Nyimele Dzoṱhe",
+    home_explore_title: "Ṱoḓani",
+    home_explore_subtitle: "Wanani zwine na zwi ṱoḓa nga u ṱavhanya.",
+    home_explore_ministries: "Mishumo",
+    home_explore_ministries_desc: "Ṱoḓani zwigwada zwashu",
+    home_explore_livestream: "Vhona Nga Nako",
+    home_explore_livestream_desc: "Vhonani mishumo buphila",
+    home_explore_appointments: "Milangano",
+    home_explore_appointments_desc: "Langani mulangano",
+    home_explore_events: "Nyimele",
+    home_explore_events_desc: "Mishumo i ḓaho",
+    about_title: "Nga Ha Tshivhidzo Tshashu",
+    about_subtitle: "Ro dzika midzi kha maitele a Lutheran u bva nga 1952, Mzilikazi North Parish yo vha tshiedza tsha lutendo, fulufhelo, na tshivhidzo.",
+    about_history_title: "Histori Yashu",
+    about_history_p1: "Mzilikazi North Parish yo thomiwa nga 1952 mbiluni ya Bulawayo, Zimbabwe. Zwo thomaho e tshigwada tshiṱuku tsha vhatendi vho vha vha tshi kuvhangana fhasi ha muri zwo aluwa zwa vha tshivhidzo tshi re na maanda tshi shumelaho maḓana a miṱa tshivhidzoni.",
+    about_history_p2: "Kha miṅwaha minzhi, tshivhidzo tshashu tsho ima tsho khwaṱha kha u ḓiṋekedzela hatsho kha Evangeli, tshi tshi thoma zwikolo, mbekanyamushumo dza u shumela tshitshavha, na mishumo i kwamaho vhutshilo. Ri bvela phanḓa ri tshi endedzwa nga milayo ya Reformation ya Lutheran — tshilidzi, lutendo, na Maṅwalo.",
+    about_beliefs_title: "Zwe Ra Tenda",
+    about_beliefs_subtitle: "Phuphu dza lutendo lwashu lwa Lutheran.",
+    about_grace: "Tshilidzi Fhedzi",
+    about_grace_desc: "Ri a tenda uri u tshidzwa zwi ḓa nga tshilidzi tsha Mudzimu, a si nga nungo dza muthu.",
+    about_scripture: "Maṅwalo Fhedzi",
+    about_scripture_desc: "Bivhili ndi maanda a nṱha a lutendo na vhutshilo.",
+    about_faith: "Lutendo Fhedzi",
+    about_faith_desc: "U lugiswa zwi ṱanganedzwa nga lutendo kha Yesu Kristo.",
+    about_community: "Tshivhidzo",
+    about_community_desc: "Ro vhidziwa u shumela vhaṅwe nga lufuno na vhushaka.",
+    about_leadership_title: "Vharangaphanḓa Vashu",
+    about_leadership_subtitle: "Ṱanganani na vhashumeli vha fulufhedzeaho vha langaho tshivhidzo tshashu.",
+    events_title: "Mishumo na Nyimele",
+    events_subtitle: "Dzulani no ṱanganiswa na zwoṱhe zwi itaho kha Mzilikazi North Parish.",
+    events_all: "Zwoṱhe",
+    events_worship: "U Rabela",
+    events_fellowship: "Vhushaka",
+    events_outreach: "U Thusa",
+    events_youth: "Vhaswa",
+    ministries_title: "Mishumo na Zwigwada",
+    ministries_subtitle: "Ṱanganelani ni aluwe kha lutendo nga mishumo yashu i re na maanda.",
+    ministries_youth: "Tshigwada tsha Vhaswa",
+    ministries_youth_desc: "U khwaṱhisa vhaswa (miṅwaha 13-30) u aluwa kha lutendo nga vhushaka, u vhala Bivhili, u shumela tshitshavha, na mishumo i takadzaho.",
+    ministries_men: "Tshigwada tsha Vhanna",
+    ministries_men_desc: "Vhushaka ha vhanna ho ḓiṋekedzaho kha u aluwa ha muya, u ranga phanḓa miṱa, na u shumela tshitshavha. Vhanna vhoṱhe vha a ṱanganedzwa.",
+    ministries_women: "Tshigwada tsha Vhafumakadzi",
+    ministries_women_desc: "Vhushaka ha vhafumakadzi vha lutendo vho ḓiṋekedzaho kha thabelo, vhushaka, na u thusa. Ri a ṱuṱuwedzana nahone ri shumela tshivhidzo roṱhe.",
+    ministries_sunday_school: "Tshikolo tsha Swondaha",
+    ministries_sunday_school_desc: "U funza Bivhili kha vhana na vhaswa. Vhadededzi vashu vho gudisiwaho vha alusa lutendo nga pfunzo dzi takadzaho.",
+    ministries_upcoming: "Zwi Ḓaho",
+    ministries_contact: "Ḓi Kwame",
+    gallery_title: "Zwifanyiso",
+    gallery_subtitle: "Zwihumbuleli zwa lwendo lwashu roṱhe kha lutendo na vhushaka.",
+    gallery_all: "Zwoṱhe",
+    gallery_worship: "U Rabela",
+    gallery_fellowship: "Vhushaka",
+    gallery_outreach: "U Thusa",
+    gallery_league: "Mishumo ya Zwigwada",
+    livestream_title: "Vhona Nga Nako na Mishumo yo Fhiraho",
+    livestream_subtitle: "Ṱanganelani na riṋe nga nako kana ni vhone mishumo ye na i xedza.",
+    livestream_watch_live: "Vhonani Nga Nako",
+    livestream_watch_subtitle: "Mishumo yashu i sumbedzwa nga nako kha YouTube na Facebook.",
+    livestream_live_stream: "U Sumbedza Nga Nako",
+    livestream_next_service: "Mushumo u tevhelaho nga nako: Swondaha nga 9:00 AM",
+    livestream_youtube: "Vhonani kha YouTube",
+    livestream_facebook: "Vhonani kha Facebook",
+    livestream_schedule: "Mbekanyamushumo ya U Sumbedza",
+    livestream_schedule_times: "Dza Swondaha nga 9:00 AM · Ḽavhuraru nga 6:00 PM",
+    livestream_past_title: "Mishumo yo Fhiraho",
+    livestream_past_subtitle: "Vhonani mishumo yashu yo rekhodiwaho.",
+    livestream_subscribe: "Ṅwalisani kha YouTube",
+    appointments_title: "Milangano na Counselling",
+    appointments_subtitle: "Langani mulangano na mufunzi washu kana ni humbele thuso ya counselling.",
+    appointments_book_title: "Langani Mulangano",
+    appointments_counselling_title: "Khumbelo ya Counselling",
+    appointments_counselling_note: "Zwoṱhe zwa counselling zwi farwa nga tshiphiri tshihulwane.",
+    appointments_submitted: "Khumbelo Yo Rumelwa",
+    appointments_submitted_desc: "Ri ḓo ḓi kwama na inwi u khwaṱhisedza mulangano waṋu.",
+    appointments_book_another: "Langani Muṅwe",
+    appointments_received: "Khumbelo Yo Ṱanganedzwa",
+    appointments_received_desc: "Mucounselor u ḓo ḓi kwama na inwi nga tshiphiri.",
+    appointments_submit_another: "Rumelani Iṅwe",
+    appointments_full_name: "Dzina Ḽo Ḓalaho",
+    appointments_email: "Imeili",
+    appointments_phone: "Nomboro ya Luṱingo",
+    appointments_with: "Mulangano Na",
+    appointments_date: "Ḓuvha Ḽine Na Ḽi Ṱoḓa",
+    appointments_reason: "Tshiitisi tsha Mulangano",
+    appointments_request: "Humbelani Mulangano",
+    appointments_contact_method: "Luṱingo kana Imeili",
+    appointments_type: "Lushaka lwa Counselling",
+    appointments_preferred_dates: "Maḓuvha Ane Na A Takalela",
+    appointments_message: "Mulaedza",
+    appointments_submit_request: "Rumelani Khumbelo",
+    appointments_grief: "Vhuṱungu na U Lovhela",
+    appointments_marriage: "Mbingano na Muṱa",
+    appointments_spiritual: "U Sendedzwa ha Muya",
+    appointments_youth_counselling: "Counselling ya Vhaswa",
+    appointments_other: "Zwiṅwe",
+    contact_title: "Ḓi Kwameni",
+    contact_subtitle: "Ri ḓo takala u pfa kha inwi. Ḓi kwameni nṱha ha tshifhinga tshiṅwe na tshiṅwe.",
+    contact_get_in_touch: "Ḓi Kwameni",
+    contact_address: "Ḓiresi",
+    contact_phone: "Luṱingo",
+    contact_email_label: "Imeili",
+    contact_send_message: "Rumelani Mulaedza",
+    contact_thank_you: "Ri a Livhuwa!",
+    contact_received: "Mulaedza waṋu wo ṱanganedzwa. Ri ḓo fhindula nga u ṱavhanya.",
+    contact_send_another: "Rumelani Muṅwe",
+    contact_subject: "Ṱhoho",
+    contact_your_message: "Mulaedza waṋu...",
+    contact_send: "Rumelani Mulaedza",
+    downloads_title: "U Downlouda",
+    downloads_subtitle: "Downloudani bugu dza nyimbo na Bivhili nga luambo lwaṋu.",
+    downloads_no_resources: "A hu na tshine tsha wanala zwino",
+    downloads_no_resources_desc: "Zwine zwa dzheniwa nga admin zwi ḓo vhonala fhano.",
+    downloads_download: "Downlouda",
+    downloads_hymn_book: "Bugu ya Nyimbo",
+    downloads_bible: "Bivhili",
+    downloads_other: "Zwiṅwe Zwi Re Hone",
+    footer_description: "Tshivhidzo tshi ṱanganedzaho tsha vhathu vha lutendo. Ḓani sa zwe na vha ni aluwe na riṋe.",
+    footer_service_times: "Tshifhinga tsha Mishumo",
+    footer_quick_links: "Zwishumiswa zwa U Ṱavhanya",
+    footer_contact_us: "Ḓi Kwameni",
+    footer_copyright: "Mzilikazi North Parish Bulawayo. Pfanelo dzoṱhe dzo tsireledza.",
+  },
+};
+
+export default translations;
