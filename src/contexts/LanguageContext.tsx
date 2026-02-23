@@ -19,7 +19,13 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export const useLanguage = () => {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
+  if (!ctx) {
+    // Fallback for cases where provider hasn't mounted yet
+    return {
+      language: (localStorage.getItem("site-language") as Language) || "en",
+      setLanguage: (lang: Language) => localStorage.setItem("site-language", lang),
+    } as LanguageContextType;
+  }
   return ctx;
 };
 
