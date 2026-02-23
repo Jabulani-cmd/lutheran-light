@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Calendar, Users, Video, BookOpen } from "lucide-react";
+import { MapPin, Calendar, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
@@ -14,7 +14,7 @@ import heroImage2 from "@/assets/hero-church-2.jpg";
 import heroImage3 from "@/assets/hero-church-3.jpg";
 import heroImage4 from "@/assets/hero-church-4.jpg";
 import roseLogo from "@/assets/umplogo2.png";
-import purpleClock from "@/assets/purple-clock.png";
+import blackClock from "@/assets/black-clock.png";
 
 const heroSlides = [
   { image: heroImage1, alt: "Mzilikazi North Parish church exterior" },
@@ -52,10 +52,10 @@ const Index = () => {
   }, [emblaApi, onSelect]);
 
   const quickLinks = [
-    { icon: Users, label: t.home_explore_ministries, desc: t.home_explore_ministries_desc, to: "/ministries" },
-    { icon: Video, label: t.home_explore_livestream, desc: t.home_explore_livestream_desc, to: "/livestream" },
-    { icon: BookOpen, label: t.home_explore_appointments, desc: t.home_explore_appointments_desc, to: "/appointments" },
-    { icon: Calendar, label: t.home_explore_events, desc: t.home_explore_events_desc, to: "/events" },
+    { label: t.home_explore_ministries, desc: t.home_explore_ministries_desc, to: "/ministries" },
+    { label: t.home_explore_livestream, desc: t.home_explore_livestream_desc, to: "/livestream" },
+    { label: t.home_explore_projects, desc: t.home_explore_projects_desc, to: "/projects" },
+    { label: t.home_explore_events, desc: t.home_explore_events_desc, to: "/events" },
   ];
 
   const eventDates = useMemo(() => {
@@ -112,7 +112,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
           <div className="flex justify-center mb-8">
-            <img src={purpleClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
+            <img src={blackClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
@@ -192,7 +192,7 @@ const Index = () => {
               <Link key={l.to} to={l.to} className="group">
                 <Card className="text-center shadow-soft hover:shadow-purple transition-all border-border group-hover:border-primary/30 h-full">
                   <CardContent className="pt-6">
-                    <l.icon className="h-8 w-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                    <img src={roseLogo} alt="" className="h-10 w-10 mx-auto mb-3 object-contain group-hover:scale-110 transition-transform" />
                     <h3 className="font-display font-semibold text-foreground text-sm">{l.label}</h3>
                     <p className="text-xs text-muted-foreground mt-1">{l.desc}</p>
                   </CardContent>
@@ -202,6 +202,18 @@ const Index = () => {
           </div>
         </div>
       </section>
+      {/* Appointments CTA */}
+      <section className="py-12 bg-card">
+        <div className="container mx-auto px-4 text-center max-w-2xl">
+          <BookOpen className="h-10 w-10 text-primary mx-auto mb-4" />
+          <h2 className="font-display text-2xl font-bold text-foreground mb-2">{t.home_explore_appointments}</h2>
+          <p className="text-muted-foreground mb-6">{t.home_explore_appointments_desc}</p>
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold">
+            <Link to="/appointments">{t.appointments_book_title}</Link>
+          </Button>
+        </div>
+      </section>
+
       <FloatingWhatsApp />
     </Layout>
   );

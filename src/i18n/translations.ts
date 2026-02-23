@@ -12,6 +12,7 @@ type TranslationKeys = {
   nav_appointments: string;
   nav_contact: string;
   nav_admin: string;
+  nav_projects: string;
 
   // Home
   home_hero_title_prefix: string;
@@ -42,6 +43,8 @@ type TranslationKeys = {
   home_explore_appointments_desc: string;
   home_explore_events: string;
   home_explore_events_desc: string;
+  home_explore_projects: string;
+  home_explore_projects_desc: string;
 
   // About
   about_title: string;
@@ -184,6 +187,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_appointments: "Appointments",
     nav_contact: "Contact",
     nav_admin: "Admin",
+    nav_projects: "Church Projects",
     home_hero_title_prefix: "Welcome to",
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.",
@@ -212,6 +216,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_explore_appointments_desc: "Book a session",
     home_explore_events: "Events",
     home_explore_events_desc: "Upcoming activities",
+    home_explore_projects: "Church Projects",
+    home_explore_projects_desc: "Our ongoing projects",
     about_title: "About Our Parish",
     about_subtitle: "Rooted in the Lutheran tradition since 1952, Mzilikazi North Parish has been a beacon of faith, hope, and community.",
     about_history_title: "Our History",
@@ -335,6 +341,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_appointments: "Misangano",
     nav_contact: "Tishanyirei",
     nav_admin: "Admin",
+    nav_projects: "Mabasa eSangano",
     home_hero_title_prefix: "Mauya ku",
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Ungano inogamuchira yevanhu vanotenda. Uyai sezvamuiri — kukura nesu munyasha nerudo.",
@@ -363,6 +370,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_explore_appointments_desc: "Ronga musangano",
     home_explore_events: "Zviitiko",
     home_explore_events_desc: "Mabasa anouya",
+    home_explore_projects: "Mabasa eSangano",
+    home_explore_projects_desc: "Mabasa edu arikunyanya",
     about_title: "Nezveungano Yedu",
     about_subtitle: "Takadzika midzi mutsika yeLutheran kubva muna 1952, Mzilikazi North Parish yakanga iri chiedza chekutenda, tariro, neungano.",
     about_history_title: "Nhoroondo Yedu",
@@ -486,6 +495,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_appointments: "Imihlangano",
     nav_contact: "Xhumana Lathi",
     nav_admin: "Admin",
+    nav_projects: "Imisebenzi yeBandla",
     home_hero_title_prefix: "Siyalemukela e",
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Ibandla elilemukela abantu bonke elilokholo. Woza unjengoba unjalo — sikhule ndawonye emuseni lothandweni.",
@@ -514,6 +524,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_explore_appointments_desc: "Hlela umhlangano",
     home_explore_events: "Imicimbi",
     home_explore_events_desc: "Imisebenzi ezayo",
+    home_explore_projects: "Imisebenzi yeBandla",
+    home_explore_projects_desc: "Imisebenzi yethu eqhubekayo",
     about_title: "Ngebandla Lethu",
     about_subtitle: "Simi emasikweni eLutheran kusukela ngo-1952, iMzilikazi North Parish ibilikukhanya lokholo, ithemba, lebandla.",
     about_history_title: "Imbali Yethu",
@@ -637,6 +649,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_appointments: "Dikopano",
     nav_contact: "Ikopanye le Rona",
     nav_admin: "Admin",
+    nav_projects: "Mesebetsi ya Kereke",
     home_hero_title_prefix: "Re a o amohela ho",
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Seboka se amohelang sa batho ba tumelo. Tla joalo ka ha o le teng — hola le rona mohauong le leratong.",
@@ -665,6 +678,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_explore_appointments_desc: "Hlela kopano",
     home_explore_events: "Diketsahalo",
     home_explore_events_desc: "Mesebetsi e tlang",
+    home_explore_projects: "Mesebetsi ya Kereke",
+    home_explore_projects_desc: "Mesebetsi ya rona e tswelang pele",
     about_title: "Ka Seboka sa Rona",
     about_subtitle: "Re tsitsitse meetlong ya Lutheran ho tloha ka 1952, Mzilikazi North Parish e bile lebone la tumelo, tshepo, le seboka.",
     about_history_title: "Histori ya Rona",
@@ -788,6 +803,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_appointments: "Milangano",
     nav_contact: "Ḓi Kwameni",
     nav_admin: "Admin",
+    nav_projects: "Mishumo ya Kereke",
     home_hero_title_prefix: "Ri a ni ṱanganedza kha",
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Tshivhidzo tshi ṱanganedzaho tsha vhathu vha lutendo. Ḓani sa zwe na vha — aluwe roṱhe nga tshilidzi na lufuno.",
@@ -816,6 +832,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_explore_appointments_desc: "Langani mulangano",
     home_explore_events: "Nyimele",
     home_explore_events_desc: "Mishumo i ḓaho",
+    home_explore_projects: "Mishumo ya Kereke",
+    home_explore_projects_desc: "Mishumo yashu i re henefho",
     about_title: "Nga Ha Tshivhidzo Tshashu",
     about_subtitle: "Ro dzika midzi kha maitele a Lutheran u bva nga 1952, Mzilikazi North Parish yo vha tshiedza tsha lutendo, fulufhelo, na tshivhidzo.",
     about_history_title: "Histori Yashu",
