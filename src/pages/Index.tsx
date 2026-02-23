@@ -74,7 +74,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi ELCZ Rose Logo" className="h-20 w-20 mx-auto mb-4" />
+            <img src={roseLogo} alt="Mzilikazi ELCZ Rose Logo" className="h-[120px] w-auto mx-auto mb-4 object-contain" />
             <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-4 leading-tight">
               Welcome to <span className="text-gradient-purple">Mzilikazi</span> ELCZ
             </h1>
