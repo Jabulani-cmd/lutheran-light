@@ -55,7 +55,7 @@ const Contact = () => {
                   <Mail className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-muted-foreground text-sm">info@mzilikazielcp.org</p>
+                    <p className="text-muted-foreground text-sm">info@mzilikazielcz.org</p>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@ const Contact = () => {
               {/* Map */}
               <div className="rounded-lg overflow-hidden border border-border shadow-soft">
                 <iframe
-                  title="Mzilikazi ELCP Location"
+                  title="Mzilikazi ELCZ Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.123456789!2d28.58!3d-20.16!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDA5JzM2LjAiUyAyOMKwMzQnNDguMCJF!5e0!3m2!1sen!2szw!4v1234567890"
                   width="100%"
                   height="250"

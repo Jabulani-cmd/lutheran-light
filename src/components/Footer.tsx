@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Cross className="h-6 w-6 text-secondary" />
-              <span className="font-display text-lg font-bold">Mzilikazi ELCP</span>
+              <span className="font-display text-lg font-bold">Mzilikazi ELCZ</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               A welcoming community of faith rooted in the Lutheran tradition. Come as you are and grow with us.
@@ -62,7 +62,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-secondary" />
-                <span>info@mzilikazielcp.org</span>
+                <span>info@mzilikazielcz.org</span>
               </li>
             </ul>
             <div className="flex gap-3 mt-4">

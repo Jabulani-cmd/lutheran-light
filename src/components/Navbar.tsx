@@ -26,7 +26,7 @@ const Navbar = () => {
             <Cross className="h-6 w-6 text-secondary" />
             <div className="font-display">
               <span className="text-lg font-bold text-primary">Mzilikazi</span>
-              <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCP</span>
+              <span className="hidden sm:inline text-sm text-muted-foreground ml-1">ELCZ</span>
             </div>
           </Link>
 

@@ -33,7 +33,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="relative z-10 text-center px-4 max-w-3xl animate-fade-in">
           <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-4 leading-tight">
-            Welcome to <span className="text-gradient-gold">Mzilikazi</span> ELCP
+            Welcome to <span className="text-gradient-gold">Mzilikazi</span> ELCZ
           </h1>
           <p className="text-cream/80 text-lg md:text-xl mb-8 leading-relaxed">
             A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.
@@ -82,7 +82,7 @@ const Index = () => {
           <SectionHeading title="A Word from Our Pastor" />
           <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">
             "Dear friends, whether you are a long‑standing member or visiting for the first time, know that you are welcome here.
-            At Mzilikazi ELCP, we believe in the power of community, the grace of God, and the call to serve one another.
+            At Mzilikazi ELCZ, we believe in the power of community, the grace of God, and the call to serve one another.
             I invite you to join us as we walk together in faith, hope, and love."
           </blockquote>
           <p className="mt-6 font-display font-semibold text-foreground">Pastor N. Dlamini</p>
