@@ -1,18 +1,9 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
-const albums = [
-  { name: "Worship Services", category: "worship" },
-  { name: "Fellowship", category: "fellowship" },
-  { name: "Outreach", category: "outreach" },
-  { name: "League Activities", category: "league" },
-];
-
-// Placeholder gallery items using generated gradient backgrounds
 const galleryItems = [
   { id: 1, category: "worship", title: "Sunday Worship", color: "from-navy to-navy-light" },
   { id: 2, category: "worship", title: "Christmas Service", color: "from-gold-dark to-gold" },
@@ -29,19 +20,24 @@ const galleryItems = [
 ];
 
 const Gallery = () => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState("all");
   const [selected, setSelected] = useState<typeof galleryItems[0] | null>(null);
-
   const filtered = filter === "all" ? galleryItems : galleryItems.filter((i) => i.category === filter);
+
+  const albums = [
+    { name: t.gallery_worship, category: "worship" },
+    { name: t.gallery_fellowship, category: "fellowship" },
+    { name: t.gallery_outreach, category: "outreach" },
+    { name: t.gallery_league, category: "league" },
+  ];
 
   return (
     <Layout>
       <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Photo Gallery</h1>
-          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            Memories of our journey together in faith and fellowship.
-          </p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.gallery_title}</h1>
+          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.gallery_subtitle}</p>
         </div>
       </section>
 
@@ -49,25 +45,17 @@ const Gallery = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center mb-10">
             <Button variant={filter === "all" ? "default" : "outline"} size="sm" onClick={() => setFilter("all")}
-              className={filter === "all" ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>
-              All
-            </Button>
+              className={filter === "all" ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>{t.gallery_all}</Button>
             {albums.map((a) => (
               <Button key={a.category} variant={filter === a.category ? "default" : "outline"} size="sm"
                 onClick={() => setFilter(a.category)}
-                className={filter === a.category ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>
-                {a.name}
-              </Button>
+                className={filter === a.category ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>{a.name}</Button>
             ))}
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {filtered.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setSelected(item)}
-                className={`aspect-square rounded-lg bg-gradient-to-br ${item.color} flex items-end p-3 cursor-pointer hover:scale-[1.02] transition-transform`}
-              >
+              <button key={item.id} onClick={() => setSelected(item)}
+                className={`aspect-square rounded-lg bg-gradient-to-br ${item.color} flex items-end p-3 cursor-pointer hover:scale-[1.02] transition-transform`}>
                 <span className="text-sm font-medium text-white/90 bg-black/30 px-2 py-1 rounded">{item.title}</span>
               </button>
             ))}
@@ -75,7 +63,6 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
         <DialogContent className="max-w-2xl p-0 overflow-hidden">
           {selected && (

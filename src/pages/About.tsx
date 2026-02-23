@@ -2,57 +2,47 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Cross, BookOpen, Heart, Users } from "lucide-react";
-
-const beliefs = [
-  { icon: Cross, title: "Grace Alone", desc: "We believe salvation comes through God's grace, not human effort." },
-  { icon: BookOpen, title: "Scripture Alone", desc: "The Bible is the ultimate authority for faith and life." },
-  { icon: Heart, title: "Faith Alone", desc: "Justification is received through faith in Jesus Christ." },
-  { icon: Users, title: "Community", desc: "We are called to serve one another in love and fellowship." },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const leaders = [
-  { name: "Pastor N. Dlamini", role: "Senior Pastor", bio: "Pastor Dlamini has served Mzilikazi ELCZ for over 15 years, guiding the congregation with wisdom and compassion." },
+  { name: "Pastor N. Dlamini", role: "Senior Pastor", bio: "Pastor Dlamini has served the parish for over 15 years, guiding the congregation with wisdom and compassion." },
   { name: "Elder J. Moyo", role: "Church Elder", bio: "A dedicated servant leader who oversees church administration and community outreach programs." },
   { name: "Elder T. Ncube", role: "Church Elder", bio: "Elder Ncube leads the worship committee and coordinates midweek prayer services." },
   { name: "Deacon S. Ndlovu", role: "Deacon", bio: "Deacon Ndlovu is passionate about youth ministry and mentoring the next generation of believers." },
 ];
 
 const About = () => {
+  const { t } = useTranslation();
+
+  const beliefs = [
+    { icon: Cross, title: t.about_grace, desc: t.about_grace_desc },
+    { icon: BookOpen, title: t.about_scripture, desc: t.about_scripture_desc },
+    { icon: Heart, title: t.about_faith, desc: t.about_faith_desc },
+    { icon: Users, title: t.about_community, desc: t.about_community_desc },
+  ];
+
   return (
     <Layout>
-      {/* Hero Banner */}
       <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">About Our Parish</h1>
-          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            Rooted in the Lutheran tradition since 1952, Mzilikazi ELCZ has been a beacon of faith, hope, and community.
-          </p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.about_title}</h1>
+          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.about_subtitle}</p>
         </div>
       </section>
 
-      {/* History */}
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4 max-w-3xl">
-          <SectionHeading title="Our History" />
+          <SectionHeading title={t.about_history_title} />
           <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4">
-            <p>
-              Mzilikazi Evangelical Lutheran Church Parish was founded in 1952 in the heart of Bulawayo, Zimbabwe.
-              What began as a small group of faithful believers gathering under a tree has grown into a vibrant congregation
-              serving hundreds of families across the community.
-            </p>
-            <p>
-              Over the decades, our parish has remained steadfast in its commitment to the Gospel, establishing schools,
-              community outreach programs, and ministries that touch lives across all ages. We continue to be guided by the
-              principles of the Lutheran Reformation — grace, faith, and Scripture.
-            </p>
+            <p>{t.about_history_p1}</p>
+            <p>{t.about_history_p2}</p>
           </div>
         </div>
       </section>
 
-      {/* Mission & Beliefs */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <SectionHeading title="Our Beliefs" subtitle="The core pillars of our Lutheran faith." />
+          <SectionHeading title={t.about_beliefs_title} subtitle={t.about_beliefs_subtitle} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {beliefs.map((b) => (
               <Card key={b.title} className="text-center shadow-soft border-border">
@@ -67,10 +57,9 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership */}
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
-          <SectionHeading title="Our Leadership" subtitle="Meet the faithful servants who guide our congregation." />
+          <SectionHeading title={t.about_leadership_title} subtitle={t.about_leadership_subtitle} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {leaders.map((l) => (
               <Card key={l.name} className="shadow-soft border-border">

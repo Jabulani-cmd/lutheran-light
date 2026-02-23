@@ -1,11 +1,9 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin } from "lucide-react";
-
-const categories = ["All", "Worship", "Fellowship", "Outreach", "Youth"];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const events = [
   { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" },
@@ -19,39 +17,37 @@ const events = [
 ];
 
 const Events = () => {
+  const { t } = useTranslation();
+  const categoryMap: Record<string, string> = {
+    All: t.events_all,
+    Worship: t.events_worship,
+    Fellowship: t.events_fellowship,
+    Outreach: t.events_outreach,
+    Youth: t.events_youth,
+  };
+  const categories = ["All", "Worship", "Fellowship", "Outreach", "Youth"];
   const [filter, setFilter] = useState("All");
-
   const filtered = filter === "All" ? events : events.filter((e) => e.category === filter);
 
   return (
     <Layout>
       <section className="bg-gradient-purple py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Activities & Events</h1>
-          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            Stay connected with everything happening at Mzilikazi ELCZ.
-          </p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{t.events_title}</h1>
+          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">{t.events_subtitle}</p>
         </div>
       </section>
 
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4 max-w-4xl">
-          {/* Filter */}
           <div className="flex flex-wrap gap-2 justify-center mb-10">
             {categories.map((cat) => (
-              <Button
-                key={cat}
-                variant={filter === cat ? "default" : "outline"}
-                size="sm"
-                onClick={() => setFilter(cat)}
-                className={filter === cat ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}
-              >
-                {cat}
+              <Button key={cat} variant={filter === cat ? "default" : "outline"} size="sm" onClick={() => setFilter(cat)}
+                className={filter === cat ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>
+                {categoryMap[cat]}
               </Button>
             ))}
           </div>
-
-          {/* Event list */}
           <div className="space-y-4">
             {filtered.map((e, i) => (
               <Card key={i} className="shadow-soft border-border hover:shadow-medium transition-shadow">
@@ -68,9 +64,7 @@ const Events = () => {
                         <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
                       </div>
                       <p className="mt-3 text-muted-foreground">{e.desc}</p>
-                      <span className="inline-block mt-3 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                        {e.category}
-                      </span>
+                      <span className="inline-block mt-3 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{categoryMap[e.category]}</span>
                     </div>
                   </div>
                 </CardContent>
