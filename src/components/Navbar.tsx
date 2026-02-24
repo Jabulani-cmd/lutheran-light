@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-            <img src={logo} alt="Mzilikazi North Parish Logo" className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 object-contain shrink-0" />
+            <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[50px] w-[50px] sm:h-[60px] sm:w-[60px] lg:h-[70px] lg:w-[70px] object-contain shrink-0" />
             <div className="flex flex-col leading-tight min-w-0">
               <span className="text-xl sm:text-2xl lg:text-3xl font-serif font-extrabold tracking-wide text-primary truncate">Mzilikazi</span>
               <span className="text-[10px] sm:text-xs font-serif tracking-[0.15em] sm:tracking-[0.2em] uppercase text-muted-foreground truncate">North Parish · Bulawayo</span>
