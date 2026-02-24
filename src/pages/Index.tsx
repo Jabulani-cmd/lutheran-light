@@ -18,7 +18,7 @@ import roseLogo from "@/assets/umplogo2.png";
 import blackClock from "@/assets/black-clock.png";
 
 const defaultHeroSlides = [
-  { image: heroImage1, alt: "Mzilikazi North Parish church exterior" },
+  { image: heroImage1, alt: "Mzilikazi North Congregation church exterior" },
   { image: heroImage2, alt: "Beautiful church interior with stained glass" },
   { image: heroImage3, alt: "Congregation worshipping together" },
   { image: heroImage4, alt: "Community outreach and fellowship" },
@@ -108,7 +108,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi North Parish Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain" />
+            <img src={roseLogo} alt="Mzilikazi North Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain" />
             <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4 leading-tight">
               {t.home_hero_title_prefix} <span className="text-gradient-purple">Mzilikazi</span> {t.home_hero_title_suffix}
             </h1>
@@ -164,7 +164,7 @@ const Index = () => {
       {/* Announcements */}
       <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our parish" />
+          <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our congregation" />
           <div className="max-w-3xl mx-auto space-y-4">
             {announcements.length > 0 ? (
               announcements.map((a) => (

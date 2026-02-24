@@ -54,7 +54,7 @@ const Contact = () => {
                 <a href="https://www.instagram.com/mzilikazi_congregation" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Instagram className="h-5 w-5" /> Instagram</a>
               </div>
               <div className="rounded-lg overflow-hidden border border-border shadow-soft">
-                <iframe title="Mzilikazi North Parish Location"
+                <iframe title="Mzilikazi North Congregation Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.123456789!2d28.58!3d-20.16!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDA5JzM2LjAiUyAyOMKwMzQnNDguMCJF!5e0!3m2!1sen!2szw!4v1234567890"
                   width="100%" height="250" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>

@@ -71,6 +71,69 @@ export type Database = {
         }
         Relationships: []
       }
+      choir_members: {
+        Row: {
+          created_at: string
+          email: string | null
+          first_name: string
+          id: string
+          is_approved: boolean
+          last_name: string
+          phone: string | null
+          updated_at: string
+          voice_part: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          first_name: string
+          id?: string
+          is_approved?: boolean
+          last_name: string
+          phone?: string | null
+          updated_at?: string
+          voice_part?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          first_name?: string
+          id?: string
+          is_approved?: boolean
+          last_name?: string
+          phone?: string | null
+          updated_at?: string
+          voice_part?: string
+        }
+        Relationships: []
+      }
+      choir_photos: {
+        Row: {
+          caption: string | null
+          created_at: string
+          id: string
+          image_url: string
+          is_group_photo: boolean
+          updated_at: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_url: string
+          is_group_photo?: boolean
+          updated_at?: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string
+          is_group_photo?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       downloadable_resources: {
         Row: {
           category: string
@@ -319,6 +382,33 @@ export type Database = {
           league?: string
           notes?: string | null
           phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ministry_photos: {
+        Row: {
+          caption: string | null
+          created_at: string
+          id: string
+          image_url: string
+          ministry: string
+          updated_at: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_url: string
+          ministry: string
+          updated_at?: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string
+          ministry?: string
           updated_at?: string
         }
         Relationships: []

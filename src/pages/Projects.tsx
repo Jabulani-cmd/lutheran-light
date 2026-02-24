@@ -9,7 +9,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Church Building Renovation",
-      description: "Ongoing renovation and maintenance of the parish church building to preserve our heritage and provide a welcoming space for worship.",
+      description: "Ongoing renovation and maintenance of the congregation church building to preserve our heritage and provide a welcoming space for worship.",
       status: "In Progress",
     },
     {

@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home } from "lucide-react";
+import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home, Music, Camera } from "lucide-react";
 import logo from "@/assets/umplogo2.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
@@ -18,6 +18,8 @@ import AdminLivestream from "@/components/admin/AdminLivestream";
 import AdminPreachingSchedule from "@/components/admin/AdminPreachingSchedule";
 import AdminHomePrayers from "@/components/admin/AdminHomePrayers";
 import AdminGalleryVideos from "@/components/admin/AdminGalleryVideos";
+import AdminChoir from "@/components/admin/AdminChoir";
+import AdminMinistryPhotos from "@/components/admin/AdminMinistryPhotos";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
@@ -65,6 +67,8 @@ const Admin = () => {
             <TabsTrigger value="home-prayers" className="flex items-center gap-2"><Home className="h-4 w-4" /> Home Prayers</TabsTrigger>
             <TabsTrigger value="livestream" className="flex items-center gap-2"><Video className="h-4 w-4" /> Livestream</TabsTrigger>
             <TabsTrigger value="downloads" className="flex items-center gap-2"><Download className="h-4 w-4" /> Downloads</TabsTrigger>
+            <TabsTrigger value="choir" className="flex items-center gap-2"><Music className="h-4 w-4" /> Choir</TabsTrigger>
+            <TabsTrigger value="ministry-photos" className="flex items-center gap-2"><Camera className="h-4 w-4" /> Ministry Photos</TabsTrigger>
           </TabsList>
 
           <TabsContent value="members"><AdminMembers /></TabsContent>
@@ -79,6 +83,8 @@ const Admin = () => {
           <TabsContent value="home-prayers"><AdminHomePrayers /></TabsContent>
           <TabsContent value="livestream"><AdminLivestream /></TabsContent>
           <TabsContent value="downloads"><AdminDownloads /></TabsContent>
+          <TabsContent value="choir"><AdminChoir /></TabsContent>
+          <TabsContent value="ministry-photos"><AdminMinistryPhotos /></TabsContent>
         </Tabs>
       </div>
     </div>
