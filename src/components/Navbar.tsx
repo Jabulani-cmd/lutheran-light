@@ -19,7 +19,7 @@ const Navbar = () => {
     { to: "/gallery", label: t.nav_gallery },
     { to: "/downloads", label: t.nav_downloads },
     { to: "/livestream", label: t.nav_livestream },
-    { to: "/appointments", label: t.nav_appointments },
+    
     { to: "/register", label: t.nav_register },
     { to: "/contact", label: t.nav_contact },
     { to: "/admin/login", label: t.nav_admin },
