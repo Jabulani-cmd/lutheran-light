@@ -202,6 +202,73 @@ type TranslationKeys = {
   footer_quick_links: string;
   footer_contact_us: string;
   footer_copyright: string;
+
+  // Navbar additional
+  nav_preaching_plan: string;
+  nav_home_prayers: string;
+  nav_choir: string;
+
+  // Home additional
+  home_announcements_title: string;
+  home_announcements_subtitle: string;
+  home_no_announcements: string;
+
+  // Gallery additional
+  gallery_photos_tab: string;
+  gallery_videos_tab: string;
+  gallery_no_photos: string;
+  gallery_no_videos: string;
+
+  // Choir
+  choir_title: string;
+  choir_subtitle: string;
+  choir_story_title: string;
+  choir_story_p1: string;
+  choir_story_p2: string;
+  choir_join_title: string;
+  choir_join_subtitle: string;
+  choir_submitted_title: string;
+  choir_submitted_desc: string;
+  choir_submit_another: string;
+  choir_first_name: string;
+  choir_last_name: string;
+  choir_phone: string;
+  choir_email: string;
+  choir_voice_part: string;
+  choir_soprano: string;
+  choir_alto: string;
+  choir_tenor: string;
+  choir_bass: string;
+  choir_apply: string;
+  choir_submitting: string;
+  choir_group_title: string;
+  choir_group_subtitle: string;
+  choir_gallery_title: string;
+  choir_members_title: string;
+  choir_members_subtitle: string;
+  choir_performances_title: string;
+  choir_performances_subtitle: string;
+  choir_no_performances: string;
+
+  // Home Prayers
+  home_prayers_title: string;
+  home_prayers_subtitle: string;
+  home_prayers_upcoming: string;
+  home_prayers_none: string;
+  home_prayers_past: string;
+
+  // Preaching
+  preaching_title: string;
+  preaching_subtitle: string;
+  preaching_upcoming: string;
+  preaching_none: string;
+
+  // Livestream additional
+  livestream_no_past: string;
+
+  // Ministries additional
+  ministries_view_photos: string;
+  ministries_no_photos: string;
 };
 
 const translations: Record<Language, TranslationKeys> = {
@@ -384,6 +451,57 @@ const translations: Record<Language, TranslationKeys> = {
     footer_quick_links: "Quick Links",
     footer_contact_us: "Contact Us",
     footer_copyright: "Mzilikazi North Congregation Bulawayo. All rights reserved.",
+    nav_preaching_plan: "Preaching Plan",
+    nav_home_prayers: "Home Prayers",
+    nav_choir: "Choir",
+    home_announcements_title: "Announcements",
+    home_announcements_subtitle: "Stay informed with the latest news from our congregation.",
+    home_no_announcements: "No announcements at this time.",
+    gallery_photos_tab: "Photos",
+    gallery_videos_tab: "Videos",
+    gallery_no_photos: "No photos in this category yet.",
+    gallery_no_videos: "No videos in this category yet.",
+    choir_title: "Church Choir",
+    choir_subtitle: "Praising God through song and harmony",
+    choir_story_title: "Our Choir Story",
+    choir_story_p1: "The Mzilikazi North Congregation Choir has been the heartbeat of our worship since the early days of our church. Founded alongside the congregation, the choir has grown from a small group of dedicated singers into a vibrant ensemble that leads our congregation in praise every Sunday.",
+    choir_story_p2: "Our choir members come from all walks of life, united by their love for God and music. Through hymns, anthems, and traditional songs, they create an atmosphere of worship that uplifts and inspires. The choir rehearses weekly and performs at all major church services, special events, and community celebrations.",
+    choir_join_title: "Join the Choir",
+    choir_join_subtitle: "Fill in the form below to express your interest in joining our choir.",
+    choir_submitted_title: "Application Submitted!",
+    choir_submitted_desc: "We will review your application and get back to you.",
+    choir_submit_another: "Submit Another",
+    choir_first_name: "First Name",
+    choir_last_name: "Last Name",
+    choir_phone: "Phone",
+    choir_email: "Email",
+    choir_voice_part: "Voice Part",
+    choir_soprano: "Soprano",
+    choir_alto: "Alto",
+    choir_tenor: "Tenor",
+    choir_bass: "Bass",
+    choir_apply: "Apply to Join",
+    choir_submitting: "Submitting...",
+    choir_group_title: "Our Choir",
+    choir_group_subtitle: "The voices of Mzilikazi North Congregation",
+    choir_gallery_title: "Choir Gallery",
+    choir_members_title: "Choir Members",
+    choir_members_subtitle: "Our dedicated singers",
+    choir_performances_title: "Past Performances",
+    choir_performances_subtitle: "Watch and listen to our choir's past performances.",
+    choir_no_performances: "No performances uploaded yet. Check back soon!",
+    home_prayers_title: "Thursday Home Prayers",
+    home_prayers_subtitle: "Join us every Thursday for prayer meetings at members' homes.",
+    home_prayers_upcoming: "Upcoming Prayer Locations",
+    home_prayers_none: "No upcoming prayer locations announced yet. Check back soon!",
+    home_prayers_past: "Past Locations",
+    preaching_title: "Preaching Plan",
+    preaching_subtitle: "See who is preaching at our Sunday worship services.",
+    preaching_upcoming: "Upcoming Preachers",
+    preaching_none: "No upcoming preaching schedule available yet.",
+    livestream_no_past: "No past services available yet.",
+    ministries_view_photos: "View Photos",
+    ministries_no_photos: "No photos uploaded yet for this ministry.",
   },
 
   sn: {
@@ -565,6 +683,57 @@ const translations: Record<Language, TranslationKeys> = {
     footer_quick_links: "Chishanyira Chekukurumidza",
     footer_contact_us: "Tishanyirei",
     footer_copyright: "Mzilikazi North Congregation Bulawayo. Kodzero dzese dzakachengetwa.",
+    nav_preaching_plan: "Chinangwa cheKuparidza",
+    nav_home_prayers: "Minamato yePamba",
+    nav_choir: "Kwaya",
+    home_announcements_title: "Zviziviso",
+    home_announcements_subtitle: "Garai muchiziva nezvitsva kubva muungano yedu.",
+    home_no_announcements: "Hapana zviziviso panguva ino.",
+    gallery_photos_tab: "Mifananidzo",
+    gallery_videos_tab: "Mavhidhiyo",
+    gallery_no_photos: "Hapana mifananidzo murudzi urwu.",
+    gallery_no_videos: "Hapana mavhidhiyo murudzi urwu.",
+    choir_title: "Kwaya yeSangano",
+    choir_subtitle: "Kurumbidza Mwari nekuimba nekuharmoni",
+    choir_story_title: "Nyaya yeKwaya Yedu",
+    choir_story_p1: "Kwaya yeMzilikazi North Congregation yakanga iri moyo wekunamata kwedu kubvira mazuva ekutanga ekereke yedu. Yakavambwa pamwe chete neungano, kwaya yakakura kubva muboka diki revanoimba vakazvipira kuva boka rine simba rinotungamirira ungano yedu mukurumbidza maSvondo ose.",
+    choir_story_p2: "Nhengo dzekwaya yedu dzinobva kunzvimbo dzose dzoupenyu, dzakabatana nerudo rwavo kuna Mwari nemusambo. Kuburikidza nenziyo, maanthemu, nenziyo dzechivanhu, vanogadzira magariro ekunamata anokwidziridza nekufurira. Kwaya inodzidzira vhiki rega rega uye inoita pamisa dzose dzikuru dzesangano, mabasa akakosha, nemitambo yeungano.",
+    choir_join_title: "Batanai neKwaya",
+    choir_join_subtitle: "Zadzai fomu iri pazasi kuratidza kuda kwenyu kubatana nekwaya yedu.",
+    choir_submitted_title: "Chikumbiro Chatumirwa!",
+    choir_submitted_desc: "Tichaongorora chikumbiro chenyu todzoka kwamuri.",
+    choir_submit_another: "Tumira Chimwe",
+    choir_first_name: "Zita Rekutanga",
+    choir_last_name: "Zita Rekupedzisira",
+    choir_phone: "Nhare",
+    choir_email: "Email",
+    choir_voice_part: "Chikamu cheInzwi",
+    choir_soprano: "Soprano",
+    choir_alto: "Alto",
+    choir_tenor: "Tenor",
+    choir_bass: "Bass",
+    choir_apply: "Kumbira Kubatana",
+    choir_submitting: "Kuri kutumira...",
+    choir_group_title: "Kwaya Yedu",
+    choir_group_subtitle: "Mazwi eMzilikazi North Congregation",
+    choir_gallery_title: "Mifananidzo yeKwaya",
+    choir_members_title: "Nhengo dzeKwaya",
+    choir_members_subtitle: "Vanoimba vedu vakazvipira",
+    choir_performances_title: "Mabasa Akapfuura",
+    choir_performances_subtitle: "Tarisa uye uteerere mabasa akapfuura ekwaya yedu.",
+    choir_no_performances: "Hapana mabasa akaiswa. Dzokai nekukurumidza!",
+    home_prayers_title: "Minamato yePamba yeChina",
+    home_prayers_subtitle: "Batanai nesu China rega rega kuminamato padzimba dzenhengo.",
+    home_prayers_upcoming: "Nzvimbo dzeMinamato Dzinouya",
+    home_prayers_none: "Hapana nzvimbo dzeminamato dzaziviswa. Dzokai nekukurumidza!",
+    home_prayers_past: "Nzvimbo Dzakapfuura",
+    preaching_title: "Chinangwa cheKuparidza",
+    preaching_subtitle: "Onai kuti ndiani ari kuparidza kumisa yedu yeSvondo.",
+    preaching_upcoming: "Vaparidzi Vanouya",
+    preaching_none: "Hapana chinangwa chekuparidza chinowanika.",
+    livestream_no_past: "Hapana misa yakapfuura yakaiswa.",
+    ministries_view_photos: "Ona Mifananidzo",
+    ministries_no_photos: "Hapana mifananidzo yakaiswa yebasa iri.",
   },
 
   nd: {
@@ -746,6 +915,57 @@ const translations: Record<Language, TranslationKeys> = {
     footer_quick_links: "Izixhumanisi Eziphangisayo",
     footer_contact_us: "Xhumana Lathi",
     footer_copyright: "Mzilikazi North Congregation Bulawayo. Wonke amalungelo agcinwe.",
+    nav_preaching_plan: "Uhlelo Lokushumayela",
+    nav_home_prayers: "Imithandazo Yasemakhaya",
+    nav_choir: "Ikwaya",
+    home_announcements_title: "Izaziso",
+    home_announcements_subtitle: "Hlala usazi ngezindaba ezintsha zebandla lethu.",
+    home_no_announcements: "Akukho zaziso ngalesisikhathi.",
+    gallery_photos_tab: "Imifanekiso",
+    gallery_videos_tab: "Amavidiyo",
+    gallery_no_photos: "Akukho mifanekiso kulolu hlobo okwamanje.",
+    gallery_no_videos: "Akukho amavidiyo kulolu hlobo okwamanje.",
+    choir_title: "Ikwaya yeBandla",
+    choir_subtitle: "Ukudumisa uNkulunkulu ngengoma lokuhlabelela ndawonye",
+    choir_story_title: "Indaba yeKwaya Yethu",
+    choir_story_p1: "Ikwaya yeMzilikazi North Congregation ibilihliziyo yokukhonza kwethu kusukela emalangeni okuqala ebandla lethu. Yasungulwa kanye lebandla, ikwaya yakhula isuka eqenjini elincane labahlabeleli abazinikeleyo yaba liqembu elilamandla elikhokhela ibandla lethu ekudumiseni amaSonto wonke.",
+    choir_story_p2: "Amalunga ekwaya yethu avela ezindaweni zonke zempilo, ahlangene ngothando lwabo kuNkulunkulu lomculo. Ngamaculo, ama-anthemu, lengoma zesintu, badala isimo sokukhonza esiphakamisayo lesikhuthazayo. Ikwaya iyaprakthisa maviki wonke njalo icula kuzo zonke inkonzo ezinkulu zebandla, imicimbi eqakathekileyo, lemibuthano yebandla.",
+    choir_join_title: "Hlanganyela leKwaya",
+    choir_join_subtitle: "Gcwalisa ifomu engaphansi ukutsho ukulangazelela kwakho ukuhlanganyela lekwaya yethu.",
+    choir_submitted_title: "Isicelo Sithunyelwe!",
+    choir_submitted_desc: "Sizahlola isicelo sakho sibuyele kuwe.",
+    choir_submit_another: "Thumela Esinye",
+    choir_first_name: "Ibizo Lokuqala",
+    choir_last_name: "Isibongo",
+    choir_phone: "Ucingo",
+    choir_email: "I-Email",
+    choir_voice_part: "Ingxenye Yelizwi",
+    choir_soprano: "Soprano",
+    choir_alto: "Alto",
+    choir_tenor: "Tenor",
+    choir_bass: "Bass",
+    choir_apply: "Cela Ukuhlanganyela",
+    choir_submitting: "Kuthunyelwa...",
+    choir_group_title: "Ikwaya Yethu",
+    choir_group_subtitle: "Amazwi eMzilikazi North Congregation",
+    choir_gallery_title: "Imifanekiso yeKwaya",
+    choir_members_title: "Amalunga eKwaya",
+    choir_members_subtitle: "Abahlabeleli bethu abazinikeleyo",
+    choir_performances_title: "Ukucula Okwedlulileyo",
+    choir_performances_subtitle: "Bukela ulalele ukucula okwedlulileyo kwekwaya yethu.",
+    choir_no_performances: "Akukho kucula okufakiweyo okwamanje. Buya masinyane!",
+    home_prayers_title: "Imithandazo Yasemakhaya yoLwesine",
+    home_prayers_subtitle: "Hlanganyela lathi uLwesine ngalunye emithandazweni emakhaya amalunga.",
+    home_prayers_upcoming: "Izindawo Zomthandazo Ezizayo",
+    home_prayers_none: "Akukho ndawo zomthandazo ezazisiweyo. Buya masinyane!",
+    home_prayers_past: "Izindawo Ezedlulileyo",
+    preaching_title: "Uhlelo Lokushumayela",
+    preaching_subtitle: "Bona ukuthi ngubani oshumayela enkonzweni zethu zamaSonto.",
+    preaching_upcoming: "Abashumayeli Abazayo",
+    preaching_none: "Akukho hlelo lokushumayela okwamanje.",
+    livestream_no_past: "Akukho nkonzo ezedlulileyo okwamanje.",
+    ministries_view_photos: "Bona Imifanekiso",
+    ministries_no_photos: "Akukho mifanekiso efakiweyo yalo musebetsi.",
   },
 
   st: {
@@ -927,6 +1147,57 @@ const translations: Record<Language, TranslationKeys> = {
     footer_quick_links: "Dihokelo tse Potlakileng",
     footer_contact_us: "Ikopanye le Rona",
     footer_copyright: "Mzilikazi North Congregation Bulawayo. Ditokelo tsohle di bolokehile.",
+    nav_preaching_plan: "Lenaneo la Ho Ruta",
+    nav_home_prayers: "Dithapelo Tsa Hae",
+    nav_choir: "Mokhatlo wa Pina",
+    home_announcements_title: "Ditsebiso",
+    home_announcements_subtitle: "Dula o tseba ka ditaba tse ntjha tsa seboka sa rona.",
+    home_no_announcements: "Ha ho ditsebiso ka nako ena.",
+    gallery_photos_tab: "Dinepe",
+    gallery_videos_tab: "Dividio",
+    gallery_no_photos: "Ha ho dinepe mofuteng ona ha jwale.",
+    gallery_no_videos: "Ha ho dividio mofuteng ona ha jwale.",
+    choir_title: "Mokhatlo wa Pina wa Kereke",
+    choir_subtitle: "Ho rorisa Modimo ka pina le tumellano",
+    choir_story_title: "Pale ya Mokhatlo wa Pina wa Rona",
+    choir_story_p1: "Mokhatlo wa Pina wa Mzilikazi North Congregation e bile pelo ya borapedi ba rona ho tloha matsatsing a pele a kereke ya rona. O thehilwe hammoho le seboka, mokhatlo wa pina o hodile ho tloha sehlopheng se senyenyane sa baopedi ba ineetseng ho ba sehlopha se matla se eteletseng pele seboka sa rona ho roriseng ka Sontaha se seng le se seng.",
+    choir_story_p2: "Ditho tsa mokhatlo wa pina wa rona di tswa maphelong ohle, di kopane ka lerato la tsona ho Modimo le mmino. Ka difela, di-anthem, le dipina tsa setso, ba theha seemo sa borapedi se phahametseng le se kgothaletsang. Mokhatlo wa pina o ikoetlisa beke le beke mme o etsa ditshebeletso tsohle tse kgolo tsa kereke, diketsahalo tse ikgethang, le mekete ya setjhaba.",
+    choir_join_title: "Kopana le Mokhatlo wa Pina",
+    choir_join_subtitle: "Tlatsa foromo e ka tlase ho bontsha takatso ya hao ya ho kopana le mokhatlo wa pina wa rona.",
+    choir_submitted_title: "Kopo E Rometsweng!",
+    choir_submitted_desc: "Re tla hlahloba kopo ya hao re buye ho wena.",
+    choir_submit_another: "Romela E Nngwe",
+    choir_first_name: "Lebitso la Pele",
+    choir_last_name: "Fane",
+    choir_phone: "Mohala",
+    choir_email: "Imeile",
+    choir_voice_part: "Karolo ya Lentswe",
+    choir_soprano: "Soprano",
+    choir_alto: "Alto",
+    choir_tenor: "Tenor",
+    choir_bass: "Bass",
+    choir_apply: "Kopa Ho Kopana",
+    choir_submitting: "E a romela...",
+    choir_group_title: "Mokhatlo wa Pina wa Rona",
+    choir_group_subtitle: "Mantswe a Mzilikazi North Congregation",
+    choir_gallery_title: "Dinepe tsa Mokhatlo wa Pina",
+    choir_members_title: "Ditho tsa Mokhatlo wa Pina",
+    choir_members_subtitle: "Baopedi ba rona ba ineetseng",
+    choir_performances_title: "Dipapadi Tse Fetileng",
+    choir_performances_subtitle: "Sheba o mamele dipapadi tse fetileng tsa mokhatlo wa pina wa rona.",
+    choir_no_performances: "Ha ho dipapadi tse kentseng ha jwale. Kgutla haufinyane!",
+    home_prayers_title: "Dithapelo Tsa Hae tsa Labone",
+    home_prayers_subtitle: "Kopana le rona Labone le leng le le leng dithapelong malapeng a ditho.",
+    home_prayers_upcoming: "Dibaka tsa Dithapelo Tse Tlang",
+    home_prayers_none: "Ha ho dibaka tsa dithapelo tse tsebisitsweng. Kgutla haufinyane!",
+    home_prayers_past: "Dibaka Tse Fetileng",
+    preaching_title: "Lenaneo la Ho Ruta",
+    preaching_subtitle: "Bona hore ke mang ya rutang ditshebeletsoong tsa rona tsa Sontaha.",
+    preaching_upcoming: "Baruti Ba Tlang",
+    preaching_none: "Ha ho lenaneo la ho ruta le fumanehang ha jwale.",
+    livestream_no_past: "Ha ho ditshebeletso tse fetileng ha jwale.",
+    ministries_view_photos: "Bona Dinepe",
+    ministries_no_photos: "Ha ho dinepe tse kentseng bakeng sa tshebeletso ena.",
   },
 
   ve: {
@@ -1108,6 +1379,57 @@ const translations: Record<Language, TranslationKeys> = {
     footer_quick_links: "Zwishumiswa zwa U Ṱavhanya",
     footer_contact_us: "Ḓi Kwameni",
     footer_copyright: "Mzilikazi North Congregation Bulawayo. Pfanelo dzoṱhe dzo tsireledza.",
+    nav_preaching_plan: "Pulane ya U Huwelela",
+    nav_home_prayers: "Thabelo dza Hayani",
+    nav_choir: "Kwaya",
+    home_announcements_title: "Madzivhiso",
+    home_announcements_subtitle: "Dzulani ni tshi ḓivha nga mafhungo maswa a tshivhidzo tshashu.",
+    home_no_announcements: "A hu na madzivhiso nga tshifhinga tshino.",
+    gallery_photos_tab: "Zwifanyiso",
+    gallery_videos_tab: "Vhidio",
+    gallery_no_photos: "A hu na zwifanyiso kha lushaka luno zwino.",
+    gallery_no_videos: "A hu na vhidio kha lushaka luno zwino.",
+    choir_title: "Kwaya ya Kereke",
+    choir_subtitle: "U renda Mudzimu nga nyimbo na u imbelana",
+    choir_story_title: "Nganea ya Kwaya Yashu",
+    choir_story_p1: "Kwaya ya Mzilikazi North Congregation yo vha mbilu ya u rabela hashu u bva maḓuvhani a u thoma a kereke yashu. Yo thomiwa khathihi na tshivhidzo, kwaya yo aluwa u bva kha tshigwada tshiṱuku tsha vhaimbi vho ḓiṋekedzaho ya vha tshigwada tshi re na maanda tshi rangaho phanḓa tshivhidzo tshashu kha u renda Swondaha iṅwe na iṅwe.",
+    choir_story_p2: "Miraḓo ya kwaya yashu i bva kha masia oṱhe a vhutshilo, vho ṱanganiswa nga lufuno lwavho kha Mudzimu na muzika. Nga nyimbo, anthemu, na nyimbo dza sialala, vha sika mupo wa u rabela u phahamulaho na u ṱuṱuwedzaho. Kwaya i a gudza vhege iṅwe na iṅwe nahone i imba kha mishumo yoṱhe mihulwane ya kereke, nyimele dzo khetheaho, na miṱangano ya tshitshavha.",
+    choir_join_title: "Ṱanganelani na Kwaya",
+    choir_join_subtitle: "Ḓadzani fomo i re fhasi u sumbedza u takalela haṋu u ṱanganela na kwaya yashu.",
+    choir_submitted_title: "Khumbelo Yo Rumelwa!",
+    choir_submitted_desc: "Ri ḓo ṱola khumbelo yaṋu ri vhuye kha inwi.",
+    choir_submit_another: "Rumelani Iṅwe",
+    choir_first_name: "Dzina ḽa u Thoma",
+    choir_last_name: "Fani",
+    choir_phone: "Luṱingo",
+    choir_email: "Imeili",
+    choir_voice_part: "Tshipiḓa tsha Ipfi",
+    choir_soprano: "Soprano",
+    choir_alto: "Alto",
+    choir_tenor: "Tenor",
+    choir_bass: "Bass",
+    choir_apply: "Humbelani u Ṱanganela",
+    choir_submitting: "I khou rumelwa...",
+    choir_group_title: "Kwaya Yashu",
+    choir_group_subtitle: "Maipfi a Mzilikazi North Congregation",
+    choir_gallery_title: "Zwifanyiso zwa Kwaya",
+    choir_members_title: "Miraḓo ya Kwaya",
+    choir_members_subtitle: "Vhaimbi vashu vho ḓiṋekedzaho",
+    choir_performances_title: "Maimbelelo o Fhiraho",
+    choir_performances_subtitle: "Vhonani ni thetshelese maimbelelo o fhiraho a kwaya yashu.",
+    choir_no_performances: "A hu na maimbelelo o dzhenwaho zwino. Vhuyani nga u ṱavhanya!",
+    home_prayers_title: "Thabelo dza Hayani dza Ḽavhuṋe",
+    home_prayers_subtitle: "Ṱanganelani na riṋe Ḽavhuṋe ḽiṅwe na ḽiṅwe kha thabelo mahayani a miraḓo.",
+    home_prayers_upcoming: "Fhethu ha Thabelo Dzi Ḓaho",
+    home_prayers_none: "A hu na fhethu ha thabelo ho dzivhisiwaho. Vhuyani nga u ṱavhanya!",
+    home_prayers_past: "Fhethu ho Fhiraho",
+    preaching_title: "Pulane ya U Huwelela",
+    preaching_subtitle: "Vhonani uri ndi nnyi a khou huwelela mishumoni yashu ya Swondaha.",
+    preaching_upcoming: "Vhahuweleli Vha Ḓaho",
+    preaching_none: "A hu na pulane ya u huwelela i re hone zwino.",
+    livestream_no_past: "A hu na mishumo yo fhiraho zwino.",
+    ministries_view_photos: "Vhonani Zwifanyiso",
+    ministries_no_photos: "A hu na zwifanyiso zwo dzhenwaho zwa mushumo uno.",
   },
 };
 

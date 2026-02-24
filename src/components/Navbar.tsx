@@ -18,9 +18,9 @@ const Navbar = () => {
     { to: "/gallery", label: t.nav_gallery },
     { to: "/downloads", label: t.nav_downloads },
     { to: "/livestream", label: t.nav_livestream },
-    { to: "/preaching-schedule", label: "Preaching Plan" },
-    { to: "/home-prayers", label: "Home Prayers" },
-    { to: "/choir", label: "Choir" },
+    { to: "/preaching-schedule", label: t.nav_preaching_plan },
+    { to: "/home-prayers", label: t.nav_home_prayers },
+    { to: "/choir", label: t.nav_choir },
     { to: "/contact", label: t.nav_contact },
     { to: "/admin/login", label: t.nav_admin },
   ];

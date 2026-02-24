@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameMonth, isSameDay, addMonths, subMonths } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface PreachingEntry {
   id: string;
@@ -15,6 +16,7 @@ interface PreachingEntry {
 }
 
 const PreachingSchedule = () => {
+  const { t } = useTranslation();
   const [entries, setEntries] = useState<PreachingEntry[]>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -39,9 +41,9 @@ const PreachingSchedule = () => {
     <Layout>
       <section className="bg-primary text-primary-foreground py-12 sm:py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3">Preaching Plan</h1>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3">{t.preaching_title}</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            See who is preaching at our Sunday worship services
+            {t.preaching_subtitle}
           </p>
         </div>
       </section>
@@ -96,7 +98,7 @@ const PreachingSchedule = () => {
 
           {/* List view for upcoming */}
           <div className="mt-10">
-            <SectionHeading title="Upcoming Preachers" />
+            <SectionHeading title={t.preaching_upcoming} />
             <div className="space-y-3">
               {entries
                 .filter((e) => new Date(e.service_date) >= new Date(new Date().toDateString()))
@@ -123,7 +125,7 @@ const PreachingSchedule = () => {
                   </Card>
                 ))}
               {entries.filter((e) => new Date(e.service_date) >= new Date(new Date().toDateString())).length === 0 && (
-                <p className="text-muted-foreground text-center py-8">No upcoming preaching schedule available yet.</p>
+                <p className="text-muted-foreground text-center py-8">{t.preaching_none}</p>
               )}
             </div>
           </div>

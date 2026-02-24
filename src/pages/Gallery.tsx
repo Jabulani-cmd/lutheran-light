@@ -75,13 +75,13 @@ const Gallery = () => {
 
           <Tabs defaultValue="photos" className="max-w-6xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="photos">Photos</TabsTrigger>
-              <TabsTrigger value="videos">Videos</TabsTrigger>
+              <TabsTrigger value="photos">{t.gallery_photos_tab}</TabsTrigger>
+              <TabsTrigger value="videos">{t.gallery_videos_tab}</TabsTrigger>
             </TabsList>
 
             <TabsContent value="photos">
               {filteredPhotos.length === 0 ? (
-                <p className="text-muted-foreground text-center py-12">No photos in this category yet.</p>
+                <p className="text-muted-foreground text-center py-12">{t.gallery_no_photos}</p>
               ) : (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {filteredPhotos.map((item) => (
@@ -99,7 +99,7 @@ const Gallery = () => {
 
             <TabsContent value="videos">
               {filteredVideos.length === 0 ? (
-                <p className="text-muted-foreground text-center py-12">No videos in this category yet.</p>
+                <p className="text-muted-foreground text-center py-12">{t.gallery_no_videos}</p>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {filteredVideos.map((v) => (
