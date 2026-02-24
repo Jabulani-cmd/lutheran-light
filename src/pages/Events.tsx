@@ -2,18 +2,12 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Clock, MapPin, Calendar } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import purpleCalendar from "@/assets/purple-clock.png";
 
 const events = [
-  { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" },
-  { title: "Youth Fellowship Retreat", date: "March 15, 2026", time: "8:00 AM – 4:00 PM", location: "Matopos Hills Camp", desc: "A day of spiritual growth, team building, and outdoor activities for young people aged 13–25.", category: "Youth" },
-  { title: "Women's League Prayer Breakfast", date: "March 22, 2026", time: "7:00 AM", location: "Church Hall", desc: "A morning of fellowship, prayer, and a shared meal with the Women's League.", category: "Fellowship" },
-  { title: "Community Outreach Day", date: "March 29, 2026", time: "10:00 AM", location: "Mzilikazi Community Center", desc: "Serving our neighbours with food parcels, clothing donations, and health checks.", category: "Outreach" },
-  { title: "Midweek Bible Study", date: "Every Wednesday", time: "6:00 PM", location: "Fellowship Room", desc: "Deepen your understanding of Scripture in a small group setting.", category: "Worship" },
-  { title: "Men's League Sports Day", date: "April 5, 2026", time: "9:00 AM", location: "Community Sports Ground", desc: "A fun day of soccer, volleyball, and fellowship for men of all ages.", category: "Fellowship" },
-  { title: "Easter Sunrise Service", date: "April 5, 2026", time: "5:30 AM", location: "Church Garden", desc: "Celebrate the resurrection of our Lord with a beautiful sunrise service.", category: "Worship" },
-  { title: "Sunday School Teachers Workshop", date: "April 12, 2026", time: "2:00 PM", location: "Church Hall", desc: "Training and resources for our Sunday School teachers.", category: "Youth" },
+  { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" },
 ];
 
 const Events = () => {
@@ -53,8 +47,8 @@ const Events = () => {
               <Card key={i} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="bg-primary/10 rounded-lg p-3 shrink-0 self-start">
-                      <Calendar className="h-6 w-6 text-primary" />
+                    <div className="rounded-lg p-2 shrink-0 self-start">
+                      <img src={purpleCalendar} alt="Calendar" className="h-10 w-10 object-contain" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-display text-xl font-semibold text-foreground">{e.title}</h3>
