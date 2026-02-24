@@ -17,7 +17,7 @@ import heroImage4 from "@/assets/hero-church-4.jpg";
 import roseLogo from "@/assets/umplogo2.png";
 import blackClock from "@/assets/black-clock.png";
 
-const heroSlides = [
+const defaultHeroSlides = [
   { image: heroImage1, alt: "Mzilikazi North Parish church exterior" },
   { image: heroImage2, alt: "Beautiful church interior with stained glass" },
   { image: heroImage3, alt: "Congregation worshipping together" },
@@ -36,8 +36,21 @@ const Index = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [announcements, setAnnouncements] = useState<any[]>([]);
+  const [heroSlides, setHeroSlides] = useState(defaultHeroSlides);
 
   useEffect(() => {
+    // Fetch carousel images from DB
+    supabase
+      .from("carousel_images")
+      .select("*")
+      .eq("is_active", true)
+      .order("sort_order", { ascending: true })
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setHeroSlides(data.map((img: any) => ({ image: img.image_url, alt: img.alt_text })));
+        }
+      });
+
     supabase
       .from("announcements")
       .select("*")

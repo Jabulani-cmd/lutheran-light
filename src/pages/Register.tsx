@@ -30,6 +30,24 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      // Check for duplicates
+      let query = supabase.from("members").select("id", { count: "exact" })
+        .ilike("first_name", firstName.trim())
+        .ilike("last_name", lastName.trim());
+      
+      if (phone.trim()) {
+        query = query.eq("phone", phone.trim());
+      } else if (email.trim()) {
+        query = query.eq("email", email.trim());
+      }
+
+      const { count } = await query;
+      if (count && count > 0) {
+        toast({ title: "Already Registered", description: "A member with these details already exists.", variant: "destructive" });
+        setLoading(false);
+        return;
+      }
+
       const { error } = await supabase.from("members").insert({
         first_name: firstName.trim(),
         last_name: lastName.trim(),
@@ -43,7 +61,14 @@ const Register = () => {
         baptized,
         is_active: true,
       });
-      if (error) throw error;
+      if (error) {
+        if (error.message.includes("duplicate") || error.code === "23505") {
+          toast({ title: "Already Registered", description: "A member with these details already exists.", variant: "destructive" });
+        } else {
+          throw error;
+        }
+        return;
+      }
       setSubmitted(true);
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });

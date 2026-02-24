@@ -115,7 +115,13 @@ const AdminMembers = () => {
         toast({ title: "Member updated" });
       } else {
         const { error } = await supabase.from("members").insert(payload);
-        if (error) throw error;
+        if (error) {
+          if (error.message.includes("duplicate") || error.code === "23505") {
+            toast({ title: "Duplicate Member", description: "A member with these details already exists.", variant: "destructive" });
+            return;
+          }
+          throw error;
+        }
         toast({ title: "Member registered" });
       }
       setOpen(false); reset(); fetchMembers();
