@@ -146,6 +146,7 @@ export type Database = {
       members: {
         Row: {
           address: string | null
+          confirmed_in_church: boolean
           created_at: string
           date_of_birth: string | null
           email: string | null
@@ -161,6 +162,7 @@ export type Database = {
         }
         Insert: {
           address?: string | null
+          confirmed_in_church?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null
@@ -176,6 +178,7 @@ export type Database = {
         }
         Update: {
           address?: string | null
+          confirmed_in_church?: boolean
           created_at?: string
           date_of_birth?: string | null
           email?: string | null

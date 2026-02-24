@@ -34,7 +34,7 @@ const Footer = () => {
                 { to: "/events", label: t.nav_events },
                 { to: "/ministries", label: t.nav_ministries },
                 { to: "/livestream", label: t.nav_livestream },
-                { to: "/appointments", label: t.nav_appointments },
+                
               ].map((link) => (
                 <li key={link.to}><Link to={link.to} className="text-primary-foreground/70 hover:text-accent transition-colors">{link.label}</Link></li>
               ))}
