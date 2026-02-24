@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal } from "lucide-react";
+import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle } from "lucide-react";
 import logo from "@/assets/umplogo2.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
@@ -13,6 +13,7 @@ import AdminPrayerRequests from "@/components/admin/AdminPrayerRequests";
 import AdminMembers from "@/components/admin/AdminMembers";
 import AdminDownloads from "@/components/admin/AdminDownloads";
 import AdminCarousel from "@/components/admin/AdminCarousel";
+import AdminLeaderPhotos from "@/components/admin/AdminLeaderPhotos";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
@@ -47,8 +48,9 @@ const Admin = () => {
       {/* Dashboard */}
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="members">
-          <TabsList className="grid w-full grid-cols-7 mb-8">
+          <TabsList className="grid w-full grid-cols-8 mb-8">
             <TabsTrigger value="members" className="flex items-center gap-2"><Users className="h-4 w-4" /> Members</TabsTrigger>
+            <TabsTrigger value="leaders" className="flex items-center gap-2"><UserCircle className="h-4 w-4" /> Leaders</TabsTrigger>
             <TabsTrigger value="gallery" className="flex items-center gap-2"><Image className="h-4 w-4" /> Gallery</TabsTrigger>
             <TabsTrigger value="carousel" className="flex items-center gap-2"><SlidersHorizontal className="h-4 w-4" /> Carousel</TabsTrigger>
             <TabsTrigger value="announcements" className="flex items-center gap-2"><Megaphone className="h-4 w-4" /> Announcements</TabsTrigger>
@@ -58,6 +60,7 @@ const Admin = () => {
           </TabsList>
 
           <TabsContent value="members"><AdminMembers /></TabsContent>
+          <TabsContent value="leaders"><AdminLeaderPhotos /></TabsContent>
           <TabsContent value="gallery"><AdminGallery /></TabsContent>
           <TabsContent value="carousel"><AdminCarousel /></TabsContent>
           <TabsContent value="announcements"><AdminAnnouncements /></TabsContent>
