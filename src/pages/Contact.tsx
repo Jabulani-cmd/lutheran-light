@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Facebook, Youtube, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -41,16 +41,17 @@ const Contact = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <div><p className="font-medium text-foreground">{t.contact_phone}</p><p className="text-muted-foreground text-sm">+263 29 123 4567</p></div>
+                  <div><p className="font-medium text-foreground">{t.contact_phone}</p><p className="text-muted-foreground text-sm">+263 71 206 4556 / +263 77 500 7746</p></div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <div><p className="font-medium text-foreground">{t.contact_email_label}</p><p className="text-muted-foreground text-sm">info@mzilikazielcz.org</p></div>
+                  <div><p className="font-medium text-foreground">{t.contact_email_label}</p><p className="text-muted-foreground text-sm">info@mzilikazi-elcz.org</p></div>
                 </div>
               </div>
               <div className="flex gap-3 mb-8">
-                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Facebook className="h-5 w-5" /> Facebook</a>
-                <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Youtube className="h-5 w-5" /> YouTube</a>
+                <a href="https://www.facebook.com/profile.php?id=100064839849337" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Facebook className="h-5 w-5" /> Facebook</a>
+                <a href="https://www.instagram.com/elczbyonorthparish_" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Instagram className="h-5 w-5" /> Instagram</a>
+                <a href="https://www.instagram.com/mzilikazi_congregation" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"><Instagram className="h-5 w-5" /> Instagram</a>
               </div>
               <div className="rounded-lg overflow-hidden border border-border shadow-soft">
                 <iframe title="Mzilikazi North Parish Location"
