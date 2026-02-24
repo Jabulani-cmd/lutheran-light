@@ -164,7 +164,7 @@ const Index = () => {
       {/* Announcements */}
       <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our congregation" />
+          <SectionHeading title={t.home_announcements_title} subtitle={t.home_announcements_subtitle} />
           <div className="max-w-3xl mx-auto space-y-4">
             {announcements.length > 0 ? (
               announcements.map((a) => (
@@ -184,7 +184,7 @@ const Index = () => {
                 </Card>
               ))
             ) : (
-              <p className="text-center text-muted-foreground italic">No announcements at this time.</p>
+              <p className="text-center text-muted-foreground italic">{t.home_no_announcements}</p>
             )}
           </div>
         </div>

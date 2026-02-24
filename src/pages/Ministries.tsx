@@ -86,7 +86,7 @@ const Ministries = () => {
                     {/* View Photos Button */}
                     <div className="mt-4 pt-4 border-t border-border">
                       <Button variant="outline" size="sm" className="w-full" onClick={() => setViewingPhotos(l.key)}>
-                        <ImageIcon className="h-4 w-4 mr-2" /> View Photos ({photos.length})
+                        <ImageIcon className="h-4 w-4 mr-2" /> {t.ministries_view_photos} ({photos.length})
                       </Button>
                     </div>
                   </CardContent>
@@ -117,7 +117,7 @@ const Ministries = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-center text-muted-foreground py-8 italic">No photos uploaded yet for this ministry.</p>
+              <p className="text-center text-muted-foreground py-8 italic">{t.ministries_no_photos}</p>
             );
           })()}
         </DialogContent>

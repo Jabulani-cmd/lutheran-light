@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Calendar } from "lucide-react";
 import { format } from "date-fns";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface PrayerLocation {
   id: string;
@@ -15,6 +16,7 @@ interface PrayerLocation {
 }
 
 const HomePrayers = () => {
+  const { t } = useTranslation();
   const [locations, setLocations] = useState<PrayerLocation[]>([]);
 
   useEffect(() => {
@@ -32,18 +34,18 @@ const HomePrayers = () => {
     <Layout>
       <section className="bg-primary text-primary-foreground py-12 sm:py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3">Thursday Home Prayers</h1>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3">{t.home_prayers_title}</h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
-            Join us every Thursday for prayer meetings at members' homes
+            {t.home_prayers_subtitle}
           </p>
         </div>
       </section>
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">
-          <SectionHeading title="Upcoming Prayer Locations" />
+          <SectionHeading title={t.home_prayers_upcoming} />
           {upcoming.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">No upcoming prayer locations announced yet. Check back soon!</p>
+            <p className="text-muted-foreground text-center py-8">{t.home_prayers_none}</p>
           ) : (
             <div className="space-y-4">
               {upcoming.map((loc) => (
@@ -79,7 +81,7 @@ const HomePrayers = () => {
 
           {past.length > 0 && (
             <div className="mt-12">
-              <SectionHeading title="Past Locations" />
+              <SectionHeading title={t.home_prayers_past} />
               <div className="space-y-3 opacity-60">
                 {past.slice(-5).reverse().map((loc) => (
                   <Card key={loc.id} className="border-border">

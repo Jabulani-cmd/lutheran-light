@@ -111,7 +111,7 @@ const Livestream = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <SectionHeading title={t.livestream_past_title} subtitle={t.livestream_past_subtitle} />
           {videos.length === 0 ? (
-            <p className="text-center text-muted-foreground">No past services available yet.</p>
+            <p className="text-center text-muted-foreground">{t.livestream_no_past}</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {videos.map((s) => (
