@@ -99,6 +99,7 @@ type TranslationKeys = {
   gallery_fellowship: string;
   gallery_outreach: string;
   gallery_league: string;
+  gallery_choir: string;
 
   // Livestream
   livestream_title: string;
@@ -360,6 +361,7 @@ const translations: Record<Language, TranslationKeys> = {
     gallery_fellowship: "Fellowship",
     gallery_outreach: "Outreach",
     gallery_league: "League Activities",
+    gallery_choir: "Choir",
     livestream_title: "Livestream & Past Services",
     livestream_subtitle: "Join us live or catch up on services you may have missed.",
     livestream_watch_live: "Watch Live",
@@ -592,6 +594,7 @@ const translations: Record<Language, TranslationKeys> = {
     gallery_fellowship: "Ushamwari",
     gallery_outreach: "Kubatsira",
     gallery_league: "Mabasa eKomiti",
+    gallery_choir: "Kwaya",
     livestream_title: "Kuona Pachena neMisa Yakapfuura",
     livestream_subtitle: "Batanai nesu pachena kana kutarisa misa yamunenge matadza.",
     livestream_watch_live: "Tarisa Pachena",
@@ -824,6 +827,7 @@ const translations: Record<Language, TranslationKeys> = {
     gallery_fellowship: "Ubungane",
     gallery_outreach: "Ukunceda",
     gallery_league: "Imisebenzi yamaqembu",
+    gallery_choir: "Ikwaya",
     livestream_title: "Bukela Buphila leNkonzo Ezedlulayo",
     livestream_subtitle: "Hlanganyela lathi buphila kumbe ubukele inkonzo owaziphuthelayo.",
     livestream_watch_live: "Bukela Buphila",
@@ -1056,6 +1060,7 @@ const translations: Record<Language, TranslationKeys> = {
     gallery_fellowship: "Bongata",
     gallery_outreach: "Ho Thusa",
     gallery_league: "Mesebetsi ya Dihlopha",
+    gallery_choir: "Mokhotlo wa Lipina",
     livestream_title: "Sheba ka Nako le Ditshebeletso Tse Fetileng",
     livestream_subtitle: "Kopana le rona ka nako kapa o shebe ditshebeletso tseo o di siyileng.",
     livestream_watch_live: "Sheba ka Nako",
@@ -1288,6 +1293,7 @@ const translations: Record<Language, TranslationKeys> = {
     gallery_fellowship: "Vhushaka",
     gallery_outreach: "U Thusa",
     gallery_league: "Mishumo ya Zwigwada",
+    gallery_choir: "Kwaya",
     livestream_title: "Vhona Nga Nako na Mishumo yo Fhiraho",
     livestream_subtitle: "Ṱanganelani na riṋe nga nako kana ni vhone mishumo ye na i xedza.",
     livestream_watch_live: "Vhonani Nga Nako",
