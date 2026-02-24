@@ -32,7 +32,6 @@ const Footer = () => {
               {[
                 { to: "/about", label: t.nav_about },
                 { to: "/events", label: t.nav_events },
-                { to: "/ministries", label: t.nav_ministries },
                 { to: "/livestream", label: t.nav_livestream },
                 
               ].map((link) => (
