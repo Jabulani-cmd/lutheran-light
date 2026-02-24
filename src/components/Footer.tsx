@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[80px] w-[80px] sm:h-[120px] sm:w-[120px] object-contain shrink-0" />
+              <img src={logo} alt="Mzilikazi North Parish Logo" className="h-[120px] w-[120px] sm:h-[180px] sm:w-[180px] object-contain shrink-0" />
               <span className="font-display text-base sm:text-lg font-bold">Mzilikazi North Parish Bulawayo</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">{t.footer_description}</p>
