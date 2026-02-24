@@ -162,12 +162,12 @@ const Index = () => {
       </section>
 
       {/* Announcements */}
-      {announcements.length > 0 && (
-        <section className="py-10 sm:py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our parish" />
-            <div className="max-w-3xl mx-auto space-y-4">
-              {announcements.map((a) => (
+      <section className="py-10 sm:py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our parish" />
+          <div className="max-w-3xl mx-auto space-y-4">
+            {announcements.length > 0 ? (
+              announcements.map((a) => (
                 <Card key={a.id} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                   <CardContent className="p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
                     <div className="bg-accent/10 rounded-lg p-2.5 sm:p-3 shrink-0">
@@ -182,11 +182,13 @@ const Index = () => {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
+              ))
+            ) : (
+              <p className="text-center text-muted-foreground italic">No announcements at this time.</p>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Pastor Welcome */}
       <section className="py-10 sm:py-16 bg-background">
