@@ -20,6 +20,23 @@ const leaders = [
 
 const About = () => {
   const { t } = useTranslation();
+  const [leaderPhotos, setLeaderPhotos] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      const { data } = await supabase.storage.from("leader-photos").list();
+      if (data) {
+        const photoMap: Record<string, string> = {};
+        data.forEach((file) => {
+          const name = file.name.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
+          const { data: urlData } = supabase.storage.from("leader-photos").getPublicUrl(file.name);
+          photoMap[name.toLowerCase()] = urlData.publicUrl;
+        });
+        setLeaderPhotos(photoMap);
+      }
+    };
+    fetchPhotos();
+  }, []);
 
   const beliefs = [
     { icon: Cross, title: t.about_grace, desc: t.about_grace_desc },
@@ -68,18 +85,25 @@ const About = () => {
         <div className="container mx-auto px-4">
           <SectionHeading title={t.about_leadership_title} subtitle={t.about_leadership_subtitle} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {leaders.map((l) => (
-              <Card key={l.name} className="shadow-soft border-border">
-                <CardContent className="pt-6 text-center">
-                  <div className="w-20 h-20 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Users className="h-8 w-8 text-muted-foreground" />
-                  </div>
-                  <h3 className="font-display font-semibold text-foreground">{l.name}</h3>
-                  <p className="text-sm text-primary font-medium">{l.role}</p>
-                  <p className="text-sm text-muted-foreground mt-2">{l.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {leaders.map((l) => {
+              const photoUrl = leaderPhotos[l.name.toLowerCase()];
+              return (
+                <Card key={l.name} className="shadow-soft border-border">
+                  <CardContent className="pt-6 text-center">
+                    <Avatar className="w-20 h-20 mx-auto mb-4">
+                      {photoUrl ? (
+                        <AvatarImage src={photoUrl} alt={l.name} />
+                      ) : null}
+                      <AvatarFallback className="text-lg bg-muted text-muted-foreground">
+                        {l.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <h3 className="font-display font-semibold text-foreground">{l.name}</h3>
+                    <p className="text-sm text-primary font-medium">{l.role}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
