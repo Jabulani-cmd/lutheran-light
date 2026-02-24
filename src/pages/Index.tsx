@@ -25,7 +25,7 @@ const heroSlides = [
 ];
 
 const upcomingEvents = [
-  { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", category: "Worship" },
+  { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", category: "Worship", recurringIcon: "☀️" },
   { title: "Youth Fellowship Retreat", date: "March 15, 2026", time: "8:00 AM", category: "Fellowship" },
   { title: "Women's League Prayer Breakfast", date: "March 22, 2026", time: "7:00 AM", category: "Fellowship" },
   { title: "Community Outreach Day", date: "March 29, 2026", time: "10:00 AM", category: "Outreach" },
@@ -215,7 +215,7 @@ const Index = () => {
                           <span className="text-lg font-bold text-primary leading-none mt-0.5">{dayStr}</span>
                         </>
                       ) : (
-                        <Calendar className="h-5 w-5 text-primary" />
+                        <span className="text-2xl">{"recurringIcon" in e ? (e as any).recurringIcon : "📅"}</span>
                       )}
                     </div>
                     <div>

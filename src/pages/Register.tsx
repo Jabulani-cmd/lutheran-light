@@ -24,6 +24,7 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [league, setLeague] = useState("none");
   const [confirmedInChurch, setConfirmedInChurch] = useState(false);
+  const [baptized, setBaptized] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ const Register = () => {
         address: address.trim() || null,
         league,
         confirmed_in_church: confirmedInChurch,
+        baptized,
         is_active: true,
       });
       if (error) throw error;
@@ -153,6 +155,18 @@ const Register = () => {
                   />
                   <Label htmlFor="confirmedInChurch" className="cursor-pointer text-sm">
                     {t.register_confirmed_label}
+                  </Label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="baptized"
+                    checked={baptized}
+                    onChange={(e) => setBaptized(e.target.checked)}
+                    className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+                  />
+                  <Label htmlFor="baptized" className="cursor-pointer text-sm">
+                    {t.register_baptized_label}
                   </Label>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>

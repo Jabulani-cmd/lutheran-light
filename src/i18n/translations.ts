@@ -182,6 +182,7 @@ type TranslationKeys = {
   register_league: string;
   register_submit: string;
   register_confirmed_label: string;
+  register_baptized_label: string;
   register_success: string;
   register_success_desc: string;
   register_male: string;
@@ -363,6 +364,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_league: "League",
     register_submit: "Register",
     register_confirmed_label: "I have been confirmed in the church",
+    register_baptized_label: "I have been baptized",
     register_success: "Registration Successful!",
     register_success_desc: "Thank you for registering. We look forward to welcoming you.",
     register_male: "Male",
@@ -541,6 +543,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_league: "Rigi",
     register_submit: "Nyoresa",
     register_confirmed_label: "Ndakasimbiswa muchechi",
+    register_baptized_label: "Ndakabhabhatidzwa",
     register_success: "Kunyoresa Kwabudirira!",
     register_success_desc: "Mazvita nekuzvinyoresa. Tinokutarisai.",
     register_male: "Murume",
@@ -719,6 +722,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_league: "Iligi",
     register_submit: "Bhalisa",
     register_confirmed_label: "Ngicindezelwe ebandleni",
+    register_baptized_label: "Ngibhapathiziwe",
     register_success: "Ukubhaliswa Kuphumelele!",
     register_success_desc: "Siyabonga ngokubhaliswa kwakho. Sikulindele.",
     register_male: "Owesilisa",
@@ -897,6 +901,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_league: "Liki",
     register_submit: "Ngodisa",
     register_confirmed_label: "Ke tiisitsoe kerekeng",
+    register_baptized_label: "Ke kolobeditsoe",
     register_success: "Ho Ngodisa Ho Atlehile!",
     register_success_desc: "Re leboha ho ngodisa ha hao. Re o lebeletse.",
     register_male: "Monna",
@@ -1075,6 +1080,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_league: "Ligi",
     register_submit: "Ṅwalisa",
     register_confirmed_label: "Ndo khwaṱhisedzwa tshitshini",
+    register_baptized_label: "Ndo lovhedzwa",
     register_success: "U Ṅwalisa Ho Bvelela!",
     register_success_desc: "Ri livhuwa u ḓi ṅwalisa haṋu. Ri khou ni lindela.",
     register_male: "Munna",
