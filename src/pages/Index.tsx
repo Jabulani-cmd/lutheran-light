@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Calendar, BookOpen } from "lucide-react";
+import { MapPin, Calendar, BookOpen, Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
@@ -9,6 +9,7 @@ import { Calendar as CalendarWidget } from "@/components/ui/calendar";
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage1 from "@/assets/hero-church.jpg";
 import heroImage2 from "@/assets/hero-church-2.jpg";
 import heroImage3 from "@/assets/hero-church-3.jpg";
@@ -34,6 +35,17 @@ const Index = () => {
   const { t } = useTranslation();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [announcements, setAnnouncements] = useState<any[]>([]);
+
+  useEffect(() => {
+    supabase
+      .from("announcements")
+      .select("*")
+      .eq("published", true)
+      .order("created_at", { ascending: false })
+      .limit(5)
+      .then(({ data }) => { if (data) setAnnouncements(data); });
+  }, []);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -135,6 +147,33 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Announcements */}
+      {announcements.length > 0 && (
+        <section className="py-10 sm:py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <SectionHeading title="Announcements" subtitle="Stay informed with the latest news from our parish" />
+            <div className="max-w-3xl mx-auto space-y-4">
+              {announcements.map((a) => (
+                <Card key={a.id} className="shadow-soft border-border hover:shadow-medium transition-shadow">
+                  <CardContent className="p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
+                    <div className="bg-accent/10 rounded-lg p-2.5 sm:p-3 shrink-0">
+                      <Megaphone className="h-5 w-5 text-accent" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-display font-semibold text-foreground text-sm sm:text-base">{a.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-3">{a.content}</p>
+                      <span className="text-xs text-muted-foreground/70 mt-2 block">
+                        {new Date(a.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Pastor Welcome */}
       <section className="py-10 sm:py-16 bg-background">
