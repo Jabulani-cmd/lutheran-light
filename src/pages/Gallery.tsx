@@ -1,29 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useTranslation } from "@/hooks/useTranslation";
+import { supabase } from "@/integrations/supabase/client";
 
-const galleryItems = [
-  { id: 1, category: "worship", title: "Sunday Worship", color: "from-navy to-navy-light" },
-  { id: 2, category: "worship", title: "Christmas Service", color: "from-gold-dark to-gold" },
-  { id: 3, category: "fellowship", title: "Church Picnic", color: "from-green-700 to-green-500" },
-  { id: 4, category: "fellowship", title: "New Year Celebration", color: "from-navy to-gold-dark" },
-  { id: 5, category: "outreach", title: "Community Feeding", color: "from-amber-700 to-amber-500" },
-  { id: 6, category: "outreach", title: "Hospital Visits", color: "from-blue-700 to-blue-500" },
-  { id: 7, category: "league", title: "Youth Camp", color: "from-emerald-700 to-emerald-500" },
-  { id: 8, category: "league", title: "Women's Day", color: "from-rose-700 to-rose-500" },
-  { id: 9, category: "worship", title: "Good Friday Service", color: "from-navy-dark to-navy" },
-  { id: 10, category: "league", title: "Men's Sports Day", color: "from-sky-700 to-sky-500" },
-  { id: 11, category: "fellowship", title: "Easter Breakfast", color: "from-gold to-amber-400" },
-  { id: 12, category: "outreach", title: "School Donations", color: "from-teal-700 to-teal-500" },
-];
+interface Photo {
+  id: string;
+  title: string;
+  caption: string | null;
+  image_url: string;
+  category: string;
+  created_at: string;
+}
 
 const Gallery = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState("all");
-  const [selected, setSelected] = useState<typeof galleryItems[0] | null>(null);
-  const filtered = filter === "all" ? galleryItems : galleryItems.filter((i) => i.category === filter);
+  const [selected, setSelected] = useState<Photo | null>(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      const { data } = await supabase
+        .from("gallery_photos")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (data) setPhotos(data as Photo[]);
+    };
+    fetchPhotos();
+  }, []);
+
+  const filtered = filter === "all" ? photos : photos.filter((p) => p.category === filter);
 
   const albums = [
     { name: t.gallery_worship, category: "worship" },
@@ -52,24 +60,34 @@ const Gallery = () => {
                 className={filter === a.category ? "bg-primary text-primary-foreground hover:bg-purple-dark" : ""}>{a.name}</Button>
             ))}
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            {filtered.map((item) => (
-              <button key={item.id} onClick={() => setSelected(item)}
-                className={`aspect-square rounded-lg bg-gradient-to-br ${item.color} flex items-end p-3 cursor-pointer hover:scale-[1.02] transition-transform`}>
-                <span className="text-sm font-medium text-white/90 bg-black/30 px-2 py-1 rounded">{item.title}</span>
-              </button>
-            ))}
-          </div>
+
+          {filtered.length === 0 ? (
+            <p className="text-muted-foreground text-center py-12">No photos in this category yet.</p>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+              {filtered.map((item) => (
+                <button key={item.id} onClick={() => setSelected(item)}
+                  className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform relative group">
+                  <img src={item.image_url} alt={item.title} className="w-full h-full object-cover" />
+                  <span className="absolute bottom-0 left-0 right-0 text-sm font-medium text-white bg-black/50 px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.title}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
         <DialogContent className="max-w-2xl p-0 overflow-hidden">
           {selected && (
-            <div className={`aspect-video bg-gradient-to-br ${selected.color} flex items-center justify-center`}>
-              <div className="text-center text-white">
-                <h3 className="font-display text-2xl font-bold">{selected.title}</h3>
-                <p className="text-white/70 mt-2 capitalize">{selected.category}</p>
+            <div>
+              <img src={selected.image_url} alt={selected.title} className="w-full max-h-[70vh] object-contain bg-black" />
+              <div className="p-4">
+                <h3 className="font-display text-xl font-bold">{selected.title}</h3>
+                {selected.caption && <p className="text-muted-foreground mt-1">{selected.caption}</p>}
+                <p className="text-xs text-muted-foreground capitalize mt-2">{selected.category}</p>
               </div>
             </div>
           )}
