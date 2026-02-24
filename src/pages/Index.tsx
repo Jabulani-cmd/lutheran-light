@@ -244,7 +244,7 @@ const Index = () => {
               <Link key={l.to} to={l.to} className="group">
                 <Card className="text-center shadow-soft hover:shadow-purple transition-all border-border group-hover:border-primary/30 h-full">
                   <CardContent className="pt-6">
-                    <img src={roseLogo} alt="" className="h-10 w-10 mx-auto mb-3 object-contain group-hover:scale-110 transition-transform" />
+                    <img src={roseLogo} alt="" className="h-20 w-20 mx-auto mb-3 object-contain group-hover:scale-110 transition-transform" />
                     <h3 className="font-display font-semibold text-foreground text-sm">{l.label}</h3>
                     <p className="text-xs text-muted-foreground mt-1">{l.desc}</p>
                   </CardContent>
