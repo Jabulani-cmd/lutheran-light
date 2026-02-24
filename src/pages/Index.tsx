@@ -25,7 +25,7 @@ const heroSlides = [
 ];
 
 const upcomingEvents = [
-  { title: "Sunday Worship Service", date: "Every Sunday", time: "9:00 AM", category: "Worship", recurringIcon: "☀️" },
+  { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" },
   { title: "Youth Fellowship Retreat", date: "March 15, 2026", time: "8:00 AM", category: "Fellowship" },
   { title: "Women's League Prayer Breakfast", date: "March 22, 2026", time: "7:00 AM", category: "Fellowship" },
   { title: "Community Outreach Day", date: "March 29, 2026", time: "10:00 AM", category: "Outreach" },
