@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import { Trash2, Upload } from "lucide-react";
 
-const ministries = ["youth", "men", "women", "sunday_school"];
+const ministries = ["youth", "men", "women", "sunday_school", "choir"];
 
 const AdminMinistryPhotos = () => {
   const [photos, setPhotos] = useState<any[]>([]);
@@ -59,6 +59,7 @@ const AdminMinistryPhotos = () => {
                   <SelectItem value="men">Men's League</SelectItem>
                   <SelectItem value="women">Women's League</SelectItem>
                   <SelectItem value="sunday_school">Sunday School</SelectItem>
+                  <SelectItem value="choir">Choir</SelectItem>
                 </SelectContent>
               </Select>
             </div>
