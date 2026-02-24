@@ -173,6 +173,42 @@ export type Database = {
         }
         Relationships: []
       }
+      livestream_videos: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_date: string
+          id: string
+          is_live: boolean
+          title: string
+          updated_at: string
+          video_type: string
+          video_url: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_date: string
+          id?: string
+          is_live?: boolean
+          title: string
+          updated_at?: string
+          video_type?: string
+          video_url: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          id?: string
+          is_live?: boolean
+          title?: string
+          updated_at?: string
+          video_type?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
       members: {
         Row: {
           address: string | null
