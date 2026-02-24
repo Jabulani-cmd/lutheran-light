@@ -54,6 +54,15 @@ const AdminPrayerRequests = () => {
       } else {
         const { error } = await supabase.from("prayer_requests").insert(payload);
         if (error) throw error;
+        // Auto-create a published announcement for public prayer requests
+        if (isPublic) {
+          const announcementTitle = `Prayer Request${requestedBy ? ` from ${requestedBy}` : ""}`;
+          await supabase.from("announcements").insert({
+            title: announcementTitle,
+            content: request,
+            published: true,
+          });
+        }
         toast({ title: "Prayer request added" });
       }
       setOpen(false); reset(); fetchItems();
