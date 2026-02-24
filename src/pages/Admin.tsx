@@ -36,7 +36,7 @@ const Admin = () => {
       <header className="bg-card border-b border-border shadow-soft sticky top-0 z-50">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Logo" className="h-8 w-8" />
+            <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
             <span className="font-display text-lg font-bold text-primary">Admin Portal</span>
           </div>
           <Button variant="ghost" size="sm" onClick={handleLogout}>
