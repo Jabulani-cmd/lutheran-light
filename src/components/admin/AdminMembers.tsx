@@ -36,6 +36,8 @@ interface Member {
   address: string | null;
   notes: string | null;
   is_active: boolean;
+  baptized: boolean;
+  confirmed_in_church: boolean;
   created_at: string;
 }
 
@@ -58,6 +60,8 @@ const AdminMembers = () => {
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
   const [isActive, setIsActive] = useState(true);
+  const [baptized, setBaptized] = useState(false);
+  const [confirmedInChurch, setConfirmedInChurch] = useState(false);
 
   const fetchMembers = async () => {
     const { data } = await supabase
@@ -72,7 +76,7 @@ const AdminMembers = () => {
   const reset = () => {
     setFirstName(""); setLastName(""); setEmail(""); setPhone("");
     setLeague("none"); setGender(""); setDob(""); setAddress("");
-    setNotes(""); setIsActive(true); setEditing(null);
+    setNotes(""); setIsActive(true); setBaptized(false); setConfirmedInChurch(false); setEditing(null);
   };
 
   const openEdit = (m: Member) => {
@@ -82,6 +86,7 @@ const AdminMembers = () => {
     setLeague(m.league); setGender(m.gender || "");
     setDob(m.date_of_birth || ""); setAddress(m.address || "");
     setNotes(m.notes || ""); setIsActive(m.is_active);
+    setBaptized(m.baptized); setConfirmedInChurch(m.confirmed_in_church);
     setOpen(true);
   };
 
@@ -100,6 +105,8 @@ const AdminMembers = () => {
         address: address.trim() || null,
         notes: notes.trim() || null,
         is_active: isActive,
+        baptized,
+        confirmed_in_church: confirmedInChurch,
       };
 
       if (editing) {
@@ -189,6 +196,14 @@ const AdminMembers = () => {
               </div>
               <div><Label>Address</Label><Input value={address} onChange={(e) => setAddress(e.target.value)} maxLength={255} /></div>
               <div><Label>Notes</Label><Textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={2} maxLength={500} /></div>
+              <div className="flex items-center gap-3 pt-1">
+                <input type="checkbox" id="admin-baptized" checked={baptized} onChange={(e) => setBaptized(e.target.checked)} className="h-4 w-4 rounded border-border text-primary focus:ring-primary" />
+                <Label htmlFor="admin-baptized" className="cursor-pointer text-sm">Baptized</Label>
+              </div>
+              <div className="flex items-center gap-3">
+                <input type="checkbox" id="admin-confirmed" checked={confirmedInChurch} onChange={(e) => setConfirmedInChurch(e.target.checked)} className="h-4 w-4 rounded border-border text-primary focus:ring-primary" />
+                <Label htmlFor="admin-confirmed" className="cursor-pointer text-sm">Confirmed in Church</Label>
+              </div>
               <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? "Saving..." : editing ? "Update Member" : "Register Member"}
               </Button>
@@ -250,9 +265,11 @@ const AdminMembers = () => {
                       {m.phone && <span>{m.phone}</span>}
                       {m.email && <span>{m.email}</span>}
                     </div>
-                    <div className="flex gap-2 mt-1">
-                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{leagueLabel(m.league)}</span>
-                      {!m.is_active && <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">Inactive</span>}
+                    <div className="flex flex-wrap gap-2 mt-1">
+                       <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{leagueLabel(m.league)}</span>
+                       {m.baptized && <span className="text-xs bg-accent/50 text-accent-foreground px-2 py-0.5 rounded-full">Baptized</span>}
+                       {m.confirmed_in_church && <span className="text-xs bg-accent/50 text-accent-foreground px-2 py-0.5 rounded-full">Confirmed</span>}
+                       {!m.is_active && <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">Inactive</span>}
                     </div>
                   </div>
                 </div>
