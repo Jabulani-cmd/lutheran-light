@@ -37,7 +37,7 @@ const Contact = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <div><p className="font-medium text-foreground">{t.contact_address}</p><p className="text-muted-foreground text-sm">123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</p></div>
+                  <div><p className="font-medium text-foreground">{t.contact_address}</p><p className="text-muted-foreground text-sm">Stand 44038, Mzilikazi, Bulawayo, Zimbabwe</p></div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-primary mt-0.5 shrink-0" />

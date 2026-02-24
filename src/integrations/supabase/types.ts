@@ -173,6 +173,66 @@ export type Database = {
         }
         Relationships: []
       }
+      gallery_videos: {
+        Row: {
+          caption: string | null
+          category: string
+          created_at: string
+          id: string
+          title: string
+          updated_at: string
+          video_url: string
+        }
+        Insert: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          title: string
+          updated_at?: string
+          video_url: string
+        }
+        Update: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
+      home_prayer_locations: {
+        Row: {
+          address: string
+          created_at: string
+          host_name: string
+          id: string
+          notes: string | null
+          prayer_date: string
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          host_name: string
+          id?: string
+          notes?: string | null
+          prayer_date: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          host_name?: string
+          id?: string
+          notes?: string | null
+          prayer_date?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       livestream_videos: {
         Row: {
           created_at: string
@@ -289,6 +349,36 @@ export type Database = {
           request?: string
           requested_by?: string | null
           resolved?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      preaching_schedule: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          preacher_name: string
+          service_date: string
+          service_type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          preacher_name: string
+          service_date: string
+          service_type?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          preacher_name?: string
+          service_date?: string
+          service_type?: string
           updated_at?: string
         }
         Relationships: []
