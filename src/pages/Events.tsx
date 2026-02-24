@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, MapPin, Calendar } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-import purpleCalendar from "@/assets/purple-clock.png";
+
 
 const events = [
   { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" },
@@ -47,9 +47,24 @@ const Events = () => {
               <Card key={i} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="rounded-lg p-2 shrink-0 self-start">
-                      <img src={purpleCalendar} alt="Calendar" className="h-10 w-10 object-contain" />
-                    </div>
+                    {(() => {
+                      const parsedDate = new Date(e.date);
+                      const hasDate = !isNaN(parsedDate.getTime());
+                      const monthStr = hasDate ? parsedDate.toLocaleString("en", { month: "short" }).toUpperCase() : "";
+                      const dayStr = hasDate ? parsedDate.getDate().toString() : "";
+                      return (
+                        <div className="bg-primary/10 rounded-xl w-14 h-14 shrink-0 flex flex-col items-center justify-center overflow-hidden">
+                          {hasDate ? (
+                            <>
+                              <span className="text-[10px] font-bold text-primary-foreground bg-primary w-full text-center py-0.5">{monthStr}</span>
+                              <span className="text-lg font-bold text-primary leading-none mt-0.5">{dayStr}</span>
+                            </>
+                          ) : (
+                            <span className="text-2xl">☀️</span>
+                          )}
+                        </div>
+                      );
+                    })()}
                     <div className="flex-1">
                       <h3 className="font-display text-xl font-semibold text-foreground">{e.title}</h3>
                       <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
