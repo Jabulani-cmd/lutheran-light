@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Clock, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Clock, User, ImageIcon } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import roseLogo from "@/assets/umplogo2.png";
@@ -9,6 +11,7 @@ import roseLogo from "@/assets/umplogo2.png";
 const Ministries = () => {
   const { t } = useTranslation();
   const [ministryPhotos, setMinistryPhotos] = useState<Record<string, any[]>>({});
+  const [viewingPhotos, setViewingPhotos] = useState<string | null>(null);
 
   useEffect(() => {
     supabase.from("ministry_photos").select("*").order("created_at", { ascending: false }).then(({ data }) => {
@@ -80,17 +83,12 @@ const Ministries = () => {
                         {l.events.map((ev) => (<li key={ev} className="text-sm text-muted-foreground">• {ev}</li>))}
                       </ul>
                     </div>
-                    {/* Ministry Photos */}
-                    {photos.length > 0 && (
-                      <div className="mt-4 pt-4 border-t border-border">
-                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Photos</p>
-                        <div className="grid grid-cols-3 gap-2">
-                          {photos.slice(0, 6).map((p) => (
-                            <img key={p.id} src={p.image_url} alt="" className="w-full h-20 object-cover rounded" />
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    {/* View Photos Button */}
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <Button variant="outline" size="sm" className="w-full" onClick={() => setViewingPhotos(l.key)}>
+                        <ImageIcon className="h-4 w-4 mr-2" /> View Photos ({photos.length})
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               );
@@ -98,6 +96,32 @@ const Ministries = () => {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery Dialog */}
+      <Dialog open={!!viewingPhotos} onOpenChange={() => setViewingPhotos(null)}>
+        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-display">
+              {leagues.find(l => l.key === viewingPhotos)?.name} — Photos
+            </DialogTitle>
+          </DialogHeader>
+          {(() => {
+            const photos = viewingPhotos ? (ministryPhotos[viewingPhotos] || []) : [];
+            return photos.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {photos.map((p) => (
+                  <div key={p.id} className="rounded-lg overflow-hidden">
+                    <img src={p.image_url} alt={p.caption || ""} className="w-full h-40 object-cover" />
+                    {p.caption && <p className="text-xs text-muted-foreground p-1">{p.caption}</p>}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground py-8 italic">No photos uploaded yet for this ministry.</p>
+            );
+          })()}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
