@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Facebook, Youtube, Instagram } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
-import logo from "@/assets/umplogo2.png";
+import logo from "@/assets/church-cross-logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
