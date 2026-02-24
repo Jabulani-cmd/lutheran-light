@@ -156,7 +156,7 @@ const Index = () => {
           </div>
           <div className="text-center mt-8 flex items-center justify-center gap-2 text-muted-foreground">
             <MapPin className="h-4 w-4 text-primary" />
-            <span>123 Faith Avenue, Mzilikazi, Bulawayo, Zimbabwe</span>
+            <span>Stand 44038, Mzilikazi, Bulawayo, Zimbabwe</span>
           </div>
         </div>
       </section>

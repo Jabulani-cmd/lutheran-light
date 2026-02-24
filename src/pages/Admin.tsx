@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video } from "lucide-react";
+import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home } from "lucide-react";
 import logo from "@/assets/umplogo2.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
@@ -15,6 +15,9 @@ import AdminDownloads from "@/components/admin/AdminDownloads";
 import AdminCarousel from "@/components/admin/AdminCarousel";
 import AdminLeaderPhotos from "@/components/admin/AdminLeaderPhotos";
 import AdminLivestream from "@/components/admin/AdminLivestream";
+import AdminPreachingSchedule from "@/components/admin/AdminPreachingSchedule";
+import AdminHomePrayers from "@/components/admin/AdminHomePrayers";
+import AdminGalleryVideos from "@/components/admin/AdminGalleryVideos";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
@@ -37,7 +40,7 @@ const Admin = () => {
       <header className="bg-card border-b border-border shadow-soft sticky top-0 z-50">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
+            <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
             <span className="font-display text-lg font-bold text-primary">Admin Portal</span>
           </div>
           <Button variant="ghost" size="sm" onClick={handleLogout}>
@@ -49,14 +52,17 @@ const Admin = () => {
       {/* Dashboard */}
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="members">
-          <TabsList className="grid w-full grid-cols-9 mb-8">
+          <TabsList className="flex flex-wrap gap-1 h-auto mb-8">
             <TabsTrigger value="members" className="flex items-center gap-2"><Users className="h-4 w-4" /> Members</TabsTrigger>
             <TabsTrigger value="leaders" className="flex items-center gap-2"><UserCircle className="h-4 w-4" /> Leaders</TabsTrigger>
             <TabsTrigger value="gallery" className="flex items-center gap-2"><Image className="h-4 w-4" /> Gallery</TabsTrigger>
+            <TabsTrigger value="gallery-videos" className="flex items-center gap-2"><Video className="h-4 w-4" /> Videos</TabsTrigger>
             <TabsTrigger value="carousel" className="flex items-center gap-2"><SlidersHorizontal className="h-4 w-4" /> Carousel</TabsTrigger>
             <TabsTrigger value="announcements" className="flex items-center gap-2"><Megaphone className="h-4 w-4" /> Announcements</TabsTrigger>
             <TabsTrigger value="events" className="flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Events</TabsTrigger>
             <TabsTrigger value="prayers" className="flex items-center gap-2"><HandHeart className="h-4 w-4" /> Prayer Requests</TabsTrigger>
+            <TabsTrigger value="preaching" className="flex items-center gap-2"><BookOpen className="h-4 w-4" /> Preaching</TabsTrigger>
+            <TabsTrigger value="home-prayers" className="flex items-center gap-2"><Home className="h-4 w-4" /> Home Prayers</TabsTrigger>
             <TabsTrigger value="livestream" className="flex items-center gap-2"><Video className="h-4 w-4" /> Livestream</TabsTrigger>
             <TabsTrigger value="downloads" className="flex items-center gap-2"><Download className="h-4 w-4" /> Downloads</TabsTrigger>
           </TabsList>
@@ -64,10 +70,13 @@ const Admin = () => {
           <TabsContent value="members"><AdminMembers /></TabsContent>
           <TabsContent value="leaders"><AdminLeaderPhotos /></TabsContent>
           <TabsContent value="gallery"><AdminGallery /></TabsContent>
+          <TabsContent value="gallery-videos"><AdminGalleryVideos /></TabsContent>
           <TabsContent value="carousel"><AdminCarousel /></TabsContent>
           <TabsContent value="announcements"><AdminAnnouncements /></TabsContent>
           <TabsContent value="events"><AdminEvents /></TabsContent>
           <TabsContent value="prayers"><AdminPrayerRequests /></TabsContent>
+          <TabsContent value="preaching"><AdminPreachingSchedule /></TabsContent>
+          <TabsContent value="home-prayers"><AdminHomePrayers /></TabsContent>
           <TabsContent value="livestream"><AdminLivestream /></TabsContent>
           <TabsContent value="downloads"><AdminDownloads /></TabsContent>
         </Tabs>
