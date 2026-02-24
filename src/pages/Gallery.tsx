@@ -50,6 +50,7 @@ const Gallery = () => {
     { name: t.gallery_fellowship, category: "fellowship" },
     { name: t.gallery_outreach, category: "outreach" },
     { name: t.gallery_league, category: "league" },
+    { name: t.gallery_choir, category: "choir" },
   ];
 
   return (

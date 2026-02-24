@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 
-const categories = ["worship", "fellowship", "outreach", "league", "general"];
+const categories = ["worship", "fellowship", "outreach", "league", "choir", "general"];
 
 interface Photo {
   id: string;
