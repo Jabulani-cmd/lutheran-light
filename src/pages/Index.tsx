@@ -102,7 +102,7 @@ const Index = () => {
             <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-sm sm:text-base px-6 sm:px-8">
-                <Link to="/about">{t.home_learn_more}</Link>
+                <Link to="/register">{t.home_join_us}</Link>
               </Button>
               <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-sm sm:text-base px-6 sm:px-8">
                 <Link to="/livestream">{t.home_watch_live}</Link>
@@ -200,11 +200,23 @@ const Index = () => {
             </Card>
             {/* Event List */}
             <div className="flex flex-col gap-4">
-              {upcomingEvents.map((e) => (
+              {upcomingEvents.map((e) => {
+                const parsedDate = new Date(e.date);
+                const hasDate = !isNaN(parsedDate.getTime());
+                const monthStr = hasDate ? parsedDate.toLocaleString("en", { month: "short" }).toUpperCase() : "";
+                const dayStr = hasDate ? parsedDate.getDate().toString() : "";
+                return (
                 <Card key={e.title} className="shadow-soft hover:shadow-medium transition-shadow border-border">
                   <CardContent className="p-5 flex items-start gap-4">
-                    <div className="bg-primary/10 rounded-lg p-3 shrink-0">
-                      <Calendar className="h-5 w-5 text-primary" />
+                    <div className="bg-primary/10 rounded-xl w-14 h-14 shrink-0 flex flex-col items-center justify-center overflow-hidden">
+                      {hasDate ? (
+                        <>
+                          <span className="text-[10px] font-bold text-primary-foreground bg-primary w-full text-center py-0.5">{monthStr}</span>
+                          <span className="text-lg font-bold text-primary leading-none mt-0.5">{dayStr}</span>
+                        </>
+                      ) : (
+                        <Calendar className="h-5 w-5 text-primary" />
+                      )}
                     </div>
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
@@ -213,7 +225,8 @@ const Index = () => {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="text-center mt-8">

@@ -19,6 +19,7 @@ type TranslationKeys = {
   home_hero_title_suffix: string;
   home_hero_subtitle: string;
   home_learn_more: string;
+  home_join_us: string;
   home_watch_live: string;
   home_worship_title: string;
   home_worship_subtitle: string;
@@ -180,6 +181,7 @@ type TranslationKeys = {
   register_address: string;
   register_league: string;
   register_submit: string;
+  register_confirmed_label: string;
   register_success: string;
   register_success_desc: string;
   register_male: string;
@@ -216,6 +218,7 @@ const translations: Record<Language, TranslationKeys> = {
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are — grow with us in grace and love.",
     home_learn_more: "Learn More",
+    home_join_us: "Join Us",
     home_watch_live: "Watch Live",
     home_worship_title: "Join Us for Worship",
     home_worship_subtitle: "Experience the warmth of our community at any of our regular services.",
@@ -359,6 +362,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_address: "Address",
     register_league: "League",
     register_submit: "Register",
+    register_confirmed_label: "I have been confirmed in the church",
     register_success: "Registration Successful!",
     register_success_desc: "Thank you for registering. We look forward to welcoming you.",
     register_male: "Male",
@@ -392,6 +396,7 @@ const translations: Record<Language, TranslationKeys> = {
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Ungano inogamuchira yevanhu vanotenda. Uyai sezvamuiri — kukura nesu munyasha nerudo.",
     home_learn_more: "Dzidza Zvakawanda",
+    home_join_us: "Batanai Nesu",
     home_watch_live: "Tarisa Pachena",
     home_worship_title: "Batanai Nesu Kunamata",
     home_worship_subtitle: "Nzwai kudziya kweungano yedu pamisangano yedu nguva dzose.",
@@ -535,6 +540,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_address: "Kero",
     register_league: "Rigi",
     register_submit: "Nyoresa",
+    register_confirmed_label: "Ndakasimbiswa muchechi",
     register_success: "Kunyoresa Kwabudirira!",
     register_success_desc: "Mazvita nekuzvinyoresa. Tinokutarisai.",
     register_male: "Murume",
@@ -568,6 +574,7 @@ const translations: Record<Language, TranslationKeys> = {
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Ibandla elilemukela abantu bonke elilokholo. Woza unjengoba unjalo — sikhule ndawonye emuseni lothandweni.",
     home_learn_more: "Funda Okwengeziwayo",
+    home_join_us: "Hlanganyela Lathi",
     home_watch_live: "Bukela Buphila",
     home_worship_title: "Hlanganyela Lathi Ekukhonzeni",
     home_worship_subtitle: "Zwa ubufudumele bebandla lethu emihlanganweni yethu yesikhathi sonke.",
@@ -711,6 +718,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_address: "Ikheli",
     register_league: "Iligi",
     register_submit: "Bhalisa",
+    register_confirmed_label: "Ngicindezelwe ebandleni",
     register_success: "Ukubhaliswa Kuphumelele!",
     register_success_desc: "Siyabonga ngokubhaliswa kwakho. Sikulindele.",
     register_male: "Owesilisa",
@@ -744,6 +752,7 @@ const translations: Record<Language, TranslationKeys> = {
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Seboka se amohelang sa batho ba tumelo. Tla joalo ka ha o le teng — hola le rona mohauong le leratong.",
     home_learn_more: "Ithute Ho Feta",
+    home_join_us: "Kopana le Rona",
     home_watch_live: "Sheba ka Nako",
     home_worship_title: "Kopana le Rona ho Rapela",
     home_worship_subtitle: "Utlwa mofuthu wa seboka sa rona ditshebeletsoong tsa rona tsa kamehla.",
@@ -887,6 +896,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_address: "Aterese",
     register_league: "Liki",
     register_submit: "Ngodisa",
+    register_confirmed_label: "Ke tiisitsoe kerekeng",
     register_success: "Ho Ngodisa Ho Atlehile!",
     register_success_desc: "Re leboha ho ngodisa ha hao. Re o lebeletse.",
     register_male: "Monna",
@@ -920,6 +930,7 @@ const translations: Record<Language, TranslationKeys> = {
     home_hero_title_suffix: "North Parish Bulawayo",
     home_hero_subtitle: "Tshivhidzo tshi ṱanganedzaho tsha vhathu vha lutendo. Ḓani sa zwe na vha — aluwe roṱhe nga tshilidzi na lufuno.",
     home_learn_more: "Gudani Zwinzhi",
+    home_join_us: "Ṱanganelani Na Riṋe",
     home_watch_live: "Vhonani Nga Nako",
     home_worship_title: "Ṱanganelani Na Riṋe U Rabela",
     home_worship_subtitle: "Pfanani u fhisa ha tshivhidzo tshashu kha mishumo yashu ya tshifhinga tshoṱhe.",
@@ -1063,6 +1074,7 @@ const translations: Record<Language, TranslationKeys> = {
     register_address: "Ḓirese",
     register_league: "Ligi",
     register_submit: "Ṅwalisa",
+    register_confirmed_label: "Ndo khwaṱhisedzwa tshitshini",
     register_success: "U Ṅwalisa Ho Bvelela!",
     register_success_desc: "Ri livhuwa u ḓi ṅwalisa haṋu. Ri khou ni lindela.",
     register_male: "Munna",
