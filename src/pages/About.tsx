@@ -1,14 +1,21 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Cross, BookOpen, Heart, Users } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { supabase } from "@/integrations/supabase/client";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const leaders = [
-  { name: "Pastor N. Dlamini", role: "Senior Pastor", bio: "Pastor Dlamini has served the parish for over 15 years, guiding the congregation with wisdom and compassion." },
-  { name: "Elder J. Moyo", role: "Church Elder", bio: "A dedicated servant leader who oversees church administration and community outreach programs." },
-  { name: "Elder T. Ncube", role: "Church Elder", bio: "Elder Ncube leads the worship committee and coordinates midweek prayer services." },
-  { name: "Deacon S. Ndlovu", role: "Deacon", bio: "Deacon Ndlovu is passionate about youth ministry and mentoring the next generation of believers." },
+  { name: "Rev. M. Ndlovu", role: "Pastor in Charge" },
+  { name: "Mrs. P. Ngwenya", role: "Chairperson" },
+  { name: "Mr. P. Ndou", role: "Vice-Chairperson" },
+  { name: "Mrs. T. Dube", role: "Secretary" },
+  { name: "Mrs. T. Ncube", role: "Treasurer" },
+  { name: "Mr. L. Jamela", role: "Church Elder" },
+  { name: "Mrs. S. Jamela", role: "Church Elder" },
+  { name: "Miss M. Mangena", role: "Church Elder" },
 ];
 
 const About = () => {
