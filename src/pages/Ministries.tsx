@@ -64,8 +64,8 @@ const Ministries = () => {
                 <Card key={l.name} className="shadow-soft border-border hover:shadow-medium transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-primary/10 rounded-lg p-2">
-                        <img src={roseLogo} alt="" className="h-10 w-10 object-contain" />
+                    <div className="bg-primary/10 rounded-lg p-3">
+                        <img src={roseLogo} alt="" className="h-20 w-20 object-contain" />
                       </div>
                       <h3 className="font-display text-xl font-bold text-foreground">{l.name}</h3>
                     </div>
