@@ -25,6 +25,8 @@ type TranslationKeys = {
   home_worship_subtitle: string;
   home_sunday_worship: string;
   home_sunday_school: string;
+  home_intercession: string;
+  home_bible_study: string;
   home_midweek_service: string;
   home_youth_service: string;
   home_pastor_title: string;
@@ -225,6 +227,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_worship_subtitle: "Experience the warmth of our community at any of our regular services.",
     home_sunday_worship: "Sunday Worship",
     home_sunday_school: "Sunday School",
+    home_intercession: "Intercession",
+    home_bible_study: "Bible Study",
     home_midweek_service: "Midweek Service",
     home_youth_service: "Youth Service",
     home_pastor_title: "A Word from Our Pastor",
@@ -404,6 +408,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_worship_subtitle: "Nzwai kudziya kweungano yedu pamisangano yedu nguva dzose.",
     home_sunday_worship: "Kunamata kweSvondo",
     home_sunday_school: "Chikoro cheSvondo",
+    home_intercession: "Munamato weKubvunzira",
+    home_bible_study: "Kudzidza Bhaibheri",
     home_midweek_service: "Musangano wePakati peVhiki",
     home_youth_service: "Musangano weVechidiki",
     home_pastor_title: "Shoko Kubva KuMufundisi Wedu",
@@ -583,6 +589,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_worship_subtitle: "Zwa ubufudumele bebandla lethu emihlanganweni yethu yesikhathi sonke.",
     home_sunday_worship: "Ukukhonza kweSonto",
     home_sunday_school: "ISonto School",
+    home_intercession: "Umthandazo wokuNxusa",
+    home_bible_study: "Ukufunda iBhayibhili",
     home_midweek_service: "Umhlangano wePhakathi kweViki",
     home_youth_service: "Umhlangano weNtsha",
     home_pastor_title: "Ilizwi Elivela kuMfundisi Wethu",
@@ -762,6 +770,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_worship_subtitle: "Utlwa mofuthu wa seboka sa rona ditshebeletsoong tsa rona tsa kamehla.",
     home_sunday_worship: "Ho Rapela ha Sontaha",
     home_sunday_school: "Sekolo sa Sontaha",
+    home_intercession: "Thapelo ya Ho Rapella",
+    home_bible_study: "Thuto ya Bibele",
     home_midweek_service: "Tshebeletso ya Hara Beke",
     home_youth_service: "Tshebeletso ya Batjha",
     home_pastor_title: "Lentswe ho Tswa ho Moruti wa Rona",
@@ -941,6 +951,8 @@ const translations: Record<Language, TranslationKeys> = {
     home_worship_subtitle: "Pfanani u fhisa ha tshivhidzo tshashu kha mishumo yashu ya tshifhinga tshoṱhe.",
     home_sunday_worship: "U Rabela ha Swondaha",
     home_sunday_school: "Tshikolo tsha Swondaha",
+    home_intercession: "Thabelo ya U Humbela",
+    home_bible_study: "Ngudo ya Bivhili",
     home_midweek_service: "Mushumo wa Vhukati ha Vhege",
     home_youth_service: "Mushumo wa Vhaswa",
     home_pastor_title: "Ipfi Li Bvaho kha Mufunzi Washu",

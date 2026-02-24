@@ -128,10 +128,10 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { day: t.home_sunday_worship, time: "9:00 AM" },
-              { day: t.home_sunday_school, time: "10:30 AM" },
-              { day: t.home_midweek_service, time: "Wed 6:00 PM" },
-              { day: t.home_youth_service, time: "Fri 5:00 PM" },
+              { day: t.home_intercession, time: "8:00 AM" },
+              { day: t.home_bible_study, time: "9:00 AM" },
+              { day: t.home_sunday_worship, time: "10:00 AM" },
+              { day: t.home_sunday_school, time: "10:00 AM" },
             ].map((s) => (
               <Card key={s.day} className="text-center shadow-soft border-border hover:shadow-medium transition-shadow">
                 <CardContent className="pt-6">
