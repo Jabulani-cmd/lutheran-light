@@ -110,7 +110,7 @@ const Index = () => {
           <div className="text-center px-4 max-w-3xl animate-fade-in">
             <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain" />
             <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4 leading-tight">
-              {t.home_hero_title_prefix} <span className="text-gradient-purple">Mzilikazi</span> {t.home_hero_title_suffix}
+              {t.home_hero_title_prefix} <span className="text-gradient-purple">ELCZ - Mzilikazi</span> {t.home_hero_title_suffix}
             </h1>
             <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

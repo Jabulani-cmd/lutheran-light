@@ -54,7 +54,7 @@ const Admin = () => {
       {/* Dashboard */}
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="members">
-          <TabsList className="flex flex-wrap gap-1 h-auto mb-8">
+          <TabsList className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap gap-1 h-auto mb-8">
             <TabsTrigger value="members" className="flex items-center gap-2"><Users className="h-4 w-4" /> Members</TabsTrigger>
             <TabsTrigger value="leaders" className="flex items-center gap-2"><UserCircle className="h-4 w-4" /> Leaders</TabsTrigger>
             <TabsTrigger value="gallery" className="flex items-center gap-2"><Image className="h-4 w-4" /> Gallery</TabsTrigger>
