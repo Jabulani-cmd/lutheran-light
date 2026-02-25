@@ -36,7 +36,8 @@ const Index = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [announcements, setAnnouncements] = useState<any[]>([]);
-  const [heroSlides, setHeroSlides] = useState(defaultHeroSlides);
+  const [heroSlides, setHeroSlides] = useState<{image: string; alt: string}[]>([]);
+  const [slidesLoaded, setSlidesLoaded] = useState(false);
 
   useEffect(() => {
     // Fetch carousel images from DB
@@ -48,7 +49,10 @@ const Index = () => {
       .then(({ data }) => {
         if (data && data.length > 0) {
           setHeroSlides(data.map((img: any) => ({ image: img.image_url, alt: img.alt_text })));
+        } else {
+          setHeroSlides(defaultHeroSlides);
         }
+        setSlidesLoaded(true);
       });
 
     supabase
@@ -96,15 +100,17 @@ const Index = () => {
     <Layout>
       {/* Hero Carousel */}
       <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh] min-h-[450px] overflow-hidden">
-        <div className="absolute inset-0" ref={emblaRef}>
-          <div className="flex h-full">
-            {heroSlides.map((slide, index) => (
-              <div key={index} className="flex-[0_0_100%] min-w-0 relative h-full">
-                <img src={slide.image} alt={slide.alt} className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-            ))}
+        {slidesLoaded && heroSlides.length > 0 && (
+          <div className="absolute inset-0" ref={emblaRef}>
+            <div className="flex h-full">
+              {heroSlides.map((slide, index) => (
+                <div key={index} className="flex-[0_0_100%] min-w-0 relative h-full">
+                  <img src={slide.image} alt={slide.alt} className="absolute inset-0 w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className="absolute inset-0 bg-gradient-hero opacity-40 z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
