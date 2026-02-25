@@ -20,10 +20,10 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-4 text-accent">{t.footer_service_times}</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li>{t.home_sunday_worship}: 9:00 AM</li>
-              <li>{t.home_sunday_school}: 10:30 AM</li>
-              <li>{t.home_midweek_service}: Wed 6:00 PM</li>
-              <li>{t.home_youth_service}: Fri 5:00 PM</li>
+              <li>{t.home_intercession}: 8:00 AM</li>
+              <li>{t.home_bible_study}: 9:00 AM</li>
+              <li>{t.home_sunday_worship}: 10:00 AM</li>
+              <li>{t.home_sunday_school}: 10:00 AM</li>
             </ul>
           </div>
           <div>
