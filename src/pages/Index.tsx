@@ -116,7 +116,7 @@ const Index = () => {
           <div className="text-center px-4 max-w-3xl animate-fade-in">
             <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
             <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-extrabold text-white mb-3 sm:mb-4 leading-tight tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
-              {t.home_hero_title_prefix} <span className="italic font-black uppercase tracking-widest drop-shadow-[0_3px_10px_rgba(180,130,255,0.7)]" style={{ color: 'hsl(270, 80%, 75%)', fontFamily: "'Playfair Display', serif" }}>ELCZ Mzilikazi</span> {t.home_hero_title_suffix}
+              {t.home_hero_title_prefix} <span className="italic font-black uppercase tracking-widest drop-shadow-[0_3px_10px_rgba(180,130,255,0.7)]" style={{ color: 'hsl(270, 80%, 75%)', fontFamily: "'Cinzel Decorative', serif" }}>ELCZ Mzilikazi</span> {t.home_hero_title_suffix}
             </h1>
             <p className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2 font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
