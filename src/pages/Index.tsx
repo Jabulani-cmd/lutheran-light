@@ -111,19 +111,19 @@ const Index = () => {
             </div>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-hero opacity-40 z-10" />
+        <div className="absolute inset-0 bg-white/30 z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain" />
-            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-primary-foreground mb-3 sm:mb-4 leading-tight">
-              {t.home_hero_title_prefix} <span className="text-gradient-purple">ELCZ - Mzilikazi</span> {t.home_hero_title_suffix}
+            <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain drop-shadow-lg" />
+            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-extrabold text-foreground mb-3 sm:mb-4 leading-tight tracking-tight drop-shadow-sm">
+              {t.home_hero_title_prefix} <span className="text-primary italic">ELCZ - Mzilikazi</span> {t.home_hero_title_suffix}
             </h1>
-            <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2">{t.home_hero_subtitle}</p>
+            <p className="text-foreground/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2 font-medium drop-shadow-sm">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold text-sm sm:text-base px-6 sm:px-8">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
               </Button>
-              <Button asChild size="lg" className="border-2 border-accent text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 text-sm sm:text-base px-6 sm:px-8">
+              <Button asChild size="lg" className="border-2 border-primary text-foreground bg-white/60 hover:bg-white/80 text-sm sm:text-base px-6 sm:px-8 shadow-soft font-semibold">
                 <Link to="/livestream">{t.home_watch_live}</Link>
               </Button>
             </div>
