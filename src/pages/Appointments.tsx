@@ -118,6 +118,16 @@ const Appointments = () => {
                           </SelectContent>
                         </Select>
                       </div>
+                      <div>
+                        <Label>Session Mode</Label>
+                        <Select required><SelectTrigger><SelectValue placeholder="Select session mode" /></SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="in-person">In-Person</SelectItem>
+                            <SelectItem value="telephonic">Telephonically</SelectItem>
+                            <SelectItem value="online">Online</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                       <div><Label>{t.appointments_preferred_dates}</Label><Input placeholder="e.g. Weekdays after 2 PM" required /></div>
                       <div><Label>{t.appointments_message}</Label><Textarea placeholder={t.appointments_message} rows={4} required /></div>
                       <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-purple-dark">{t.appointments_submit_request}</Button>
