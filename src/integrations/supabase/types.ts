@@ -134,6 +134,39 @@ export type Database = {
         }
         Relationships: []
       }
+      choir_practice_schedule: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          location: string | null
+          notes: string | null
+          practice_day: string
+          practice_time: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          notes?: string | null
+          practice_day: string
+          practice_time: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          notes?: string | null
+          practice_day?: string
+          practice_time?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       downloadable_resources: {
         Row: {
           category: string
