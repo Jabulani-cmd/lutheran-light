@@ -65,9 +65,14 @@ const Appointments = () => {
                         <Label>{t.appointments_with}</Label>
                         <Select required><SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="pastor">Pastor N. Dlamini</SelectItem>
-                            <SelectItem value="elder-moyo">Elder J. Moyo</SelectItem>
-                            <SelectItem value="elder-ncube">Elder T. Ncube</SelectItem>
+                            <SelectItem value="pastor-ndlovu">Rev. M. Ndlovu (Pastor in Charge)</SelectItem>
+                            <SelectItem value="chairperson-ngwenya">Mrs. P. Ngwenya (Chairperson)</SelectItem>
+                            <SelectItem value="vice-chair-ndou">Mr. P. Ndou (Vice-chairperson)</SelectItem>
+                            <SelectItem value="secretary-dube">Mrs. T. Dube (Secretary)</SelectItem>
+                            <SelectItem value="treasurer-ncube">Mrs. T. Ncube (Treasurer)</SelectItem>
+                            <SelectItem value="elder-jamela-l">Mr. L. Jamela</SelectItem>
+                            <SelectItem value="elder-jamela-s">Mrs. S. Jamela</SelectItem>
+                            <SelectItem value="elder-mangena">Miss M. Mangena</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>

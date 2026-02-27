@@ -36,6 +36,9 @@ const Navbar = () => {
     { to: "/events", label: t.nav_events },
     { to: "/projects", label: t.nav_projects },
     { to: "/giving", label: t.nav_giving },
+  ];
+
+  const afterDropdownLinks = [
     { to: "/contact", label: t.nav_contact },
   ];
 
@@ -126,6 +129,12 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            {afterDropdownLinks.map((link) => (
+              <Link key={link.to} to={link.to} className={linkClass(link.to)}>
+                {link.label}
+              </Link>
+            ))}
+
             <Link to="/admin/login" className={linkClass("/admin/login")}>
               {t.nav_admin}
             </Link>
@@ -182,6 +191,12 @@ const Navbar = () => {
                 ))}
               </div>
             )}
+
+            {afterDropdownLinks.map((link) => (
+              <Link key={link.to} to={link.to} onClick={() => setIsOpen(false)} className={mobileLinkClass(link.to)}>
+                {link.label}
+              </Link>
+            ))}
 
             <Link to="/admin/login" onClick={() => setIsOpen(false)} className={mobileLinkClass("/admin/login")}>
               {t.nav_admin}
