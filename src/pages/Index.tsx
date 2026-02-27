@@ -115,7 +115,7 @@ const Index = () => {
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
             <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
-            <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-relaxed px-2 font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
+            <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-relaxed px-2 font-serif font-semibold tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
@@ -171,6 +171,16 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Pastor Welcome */}
+      <section className="py-10 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <SectionHeading title={t.home_pastor_title} />
+          <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">{t.home_pastor_quote}</blockquote>
+          <p className="mt-6 font-display font-semibold text-foreground">{t.home_pastor_name}</p>
+          <p className="text-sm text-muted-foreground">{t.home_senior_pastor}</p>
+        </div>
+      </section>
+
       {/* Announcements */}
       <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -197,16 +207,6 @@ const Index = () => {
               <p className="text-center text-muted-foreground italic">{t.home_no_announcements}</p>
             )}
           </div>
-        </div>
-      </section>
-
-      {/* Pastor Welcome */}
-      <section className="py-10 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <SectionHeading title={t.home_pastor_title} />
-          <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">{t.home_pastor_quote}</blockquote>
-          <p className="mt-6 font-display font-semibold text-foreground">{t.home_pastor_name}</p>
-          <p className="text-sm text-muted-foreground">{t.home_senior_pastor}</p>
         </div>
       </section>
 
