@@ -15,6 +15,8 @@ import { languageNames, type Language } from "@/contexts/LanguageContext";
 const categories = [
   { value: "hymn_book", label: "Hymn Book" },
   { value: "bible", label: "Bible" },
+  { value: "minutes", label: "Minutes of Meetings" },
+  { value: "church_documents", label: "Church Documents" },
   { value: "other", label: "Other" },
 ];
 

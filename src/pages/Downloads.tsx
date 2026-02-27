@@ -17,6 +17,8 @@ const Downloads = () => {
   const categoryLabels: Record<string, { label: string; icon: typeof BookOpen }> = {
     hymn_book: { label: t.downloads_hymn_book, icon: BookOpen },
     bible: { label: t.downloads_bible, icon: Book },
+    minutes: { label: t.downloads_minutes, icon: FileText },
+    church_documents: { label: t.downloads_church_docs, icon: FileText },
     other: { label: t.downloads_other, icon: FileText },
   };
 
