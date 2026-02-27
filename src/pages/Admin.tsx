@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home, Music, Camera } from "lucide-react";
+import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home, Music, Camera, FolderKanban } from "lucide-react";
 import logo from "@/assets/umplogo2.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
@@ -20,6 +20,7 @@ import AdminHomePrayers from "@/components/admin/AdminHomePrayers";
 import AdminGalleryVideos from "@/components/admin/AdminGalleryVideos";
 import AdminChoir from "@/components/admin/AdminChoir";
 import AdminMinistryPhotos from "@/components/admin/AdminMinistryPhotos";
+import AdminProjects from "@/components/admin/AdminProjects";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
@@ -69,6 +70,7 @@ const Admin = () => {
             <TabsTrigger value="downloads" className="flex items-center gap-2"><Download className="h-4 w-4" /> Downloads</TabsTrigger>
             <TabsTrigger value="choir" className="flex items-center gap-2"><Music className="h-4 w-4" /> Choir</TabsTrigger>
             <TabsTrigger value="ministry-photos" className="flex items-center gap-2"><Camera className="h-4 w-4" /> Ministry Photos</TabsTrigger>
+            <TabsTrigger value="projects" className="flex items-center gap-2"><FolderKanban className="h-4 w-4" /> Projects</TabsTrigger>
           </TabsList>
 
           <TabsContent value="members"><AdminMembers /></TabsContent>
@@ -85,6 +87,7 @@ const Admin = () => {
           <TabsContent value="downloads"><AdminDownloads /></TabsContent>
           <TabsContent value="choir"><AdminChoir /></TabsContent>
           <TabsContent value="ministry-photos"><AdminMinistryPhotos /></TabsContent>
+          <TabsContent value="projects"><AdminProjects /></TabsContent>
         </Tabs>
       </div>
     </div>

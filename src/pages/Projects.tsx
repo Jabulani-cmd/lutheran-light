@@ -1,28 +1,24 @@
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Progress } from "@/components/ui/progress";
 
 const Projects = () => {
   const { t } = useTranslation();
 
-  const projects = [
-    {
-      title: "Church Building Renovation",
-      description: "Ongoing renovation and maintenance of the congregation church building to preserve our heritage and provide a welcoming space for worship.",
-      status: "In Progress",
+  const { data: projects, isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data;
     },
-    {
-      title: "Community Hall Construction",
-      description: "Building a multi-purpose community hall for fellowship gatherings, youth activities, and community outreach programs.",
-      status: "Planning",
-    },
-    {
-      title: "Education Support Fund",
-      description: "Supporting underprivileged children in the community with school fees, uniforms, and learning materials.",
-      status: "Ongoing",
-    },
-  ];
+  });
 
   return (
     <Layout>
@@ -34,19 +30,40 @@ const Projects = () => {
       </section>
       <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {projects.map((project) => (
-              <Card key={project.title} className="shadow-soft border-border hover:shadow-medium transition-shadow">
-                <CardContent className="p-6">
-                  <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full mb-3">
-                    {project.status}
-                  </span>
-                  <h3 className="font-display font-semibold text-foreground text-lg mb-2">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground">{project.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {isLoading ? (
+            <p className="text-center text-muted-foreground">Loading projects...</p>
+          ) : !projects?.length ? (
+            <p className="text-center text-muted-foreground">No projects yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
+              {projects.map((project) => {
+                const percent = project.target_amount > 0
+                  ? Math.min(100, (Number(project.amount_raised) / Number(project.target_amount)) * 100)
+                  : 0;
+                return (
+                  <Card key={project.id} className="shadow-soft border-border hover:shadow-medium transition-shadow">
+                    <CardContent className="p-6">
+                      <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full mb-3">
+                        {project.status}
+                      </span>
+                      <h3 className="font-display font-semibold text-foreground text-lg mb-2">{project.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Raised</span>
+                          <span className="font-semibold text-foreground">
+                            ${Number(project.amount_raised).toLocaleString()}
+                            {project.target_amount > 0 && <span className="text-muted-foreground font-normal"> / ${Number(project.target_amount).toLocaleString()}</span>}
+                          </span>
+                        </div>
+                        {project.target_amount > 0 && <Progress value={percent} className="h-2" />}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

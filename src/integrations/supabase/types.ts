@@ -473,6 +473,39 @@ export type Database = {
         }
         Relationships: []
       }
+      projects: {
+        Row: {
+          amount_raised: number | null
+          created_at: string
+          description: string | null
+          id: string
+          status: string
+          target_amount: number | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          amount_raised?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          target_amount?: number | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          amount_raised?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          target_amount?: number | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
