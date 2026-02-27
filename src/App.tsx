@@ -21,6 +21,7 @@ import Register from "./pages/Register";
 import PreachingSchedule from "./pages/PreachingSchedule";
 import HomePrayers from "./pages/HomePrayers";
 import Choir from "./pages/Choir";
+import Giving from "./pages/Giving";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/preaching-schedule" element={<PreachingSchedule />} />
             <Route path="/home-prayers" element={<HomePrayers />} />
             <Route path="/choir" element={<Choir />} />
+            <Route path="/giving" element={<Giving />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
