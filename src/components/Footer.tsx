@@ -32,6 +32,7 @@ const Footer = () => {
               {[
                 { to: "/about", label: t.nav_about },
                 { to: "/events", label: t.nav_events },
+                { to: "/giving", label: t.nav_giving },
                 { to: "/livestream", label: t.nav_livestream },
                 { to: "/preaching-schedule", label: t.nav_preaching_plan },
                 { to: "/home-prayers", label: t.nav_home_prayers },

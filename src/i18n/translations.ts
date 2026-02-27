@@ -12,6 +12,24 @@ type TranslationKeys = {
   nav_appointments: string;
   nav_contact: string;
   nav_admin: string;
+  nav_giving: string;
+  nav_worship: string;
+  nav_media: string;
+
+  // Giving
+  giving_title: string;
+  giving_subtitle: string;
+  giving_one_time_title: string;
+  giving_one_time_desc: string;
+  giving_give_now: string;
+  giving_project_title: string;
+  giving_project_desc: string;
+  giving_donate: string;
+  giving_recurring_title: string;
+  giving_recurring_desc: string;
+  giving_setup_tithe: string;
+  giving_note: string;
+  giving_coming_soon: string;
   nav_projects: string;
 
   // Home
@@ -504,6 +522,22 @@ const translations: Record<Language, TranslationKeys> = {
     livestream_no_past: "No past services available yet.",
     ministries_view_photos: "View Photos",
     ministries_no_photos: "No photos uploaded yet for this ministry.",
+    nav_giving: "Giving",
+    nav_worship: "Worship",
+    nav_media: "Media",
+    giving_title: "Online Giving",
+    giving_subtitle: "Support the work of God through your generous offerings and donations.",
+    giving_one_time_title: "One-Time Offering",
+    giving_one_time_desc: "Make a one-time gift of any amount to support our congregation's ministry and outreach.",
+    giving_give_now: "Give Now",
+    giving_project_title: "Project Donations",
+    giving_project_desc: "Contribute to specific church projects such as building fund, outreach programs, or community initiatives.",
+    giving_donate: "Donate to a Project",
+    giving_recurring_title: "Monthly Tithe",
+    giving_recurring_desc: "Set up a recurring monthly tithe to consistently support the church's mission and growth.",
+    giving_setup_tithe: "Set Up Tithe",
+    giving_note: "Online payments will be available soon. For now, you can bring your offerings to Sunday service or contact the church office for bank transfer details.",
+    giving_coming_soon: "Online payments coming soon! Please contact the church office for details.",
   },
 
   sn: {
@@ -737,6 +771,22 @@ const translations: Record<Language, TranslationKeys> = {
     livestream_no_past: "Hapana misa yakapfuura yakaiswa.",
     ministries_view_photos: "Ona Mifananidzo",
     ministries_no_photos: "Hapana mifananidzo yakaiswa yebasa iri.",
+    nav_giving: "Zvipo",
+    nav_worship: "Kunamata",
+    nav_media: "Nhoroondo",
+    giving_title: "Zvipo Pachena",
+    giving_subtitle: "Tsigira basa raMwari nezvipo zvako zvakanaka.",
+    giving_one_time_title: "Chipo Chimwe Chete",
+    giving_one_time_desc: "Ipa chipo chimwe chete chemari ipi zvayo kutsigira ushumiri neungano.",
+    giving_give_now: "Ipa Izvozvi",
+    giving_project_title: "Zvipo zveMabasa",
+    giving_project_desc: "Batsira mabasa akati akereke akadai sekuvaka, mabasa ekubatsira, kana mabasa eungano.",
+    giving_donate: "Ipa kuBasa",
+    giving_recurring_title: "Chegumi cheMwedzi",
+    giving_recurring_desc: "Ronga chegumi chemwedzi nemwedzi kutsigira basa rekereke nguva dzose.",
+    giving_setup_tithe: "Ronga Chegumi",
+    giving_note: "Mubhadharo wepachena uchauya nekukurumidza. Parizvino, unogona kuuya nezvipo zvako kumisa yeSvondo kana kubata hofisi yekereke.",
+    giving_coming_soon: "Mubhadharo wepachena uchauya nekukurumidza! Bata hofisi yekereke kuti uzive zvakawanda.",
   },
 
   nd: {
@@ -970,6 +1020,22 @@ const translations: Record<Language, TranslationKeys> = {
     livestream_no_past: "Akukho nkonzo ezedlulileyo okwamanje.",
     ministries_view_photos: "Bona Imifanekiso",
     ministries_no_photos: "Akukho mifanekiso efakiweyo yalo musebetsi.",
+    nav_giving: "Ukunikela",
+    nav_worship: "Ukukhonza",
+    nav_media: "Imimediya",
+    giving_title: "Ukunikela Nge-Inthanethi",
+    giving_subtitle: "Sekela umsebenzi kaNkulunkulu ngezipho zakho ezinomusa.",
+    giving_one_time_title: "Isipho Esisodwa",
+    giving_one_time_desc: "Nikela isipho esisodwa senani elikhethayo ukusekela ibandla lethu.",
+    giving_give_now: "Nikela Manje",
+    giving_project_title: "Iminikelo Yemisebenzi",
+    giving_project_desc: "Nikela emisebenzini yebandla ethile efana lokwakha, ukunceda, kumbe imisebenzi yebandla.",
+    giving_donate: "Nikela Kumusebetsi",
+    giving_recurring_title: "Okwetshumi Kwenyanga",
+    giving_recurring_desc: "Hlela okwetshumi kwenyanga ngayinye ukusekela ibandla ngokuqhubekayo.",
+    giving_setup_tithe: "Hlela Okwetshumi",
+    giving_note: "Ukubhadala nge-inthanethi kuzafika masinyane. Okwamanje, ungaletha iminikelo yakho enkonzweni yamaSonto kumbe uxhumane lehofisi yebandla.",
+    giving_coming_soon: "Ukubhadala nge-inthanethi kuzafika masinyane! Xhumana lehofisi yebandla.",
   },
 
   st: {
@@ -1203,6 +1269,22 @@ const translations: Record<Language, TranslationKeys> = {
     livestream_no_past: "Ha ho ditshebeletso tse fetileng ha jwale.",
     ministries_view_photos: "Bona Dinepe",
     ministries_no_photos: "Ha ho dinepe tse kentseng bakeng sa tshebeletso ena.",
+    nav_giving: "Ho Fana",
+    nav_worship: "Ho Rapela",
+    nav_media: "Mecha",
+    giving_title: "Ho Fana ka Marang-rang",
+    giving_subtitle: "Tshehetsang mosebetsi wa Modimo ka dimpho tsa lona tse mosa.",
+    giving_one_time_title: "Mpho e Le Nngwe",
+    giving_one_time_desc: "Fana ka mpho e le nngwe ya chelete efe kapa efe ho tshehetsa seboka sa rona.",
+    giving_give_now: "Fana Jwale",
+    giving_project_title: "Dimpho tsa Mesebetsi",
+    giving_project_desc: "Thusa mesebetsi e itseng ya kereke joalo ka ho aha, ho thusa setjhaba, kapa mananeo a setjhaba.",
+    giving_donate: "Fana ho Mosebetsi",
+    giving_recurring_title: "Karolo ya Kgwedi",
+    giving_recurring_desc: "Hlela karolo ya kgwedi le kgwedi ho tshehetsa kereke ka ho tswela pele.",
+    giving_setup_tithe: "Hlela Karolo",
+    giving_note: "Tefo ka marang-rang e tla ba teng haufinyane. Ha jwale, o ka tlisa dimpho tsa hao tshebeletsoong ya Sontaha kapa o ikopanye le ofisi ya kereke.",
+    giving_coming_soon: "Tefo ka marang-rang e tla ba teng haufinyane! Ikopanye le ofisi ya kereke.",
   },
 
   ve: {
@@ -1436,6 +1518,22 @@ const translations: Record<Language, TranslationKeys> = {
     livestream_no_past: "A hu na mishumo yo fhiraho zwino.",
     ministries_view_photos: "Vhonani Zwifanyiso",
     ministries_no_photos: "A hu na zwifanyiso zwo dzhenwaho zwa mushumo uno.",
+    nav_giving: "U Ṋea",
+    nav_worship: "U Rabela",
+    nav_media: "Midia",
+    giving_title: "U Ṋea Nga Inthanethi",
+    giving_subtitle: "Tikedza mushumo wa Mudzimu nga zwifhiwa zwaṋu zwa vhuthu.",
+    giving_one_time_title: "Tshifhiwa Tshithihi",
+    giving_one_time_desc: "Ṋeani tshifhiwa tshithihi tsha tshelede iṅwe na iṅwe u tikedza tshivhidzo tshashu.",
+    giving_give_now: "Ṋeani Zwino",
+    giving_project_title: "Zwifhiwa zwa Mishumo",
+    giving_project_desc: "Thusani kha mishumo yo khetheaho ya kereke sa u fhata, u thusa tshitshavha, kana mbekanyamushumo dza tshitshavha.",
+    giving_donate: "Ṋeani kha Mushumo",
+    giving_recurring_title: "Tshafumi tsha Ṅwedzi",
+    giving_recurring_desc: "Langani tshafumi tsha ṅwedzi muṅwe na muṅwe u tikedza kereke nga u bvela phanḓa.",
+    giving_setup_tithe: "Langani Tshafumi",
+    giving_note: "U bhadela nga inthanethi zwi ḓo vha hone hu si kale. Zwino, ni nga ḓisa zwifhiwa zwaṋu kha mushumo wa Swondaha kana ni kwame ofisi ya kereke.",
+    giving_coming_soon: "U bhadela nga inthanethi zwi ḓo vha hone hu si kale! Kwamani ofisi ya kereke.",
   },
 };
 
