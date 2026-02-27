@@ -9,12 +9,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
-import { Trash2, Check, X, Upload, Plus } from "lucide-react";
+import { Trash2, Check, X, Upload, Plus, Clock } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 const AdminChoir = () => {
   const [members, setMembers] = useState<any[]>([]);
   const [photos, setPhotos] = useState<any[]>([]);
+  const [schedule, setSchedule] = useState<any[]>([]);
   const [newMember, setNewMember] = useState({ first_name: "", last_name: "", phone: "", email: "", voice_part: "soprano" });
+  const [newSchedule, setNewSchedule] = useState({ practice_day: "", practice_time: "", location: "", notes: "" });
   const [uploading, setUploading] = useState(false);
 
   const fetchMembers = async () => {
@@ -27,7 +30,12 @@ const AdminChoir = () => {
     if (data) setPhotos(data);
   };
 
-  useEffect(() => { fetchMembers(); fetchPhotos(); }, []);
+  const fetchSchedule = async () => {
+    const { data } = await supabase.from("choir_practice_schedule").select("*").order("created_at", { ascending: false });
+    if (data) setSchedule(data);
+  };
+
+  useEffect(() => { fetchMembers(); fetchPhotos(); fetchSchedule(); }, []);
 
   const toggleApproval = async (id: string, current: boolean) => {
     await supabase.from("choir_members").update({ is_approved: !current }).eq("id", id);
@@ -75,6 +83,7 @@ const AdminChoir = () => {
         <TabsList>
           <TabsTrigger value="members">Members</TabsTrigger>
           <TabsTrigger value="photos">Photos</TabsTrigger>
+          <TabsTrigger value="schedule"><Clock className="h-4 w-4 mr-1" /> Practice Schedule</TabsTrigger>
         </TabsList>
 
         <TabsContent value="members" className="space-y-6">
@@ -163,6 +172,73 @@ const AdminChoir = () => {
               </div>
             ))}
           </div>
+        </TabsContent>
+
+        <TabsContent value="schedule" className="space-y-6">
+          <Card>
+            <CardHeader><CardTitle className="text-lg">Add Practice Session</CardTitle></CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <Label>Day</Label>
+                  <Input placeholder="e.g. Wednesday" value={newSchedule.practice_day} onChange={(e) => setNewSchedule({ ...newSchedule, practice_day: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Time</Label>
+                  <Input placeholder="e.g. 5:00 PM - 7:00 PM" value={newSchedule.practice_time} onChange={(e) => setNewSchedule({ ...newSchedule, practice_time: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Location (optional)</Label>
+                  <Input placeholder="e.g. Church Hall" value={newSchedule.location} onChange={(e) => setNewSchedule({ ...newSchedule, location: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Notes (optional)</Label>
+                  <Input placeholder="e.g. Bring hymn books" value={newSchedule.notes} onChange={(e) => setNewSchedule({ ...newSchedule, notes: e.target.value })} />
+                </div>
+              </div>
+              <Button className="mt-3" onClick={async () => {
+                if (!newSchedule.practice_day || !newSchedule.practice_time) return;
+                await supabase.from("choir_practice_schedule").insert([newSchedule]);
+                setNewSchedule({ practice_day: "", practice_time: "", location: "", notes: "" });
+                fetchSchedule();
+                toast({ title: "Practice session added" });
+              }}><Plus className="h-4 w-4 mr-1" /> Add</Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader><CardTitle className="text-lg">Current Schedule ({schedule.length})</CardTitle></CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Day</TableHead>
+                    <TableHead>Time</TableHead>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Notes</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {schedule.map((s) => (
+                    <TableRow key={s.id}>
+                      <TableCell className="font-medium">{s.practice_day}</TableCell>
+                      <TableCell>{s.practice_time}</TableCell>
+                      <TableCell>{s.location || "—"}</TableCell>
+                      <TableCell>{s.notes || "—"}</TableCell>
+                      <TableCell>
+                        <Button size="sm" variant="destructive" onClick={async () => {
+                          await supabase.from("choir_practice_schedule").delete().eq("id", s.id);
+                          fetchSchedule();
+                          toast({ title: "Session removed" });
+                        }}><Trash2 className="h-3 w-3" /></Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
     </div>

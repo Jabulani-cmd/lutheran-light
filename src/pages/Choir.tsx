@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, Music, Play } from "lucide-react";
+import { CheckCircle, Music, Play, Clock, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -27,6 +27,7 @@ const Choir = () => {
   const [groupPhoto, setGroupPhoto] = useState<string | null>(null);
   const [choirPhotos, setChoirPhotos] = useState<any[]>([]);
   const [performances, setPerformances] = useState<any[]>([]);
+  const [practiceSchedule, setPracticeSchedule] = useState<any[]>([]);
 
   const [form, setForm] = useState({
     first_name: "",
@@ -49,6 +50,9 @@ const Choir = () => {
     });
     supabase.from("gallery_videos").select("*").eq("category", "choir").order("created_at", { ascending: false }).then(({ data }) => {
       if (data) setPerformances(data);
+    });
+    supabase.from("choir_practice_schedule").select("*").eq("is_active", true).order("created_at", { ascending: false }).then(({ data }) => {
+      if (data) setPracticeSchedule(data);
     });
   }, []);
 
@@ -81,6 +85,35 @@ const Choir = () => {
             <SectionHeading title={t.choir_group_title} subtitle={t.choir_group_subtitle} />
             <div className="rounded-lg overflow-hidden shadow-medium">
               <img src={groupPhoto} alt="Choir group photo" className="w-full h-auto object-cover" />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Practice Schedule */}
+      {practiceSchedule.length > 0 && (
+        <section className="py-10 bg-muted">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <SectionHeading title="Choir Practice Schedule" subtitle="Join us for rehearsals during the week" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {practiceSchedule.map((s) => (
+                <Card key={s.id} className="shadow-soft border-border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      <h3 className="font-display font-semibold text-foreground">{s.practice_day}</h3>
+                    </div>
+                    <p className="text-sm text-foreground font-medium mb-1">{s.practice_time}</p>
+                    {s.location && (
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <MapPin className="h-3 w-3" />
+                        <span>{s.location}</span>
+                      </div>
+                    )}
+                    {s.notes && <p className="text-xs text-muted-foreground mt-2 italic">{s.notes}</p>}
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
