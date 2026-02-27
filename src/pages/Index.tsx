@@ -114,12 +114,8 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-3 sm:mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
-            <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-extrabold text-white mb-3 sm:mb-4 leading-tight tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
-              {t.home_hero_title_prefix} <span className="italic font-black uppercase tracking-widest drop-shadow-[0_3px_10px_rgba(180,130,255,0.7)]" style={{ color: 'hsl(270, 80%, 75%)' }}>ELCZ Mzilikazi</span> {t.home_hero_title_suffix}
-            </h1>
-            <p className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed px-2 font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">{t.home_hero_subtitle}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed px-2 font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
               </Button>
@@ -138,12 +134,22 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Welcome Title Section */}
+      <section className="py-8 sm:py-12 bg-muted">
+        <div className="container mx-auto px-4 text-center">
+          <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[60px] sm:h-[80px] md:h-[100px] w-auto mx-auto mb-3 object-contain" />
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary leading-tight tracking-tight">
+            {t.home_hero_title_prefix} ELCZ Mzilikazi {t.home_hero_title_suffix}
+          </h1>
+        </div>
+      </section>
+
       {/* Service Times */}
       <section className="py-10 sm:py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
           <div className="flex justify-center mb-8">
-            <img src={blackClock} alt="Worship times clock" className="h-42 w-42 object-contain" />
+            <img src={blackClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
