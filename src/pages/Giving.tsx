@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Heart, Building2, RefreshCw, CreditCard, HandHeart, BookOpen, DollarSign } from "lucide-react";
+import { Heart, Building2, RefreshCw, CreditCard, HandHeart, BookOpen, DollarSign, Smartphone, Landmark, Church } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -189,25 +189,63 @@ const Giving = () => {
         </section>
       )}
 
-      {/* Bank Details / Alternative */}
+      {/* Payment Methods */}
       <section className="py-12 bg-muted">
-        <div className="container mx-auto px-4 max-w-3xl">
+        <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
             <HandHeart className="h-8 w-8 text-primary mx-auto mb-3" />
-            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Other Ways to Give</h2>
-            <p className="text-muted-foreground text-sm">You can also give through the following methods:</p>
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">Ways to Give</h2>
+            <p className="text-muted-foreground text-sm">Choose any of the following payment methods available in Zimbabwe:</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <h3 className="font-display font-semibold text-foreground mb-2">Bank Transfer</h3>
+                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <h3 className="font-display font-semibold text-foreground mb-2">EcoCash</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Contact the church office for bank account details to make a direct deposit or EFT transfer.
+                  Send your offering via EcoCash to the church merchant number. Contact the church office for the EcoCash details.
                 </p>
               </CardContent>
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
+                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <h3 className="font-display font-semibold text-foreground mb-2">InnBucks</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Transfer your giving via InnBucks. Contact the church office for the InnBucks wallet details.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="shadow-soft border-border">
+              <CardContent className="p-6">
+                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <h3 className="font-display font-semibold text-foreground mb-2">OneMoney</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Send your offering via OneMoney mobile money. Contact the church office for details.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="shadow-soft border-border">
+              <CardContent className="p-6">
+                <Landmark className="h-6 w-6 text-primary mb-3" />
+                <h3 className="font-display font-semibold text-foreground mb-2">Bank Transfer (ZWG/USD)</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Make a direct deposit or bank transfer in ZWG or USD. Contact the church office for bank account details.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="shadow-soft border-border">
+              <CardContent className="p-6">
+                <Landmark className="h-6 w-6 text-primary mb-3" />
+                <h3 className="font-display font-semibold text-foreground mb-2">Mukuru / WorldRemit</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  For diaspora members, send offerings via Mukuru or WorldRemit. Contact the church office for recipient details.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="shadow-soft border-border">
+              <CardContent className="p-6">
+                <Church className="h-6 w-6 text-primary mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Sunday Service</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Bring your offerings and tithes to our Sunday worship service at 10:00 AM. Offering envelopes are available.
