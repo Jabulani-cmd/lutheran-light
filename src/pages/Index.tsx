@@ -111,7 +111,7 @@ const Index = () => {
             </div>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black/40 z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
             <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
