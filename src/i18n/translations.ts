@@ -287,7 +287,7 @@ const translations: Record<Language, TranslationKeys> = {
     nav_projects: "Church Projects",
     home_hero_title_prefix: "Welcome to",
     home_hero_title_suffix: "Congregation Bulawayo",
-    home_hero_subtitle: "A welcoming community of faith rooted in the Lutheran tradition. Come as you are and grow with us in grace and love.",
+    home_hero_subtitle: "A Welcoming Community of Faith Rooted in the Lutheran Tradition. Come as You are and Grow with us in Grace and Love.",
     home_learn_more: "Learn More",
     home_join_us: "Join Us",
     home_watch_live: "Watch Live",
