@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useTranslation } from "@/hooks/useTranslation";
-import logo from "@/assets/church-cross-logo.png";
+import logo from "@/assets/church-cross-logo-new.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
