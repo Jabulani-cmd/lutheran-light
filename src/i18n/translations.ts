@@ -188,6 +188,8 @@ type TranslationKeys = {
   downloads_hymn_book: string;
   downloads_bible: string;
   downloads_other: string;
+  downloads_minutes: string;
+  downloads_church_docs: string;
   downloads_select_category: string;
 
   // Registration
@@ -442,6 +444,8 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Hymn Book",
     downloads_bible: "Bible",
     downloads_other: "Other Resources",
+    downloads_minutes: "Minutes of Meetings",
+    downloads_church_docs: "Church Documents",
     downloads_select_category: "Select category",
     register_title: "Member Registration",
     register_subtitle: "Join our church community by filling out the form below.",
@@ -691,6 +695,8 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Bhuku reNziyo",
     downloads_bible: "Bhaibheri",
     downloads_other: "Zvimwe Zviripo",
+    downloads_minutes: "Maminetsi eMisangano",
+    downloads_church_docs: "Magwaro eSangano",
     downloads_select_category: "Sarudza rudzi",
     register_title: "Kunyoresa Nhengo",
     register_subtitle: "Batanai neungano yedu nekuzadza fomu iri pazasi.",
@@ -940,6 +946,8 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Ibhuku leNziyo",
     downloads_bible: "IBhayibhili",
     downloads_other: "Okunye Okutholakalayo",
+    downloads_minutes: "Imihlangano Ebhaliweyo",
+    downloads_church_docs: "Amaphepha eBandla",
     downloads_select_category: "Khetha uhlobo",
     register_title: "Ukubhaliswa Kwelungu",
     register_subtitle: "Hlanganyela lebandla lethu ngokugcwalisa ifomu engaphansi.",
@@ -1189,6 +1197,8 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Buka ya Difela",
     downloads_bible: "Bibele",
     downloads_other: "Tse Ding Tse Fumanehang",
+    downloads_minutes: "Metsotso ya Dikopano",
+    downloads_church_docs: "Ditokomane tsa Kereke",
     downloads_select_category: "Kgetha mofuta",
     register_title: "Ho Ngodisa Setho",
     register_subtitle: "Kopana le kereke ea rona ka ho tlatsa foromo e ka tlase.",
@@ -1438,6 +1448,8 @@ const translations: Record<Language, TranslationKeys> = {
     downloads_hymn_book: "Bugu ya Nyimbo",
     downloads_bible: "Bivhili",
     downloads_other: "Zwiṅwe Zwi Re Hone",
+    downloads_minutes: "Minisi ya Miṱangano",
+    downloads_church_docs: "Maṅwalo a Kereke",
     downloads_select_category: "Nangani lushaka",
     register_title: "U Ṅwalisa Muraḓo",
     register_subtitle: "Ḓadzani fomo i re fhasi u ḓi ṅwalisa kha tshivhidzo tshashu.",
