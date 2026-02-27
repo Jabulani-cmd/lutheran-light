@@ -114,7 +114,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-10" />
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed px-2 font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
+            <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-relaxed px-2 font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
@@ -148,9 +148,6 @@ const Index = () => {
       <section className="py-10 sm:py-16 bg-card">
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_worship_title} subtitle={t.home_worship_subtitle} />
-          <div className="flex justify-center mb-8">
-            <img src={blackClock} alt="Worship times clock" className="h-24 w-24 object-contain" />
-          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
               { day: t.home_intercession, time: "8:00 AM" },
