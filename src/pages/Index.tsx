@@ -24,18 +24,13 @@ const defaultHeroSlides = [
   { image: heroImage4, alt: "Community outreach and fellowship" },
 ];
 
-const upcomingEvents = [
-  { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" },
-  { title: "Youth Fellowship Retreat", date: "March 15, 2026", time: "8:00 AM", category: "Fellowship" },
-  { title: "Women's League Prayer Breakfast", date: "March 22, 2026", time: "7:00 AM", category: "Fellowship" },
-  { title: "Community Outreach Day", date: "March 29, 2026", time: "10:00 AM", category: "Outreach" },
-];
 
 const Index = () => {
   const { t } = useTranslation();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [announcements, setAnnouncements] = useState<any[]>([]);
+  const [upcomingEvents, setUpcomingEvents] = useState<any[]>([]);
   const [heroSlides, setHeroSlides] = useState<{image: string; alt: string}[]>([]);
   const [slidesLoaded, setSlidesLoaded] = useState(false);
 
@@ -62,6 +57,19 @@ const Index = () => {
       .order("created_at", { ascending: false })
       .limit(5)
       .then(({ data }) => { if (data) setAnnouncements(data); });
+
+    supabase
+      .from("events")
+      .select("*")
+      .order("event_date", { ascending: true })
+      .then(({ data }) => {
+        if (data) setUpcomingEvents(data.map((e: any) => ({
+          title: e.title,
+          date: e.event_date,
+          time: e.event_time || "",
+          category: e.category,
+        })));
+      });
   }, []);
 
   const onSelect = useCallback(() => {
@@ -94,7 +102,7 @@ const Index = () => {
         return isNaN(parsed.getTime()) ? null : parsed;
       })
       .filter(Boolean) as Date[];
-  }, []);
+  }, [upcomingEvents]);
 
   return (
     <Layout>
