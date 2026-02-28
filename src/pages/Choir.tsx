@@ -3,12 +3,8 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, Music, Play, Clock, MapPin } from "lucide-react";
+import { Music, Play, Clock, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const getEmbedUrl = (url: string) => {
@@ -20,22 +16,11 @@ const getEmbedUrl = (url: string) => {
 
 const Choir = () => {
   const { t } = useTranslation();
-  const { toast } = useToast();
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState<any[]>([]);
   const [groupPhoto, setGroupPhoto] = useState<string | null>(null);
   const [choirPhotos, setChoirPhotos] = useState<any[]>([]);
   const [performances, setPerformances] = useState<any[]>([]);
   const [practiceSchedule, setPracticeSchedule] = useState<any[]>([]);
-
-  const [form, setForm] = useState({
-    first_name: "",
-    last_name: "",
-    phone: "",
-    email: "",
-    voice_part: "soprano",
-  });
 
   useEffect(() => {
     supabase.from("choir_members").select("*").eq("is_approved", true).order("first_name").then(({ data }) => {
@@ -55,19 +40,6 @@ const Choir = () => {
       if (data) setPracticeSchedule(data);
     });
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    const { error } = await supabase.from("choir_members").insert([form]);
-    setLoading(false);
-    if (error) {
-      toast({ title: "Error", description: error.message, variant: "destructive" });
-    } else {
-      setSubmitted(true);
-      toast({ title: t.choir_submitted_title, description: t.choir_submitted_desc });
-    }
-  };
 
   return (
     <Layout>
@@ -127,16 +99,13 @@ const Choir = () => {
             <p>{t.choir_story_p1}</p>
             <p>{t.choir_story_p2}</p>
           </div>
-          <div className="flex flex-wrap gap-4 mt-8 justify-center">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold" onClick={() => document.getElementById("join-form")?.scrollIntoView({ behavior: "smooth" })}>
-              <Music className="h-4 w-4 mr-2" /> {t.choir_apply}
-            </Button>
-            {performances.length > 0 && (
+          {performances.length > 0 && (
+            <div className="flex flex-wrap gap-4 mt-8 justify-center">
               <Button size="lg" variant="outline" onClick={() => document.getElementById("performances")?.scrollIntoView({ behavior: "smooth" })}>
                 <Play className="h-4 w-4 mr-2" /> {t.choir_performances_title}
               </Button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -200,53 +169,6 @@ const Choir = () => {
           </div>
         </section>
       )}
-
-      {/* Join Form */}
-      <section id="join-form" className="py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-lg">
-          <SectionHeading title={t.choir_join_title} subtitle={t.choir_join_subtitle} />
-          {submitted ? (
-            <Card className="shadow-soft border-border">
-              <CardContent className="py-12 text-center">
-                <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-display text-xl font-semibold text-foreground">{t.choir_submitted_title}</h3>
-                <p className="text-muted-foreground mt-2">{t.choir_submitted_desc}</p>
-                <Button className="mt-6" variant="outline" onClick={() => { setSubmitted(false); setForm({ first_name: "", last_name: "", phone: "", email: "", voice_part: "soprano" }); }}>
-                  {t.choir_submit_another}
-                </Button>
-              </CardContent>
-            </Card>
-          ) : (
-            <Card className="shadow-soft border-border">
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div><Label>{t.choir_first_name}</Label><Input value={form.first_name} onChange={(e) => setForm({ ...form, first_name: e.target.value })} required /></div>
-                    <div><Label>{t.choir_last_name}</Label><Input value={form.last_name} onChange={(e) => setForm({ ...form, last_name: e.target.value })} required /></div>
-                  </div>
-                  <div><Label>{t.choir_phone}</Label><Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} /></div>
-                  <div><Label>{t.choir_email}</Label><Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
-                  <div>
-                    <Label>{t.choir_voice_part}</Label>
-                    <Select value={form.voice_part} onValueChange={(v) => setForm({ ...form, voice_part: v })}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="soprano">{t.choir_soprano}</SelectItem>
-                        <SelectItem value="alto">{t.choir_alto}</SelectItem>
-                        <SelectItem value="tenor">{t.choir_tenor}</SelectItem>
-                        <SelectItem value="bass">{t.choir_bass}</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <Button type="submit" className="w-full bg-primary text-primary-foreground" disabled={loading}>
-                    {loading ? t.choir_submitting : t.choir_apply}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      </section>
     </Layout>
   );
 };
