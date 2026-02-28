@@ -63,12 +63,14 @@ const Index = () => {
       .select("*")
       .order("event_date", { ascending: true })
       .then(({ data }) => {
-        if (data) setUpcomingEvents(data.map((e: any) => ({
+        const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" };
+        const dbEvents = (data || []).map((e: any) => ({
           title: e.title,
           date: e.event_date,
           time: e.event_time || "",
           category: e.category,
-        })));
+        }));
+        setUpcomingEvents([sundayService, ...dbEvents]);
       });
   }, []);
 
