@@ -6,7 +6,7 @@ import { Clock, MapPin, Calendar } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 
-const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" };
+
 
 const Events = () => {
   const { t } = useTranslation();
@@ -20,17 +20,14 @@ const Events = () => {
     fetch();
   }, []);
 
-  const allEvents = [
-    sundayService,
-    ...dbEvents.map((e) => ({
-      title: e.title,
-      date: e.event_date,
-      time: e.event_time || "",
-      location: e.location || "",
-      desc: e.description || "",
-      category: e.category,
-    })),
-  ];
+  const allEvents = dbEvents.map((e) => ({
+    title: e.title,
+    date: e.event_date,
+    time: e.event_time || "",
+    location: e.location || "",
+    desc: e.description || "",
+    category: e.category,
+  }));
 
   const categoryMap: Record<string, string> = {
     All: t.events_all,
