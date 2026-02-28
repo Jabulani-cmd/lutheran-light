@@ -1,17 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, MapPin, Calendar } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { supabase } from "@/integrations/supabase/client";
 
-
-const events = [
-  { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" },
-];
+const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", location: "Main Sanctuary", desc: "Join us for our weekly worship service with hymns, prayer, and the Word.", category: "Worship" };
 
 const Events = () => {
   const { t } = useTranslation();
+  const [dbEvents, setDbEvents] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await supabase.from("events").select("*").order("event_date", { ascending: true });
+      if (data) setDbEvents(data);
+    };
+    fetch();
+  }, []);
+
+  const allEvents = [
+    sundayService,
+    ...dbEvents.map((e) => ({
+      title: e.title,
+      date: e.event_date,
+      time: e.event_time || "",
+      location: e.location || "",
+      desc: e.description || "",
+      category: e.category,
+    })),
+  ];
+
   const categoryMap: Record<string, string> = {
     All: t.events_all,
     Worship: t.events_worship,
@@ -21,7 +41,7 @@ const Events = () => {
   };
   const categories = ["All", "Worship", "Fellowship", "Outreach", "Youth"];
   const [filter, setFilter] = useState("All");
-  const filtered = filter === "All" ? events : events.filter((e) => e.category === filter);
+  const filtered = filter === "All" ? allEvents : allEvents.filter((e) => e.category === filter);
 
   return (
     <Layout>
