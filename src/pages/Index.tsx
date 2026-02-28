@@ -282,7 +282,7 @@ const Index = () => {
       {/* Appointments CTA */}
       <section className="py-12 bg-card">
         <div className="container mx-auto px-4 text-center max-w-2xl">
-          <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 mx-auto mb-4 object-contain" />
+          <img src={roseLogo} alt="Rose Logo" className="h-[98px] w-[98px] mx-auto mb-4 object-contain" />
           <h2 className="font-display text-2xl font-bold text-foreground mb-2">{t.home_explore_appointments}</h2>
           <p className="text-muted-foreground mb-6">{t.home_explore_appointments_desc}</p>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-purple-light font-semibold">
