@@ -16,6 +16,7 @@ import heroImage3 from "@/assets/hero-church-3.jpg";
 import heroImage4 from "@/assets/hero-church-4.jpg";
 import roseLogo from "@/assets/umplogo2.png";
 import blackClock from "@/assets/black-clock.png";
+import pastorImage from "@/assets/pastor.jpeg";
 
 const defaultHeroSlides = [
   { image: heroImage1, alt: "Mzilikazi Congregation church exterior" },
@@ -184,6 +185,7 @@ const Index = () => {
       {/* Pastor Welcome */}
       <section className="py-10 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-3xl text-center">
+          <img src={pastorImage} alt="Rev. M. Ndlovu - Pastor in Charge" className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-6 shadow-medium border-4 border-primary/20" />
           <SectionHeading title={t.home_pastor_title} />
           <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">{t.home_pastor_quote}</blockquote>
           <p className="mt-6 font-display font-semibold text-foreground">{t.home_pastor_name}</p>
