@@ -34,7 +34,9 @@ function createImage(url: string): Promise<HTMLImageElement> {
     const image = new Image();
     image.addEventListener("load", () => resolve(image));
     image.addEventListener("error", (error) => reject(error));
-    image.setAttribute("crossOrigin", "anonymous");
+    if (!url.startsWith("data:")) {
+      image.setAttribute("crossOrigin", "anonymous");
+    }
     image.src = url;
   });
 }
@@ -86,7 +88,7 @@ const AdminLeaderPhotos = () => {
         .map((f) => {
           const name = f.name.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
           const { data: urlData } = supabase.storage.from("leader-photos").getPublicUrl(f.name);
-          return { name, fileName: f.name, url: urlData.publicUrl };
+          return { name, fileName: f.name, url: `${urlData.publicUrl}?t=${Date.now()}` };
         });
       setPhotos(items);
     }

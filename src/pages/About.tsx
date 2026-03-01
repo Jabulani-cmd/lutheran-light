@@ -31,7 +31,7 @@ const About = () => {
         data.forEach((file) => {
           const name = file.name.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
           const { data: urlData } = supabase.storage.from("leader-photos").getPublicUrl(file.name);
-          photoMap[name.toLowerCase()] = urlData.publicUrl;
+          photoMap[name.toLowerCase()] = `${urlData.publicUrl}?t=${Date.now()}`;
         });
         setLeaderPhotos(photoMap);
       }
