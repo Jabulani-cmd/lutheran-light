@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { useTranslation } from "@/hooks/useTranslation";
-import { CreditCard, HandHeart, BookOpen, DollarSign, Smartphone, Landmark, Church } from "lucide-react";
+import { CreditCard } from "lucide-react";
 import roseLogo from "@/assets/umplogo2.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -54,7 +54,7 @@ const Giving = () => {
       {/* Scripture / Encouragement */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <BookOpen className="h-8 w-8 text-primary mx-auto mb-4" />
+          <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-4" />
           <blockquote className="text-lg sm:text-xl italic text-foreground font-display leading-relaxed">
             "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
           </blockquote>
@@ -106,7 +106,7 @@ const Giving = () => {
           <div className="container mx-auto px-4 max-w-lg">
             <Card className="shadow-soft border-border">
               <CardHeader className="text-center">
-                <DollarSign className="h-8 w-8 text-primary mx-auto mb-2" />
+                <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-2" />
                 <CardTitle className="font-display text-xl">
                   {selectedOption === "one-time" && t.giving_one_time_title}
                   {selectedOption === "project" && t.giving_project_title}
@@ -191,14 +191,14 @@ const Giving = () => {
       <section className="py-12 bg-muted">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
-            <HandHeart className="h-8 w-8 text-primary mx-auto mb-3" />
+            <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-3" />
             <h2 className="font-display text-2xl font-bold text-foreground mb-2">Ways to Give</h2>
             <p className="text-muted-foreground text-sm">Choose any of the following payment methods available in Zimbabwe:</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">EcoCash</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Send your offering via EcoCash to the church merchant number. Contact the church office for the EcoCash details.
@@ -207,7 +207,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">InnBucks</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Transfer your giving via InnBucks. Contact the church office for the InnBucks wallet details.
@@ -216,7 +216,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Smartphone className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">OneMoney</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Send your offering via OneMoney mobile money. Contact the church office for details.
@@ -225,7 +225,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Landmark className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Bank Transfer (ZWG/USD)</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Make a direct deposit or bank transfer in ZWG or USD. Contact the church office for bank account details.
@@ -234,7 +234,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Landmark className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Mukuru / WorldRemit</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   For diaspora members, send offerings via Mukuru or WorldRemit. Contact the church office for recipient details.
@@ -243,7 +243,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <Church className="h-6 w-6 text-primary mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Sunday Service</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Bring your offerings and tithes to our Sunday worship service at 10:00 AM. Offering envelopes are available.
