@@ -92,7 +92,7 @@ const About = () => {
               return (
                 <Card key={l.name} className="shadow-soft border-border">
                   <CardContent className="pt-6 text-center">
-                    <Avatar className="w-20 h-20 mx-auto mb-4">
+                    <Avatar className="w-28 h-28 mx-auto mb-4">
                       {photoUrl ? (
                         <AvatarImage src={photoUrl} alt={l.name} />
                       ) : null}
