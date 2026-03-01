@@ -76,7 +76,7 @@ const Giving = () => {
               >
                 <CardHeader className="pb-4">
                   <div className="mx-auto mb-4 flex items-center justify-center">
-                    <img src={roseLogo} alt="Rose Logo" className="h-[4.375rem] w-[4.375rem] object-contain" />
+                    <img src={roseLogo} alt="Rose Logo" className="h-[6.5rem] w-[6.5rem] object-contain" />
                   </div>
                   <CardTitle className="font-display text-lg">{option.title}</CardTitle>
                   <CardDescription className="text-sm leading-relaxed">{option.description}</CardDescription>
@@ -106,7 +106,7 @@ const Giving = () => {
           <div className="container mx-auto px-4 max-w-lg">
             <Card className="shadow-soft border-border">
               <CardHeader className="text-center">
-                <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-2" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[5.25rem] w-[5.25rem] object-contain mx-auto mb-2" />
                 <CardTitle className="font-display text-xl">
                   {selectedOption === "one-time" && t.giving_one_time_title}
                   {selectedOption === "project" && t.giving_project_title}
@@ -191,14 +191,14 @@ const Giving = () => {
       <section className="py-12 bg-muted">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
-            <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-3" />
+            <img src={roseLogo} alt="Rose Logo" className="h-[5.25rem] w-[5.25rem] object-contain mx-auto mb-3" />
             <h2 className="font-display text-2xl font-bold text-foreground mb-2">Ways to Give</h2>
             <p className="text-muted-foreground text-sm">Choose any of the following payment methods available in Zimbabwe:</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">EcoCash</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Send your offering via EcoCash to the church merchant number. Contact the church office for the EcoCash details.
@@ -207,7 +207,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">InnBucks</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Transfer your giving via InnBucks. Contact the church office for the InnBucks wallet details.
@@ -216,7 +216,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">OneMoney</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Send your offering via OneMoney mobile money. Contact the church office for details.
@@ -225,7 +225,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Bank Transfer (ZWG/USD)</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Make a direct deposit or bank transfer in ZWG or USD. Contact the church office for bank account details.
@@ -234,7 +234,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Mukuru / WorldRemit</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   For diaspora members, send offerings via Mukuru or WorldRemit. Contact the church office for recipient details.
@@ -243,7 +243,7 @@ const Giving = () => {
             </Card>
             <Card className="shadow-soft border-border">
               <CardContent className="p-6">
-                <img src={roseLogo} alt="Rose Logo" className="h-[2.625rem] w-[2.625rem] object-contain mb-3" />
+                <img src={roseLogo} alt="Rose Logo" className="h-[4rem] w-[4rem] object-contain mb-3 mx-auto" />
                 <h3 className="font-display font-semibold text-foreground mb-2">Sunday Service</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Bring your offerings and tithes to our Sunday worship service at 10:00 AM. Offering envelopes are available.
