@@ -1,7 +1,8 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Heart, Building2, RefreshCw, CreditCard, HandHeart, BookOpen, DollarSign, Smartphone, Landmark, Church } from "lucide-react";
+import { CreditCard, HandHeart, BookOpen, DollarSign, Smartphone, Landmark, Church } from "lucide-react";
+import roseLogo from "@/assets/umplogo2.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,21 +23,18 @@ const Giving = () => {
   const givingOptions = [
     {
       id: "one-time",
-      icon: Heart,
       title: t.giving_one_time_title,
       description: t.giving_one_time_desc,
       buttonLabel: t.giving_give_now,
     },
     {
       id: "project",
-      icon: Building2,
       title: t.giving_project_title,
       description: t.giving_project_desc,
       buttonLabel: t.giving_donate,
     },
     {
       id: "recurring",
-      icon: RefreshCw,
       title: t.giving_recurring_title,
       description: t.giving_recurring_desc,
       buttonLabel: t.giving_setup_tithe,
@@ -77,8 +75,8 @@ const Giving = () => {
                 onClick={() => setSelectedOption(option.id)}
               >
                 <CardHeader className="pb-4">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                    <option.icon className="h-7 w-7 text-primary" />
+                  <div className="mx-auto mb-4 flex items-center justify-center">
+                    <img src={roseLogo} alt="Rose Logo" className="h-[4.375rem] w-[4.375rem] object-contain" />
                   </div>
                   <CardTitle className="font-display text-lg">{option.title}</CardTitle>
                   <CardDescription className="text-sm leading-relaxed">{option.description}</CardDescription>
