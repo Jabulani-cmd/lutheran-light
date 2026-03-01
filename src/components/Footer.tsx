@@ -55,8 +55,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm text-primary-foreground/50">
-          © {new Date().getFullYear()} {t.footer_copyright}
+        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm text-primary-foreground/50 space-y-2">
+          <p>© {new Date().getFullYear()} {t.footer_copyright}</p>
+          <p>This website was designed and is maintained by MavingTech Business Solutions.</p>
         </div>
       </div>
     </footer>
