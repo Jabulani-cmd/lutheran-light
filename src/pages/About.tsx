@@ -6,7 +6,7 @@ import roseLogo from "@/assets/umplogo2.png";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import pastorImage from "@/assets/pastor.jpeg";
+
 
 const leaders = [
   { name: "Rev. M. Ndlovu", role: "Pastor in Charge" },
@@ -87,8 +87,7 @@ const About = () => {
           <SectionHeading title={t.about_leadership_title} subtitle={t.about_leadership_subtitle} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {leaders.map((l) => {
-              const storedPhoto = leaderPhotos[l.name.toLowerCase()];
-              const photoUrl = storedPhoto || (l.role === "Pastor in Charge" ? pastorImage : undefined);
+              const photoUrl = leaderPhotos[l.name.toLowerCase()];
               return (
                 <Card key={l.name} className="shadow-soft border-border">
                   <CardContent className="pt-6 text-center">
