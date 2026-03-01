@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
-import { Cross, BookOpen, Heart, Users } from "lucide-react";
+import roseLogo from "@/assets/umplogo2.png";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -39,10 +39,10 @@ const About = () => {
   }, []);
 
   const beliefs = [
-    { icon: Cross, title: t.about_grace, desc: t.about_grace_desc },
-    { icon: BookOpen, title: t.about_scripture, desc: t.about_scripture_desc },
-    { icon: Heart, title: t.about_faith, desc: t.about_faith_desc },
-    { icon: Users, title: t.about_community, desc: t.about_community_desc },
+    { title: t.about_grace, desc: t.about_grace_desc },
+    { title: t.about_scripture, desc: t.about_scripture_desc },
+    { title: t.about_faith, desc: t.about_faith_desc },
+    { title: t.about_community, desc: t.about_community_desc },
   ];
 
   return (
@@ -71,7 +71,7 @@ const About = () => {
             {beliefs.map((b) => (
               <Card key={b.title} className="text-center shadow-soft border-border">
                 <CardContent className="pt-6">
-                  <b.icon className="h-10 w-10 text-primary mx-auto mb-4" />
+                  <img src={roseLogo} alt="Rose Logo" className="h-20 w-20 object-contain mx-auto mb-4" />
                   <h3 className="font-display font-semibold text-foreground mb-2">{b.title}</h3>
                   <p className="text-sm text-muted-foreground">{b.desc}</p>
                 </CardContent>
