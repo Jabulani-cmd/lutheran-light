@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Clock, User, ImageIcon } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import roseLogo from "@/assets/umplogo2.png";
@@ -27,26 +27,10 @@ const Ministries = () => {
   }, []);
 
   const leagues = [
-    {
-      key: "youth", name: t.ministries_youth, desc: t.ministries_youth_desc,
-      meetingTime: "Fridays at 5:00 PM", contact: "Deacon S. Ndlovu",
-      events: ["Youth Fellowship Retreat – March 15", "Sports & Games Night – April 3"],
-    },
-    {
-      key: "men", name: t.ministries_men, desc: t.ministries_men_desc,
-      meetingTime: "1st & 3rd Saturday at 8:00 AM", contact: "Elder J. Moyo",
-      events: ["Men's Sports Day – April 5", "Leadership Workshop – April 19"],
-    },
-    {
-      key: "women", name: t.ministries_women, desc: t.ministries_women_desc,
-      meetingTime: "2nd & 4th Saturday at 9:00 AM", contact: "Sister M. Sibanda",
-      events: ["Prayer Breakfast – March 22", "Community Outreach – April 11"],
-    },
-    {
-      key: "sunday_school", name: t.ministries_sunday_school, desc: t.ministries_sunday_school_desc,
-      meetingTime: "Sundays at 10:30 AM", contact: "Teacher P. Khumalo",
-      events: ["Easter Program – April 5", "Teachers Workshop – April 12"],
-    },
+    { key: "youth", name: t.ministries_youth, desc: t.ministries_youth_desc },
+    { key: "men", name: t.ministries_men, desc: t.ministries_men_desc },
+    { key: "women", name: t.ministries_women, desc: t.ministries_women_desc },
+    { key: "sunday_school", name: t.ministries_sunday_school, desc: t.ministries_sunday_school_desc },
   ];
 
   return (
@@ -73,16 +57,6 @@ const Ministries = () => {
                       <h3 className="font-display text-xl font-bold text-foreground">{l.name}</h3>
                     </div>
                     <p className="text-muted-foreground mb-4">{l.desc}</p>
-                    <div className="space-y-2 text-sm">
-                      <p className="flex items-center gap-2 text-foreground"><Clock className="h-4 w-4 text-primary" /> {l.meetingTime}</p>
-                      <p className="flex items-center gap-2 text-foreground"><User className="h-4 w-4 text-primary" /> {t.ministries_contact}: {l.contact}</p>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">{t.ministries_upcoming}</p>
-                      <ul className="space-y-1">
-                        {l.events.map((ev) => (<li key={ev} className="text-sm text-muted-foreground">• {ev}</li>))}
-                      </ul>
-                    </div>
                     {/* View Photos Button */}
                     <div className="mt-4 pt-4 border-t border-border">
                       <Button variant="outline" size="sm" className="w-full" onClick={() => setViewingPhotos(l.key)}>
