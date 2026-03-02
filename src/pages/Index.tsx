@@ -137,11 +137,12 @@ const Index = () => {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/10 to-black/25 z-10" />
-        <div className="relative z-20 h-full flex items-center justify-center">
+        <div className="absolute top-6 sm:top-8 left-1/2 -translate-x-1/2 z-20">
+          <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[70px] sm:h-[90px] md:h-[110px] w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+        </div>
+        <div className="relative z-20 h-full flex items-end justify-center pb-16 sm:pb-20">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
-            <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
               </Button>
