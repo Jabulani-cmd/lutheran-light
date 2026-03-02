@@ -11,14 +11,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
 import { Trash2, Check, X, Upload, Plus, Clock } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { Video } from "lucide-react";
 
 const AdminChoir = () => {
   const [members, setMembers] = useState<any[]>([]);
   const [photos, setPhotos] = useState<any[]>([]);
   const [schedule, setSchedule] = useState<any[]>([]);
+  const [performances, setPerformances] = useState<any[]>([]);
   const [newMember, setNewMember] = useState({ first_name: "", last_name: "", phone: "", email: "", voice_part: "soprano" });
   const [newSchedule, setNewSchedule] = useState({ practice_day: "", practice_time: "", location: "", notes: "" });
+  const [newPerformance, setNewPerformance] = useState({ title: "", video_url: "", caption: "" });
   const [uploading, setUploading] = useState(false);
+  const [videoUploading, setVideoUploading] = useState(false);
 
   const fetchMembers = async () => {
     const { data } = await supabase.from("choir_members").select("*").order("created_at", { ascending: false });
@@ -35,7 +39,12 @@ const AdminChoir = () => {
     if (data) setSchedule(data);
   };
 
-  useEffect(() => { fetchMembers(); fetchPhotos(); fetchSchedule(); }, []);
+  const fetchPerformances = async () => {
+    const { data } = await supabase.from("gallery_videos").select("*").eq("category", "choir").order("created_at", { ascending: false });
+    if (data) setPerformances(data);
+  };
+
+  useEffect(() => { fetchMembers(); fetchPhotos(); fetchSchedule(); fetchPerformances(); }, []);
 
   const toggleApproval = async (id: string, current: boolean) => {
     await supabase.from("choir_members").update({ is_approved: !current }).eq("id", id);
@@ -84,6 +93,7 @@ const AdminChoir = () => {
           <TabsTrigger value="members">Members</TabsTrigger>
           <TabsTrigger value="photos">Photos</TabsTrigger>
           <TabsTrigger value="schedule"><Clock className="h-4 w-4 mr-1" /> Practice Schedule</TabsTrigger>
+          <TabsTrigger value="performances"><Video className="h-4 w-4 mr-1" /> Performances</TabsTrigger>
         </TabsList>
 
         <TabsContent value="members" className="space-y-6">
@@ -235,6 +245,87 @@ const AdminChoir = () => {
                       </TableCell>
                     </TableRow>
                   ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="performances" className="space-y-6">
+          <Card>
+            <CardHeader><CardTitle className="text-lg">Add Performance Video</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <Label>Title</Label>
+                  <Input placeholder="e.g. Easter Sunday Performance" value={newPerformance.title} onChange={(e) => setNewPerformance({ ...newPerformance, title: e.target.value })} />
+                </div>
+                <div>
+                  <Label>Caption (optional)</Label>
+                  <Input placeholder="Short description" value={newPerformance.caption} onChange={(e) => setNewPerformance({ ...newPerformance, caption: e.target.value })} />
+                </div>
+              </div>
+              <div>
+                <Label>YouTube / Facebook Video URL</Label>
+                <Input placeholder="https://youtube.com/watch?v=..." value={newPerformance.video_url} onChange={(e) => setNewPerformance({ ...newPerformance, video_url: e.target.value })} />
+              </div>
+              <Button onClick={async () => {
+                if (!newPerformance.title || !newPerformance.video_url) return;
+                await supabase.from("gallery_videos").insert([{ ...newPerformance, category: "choir" }]);
+                setNewPerformance({ title: "", video_url: "", caption: "" });
+                fetchPerformances();
+                toast({ title: "Performance video added" });
+              }}><Plus className="h-4 w-4 mr-1" /> Add Video</Button>
+
+              <div className="border-t pt-4 mt-4">
+                <Label>Or Upload a Video File</Label>
+                <Input type="file" accept="video/*" disabled={videoUploading} onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setVideoUploading(true);
+                  const filePath = `choir/${Date.now()}-${file.name}`;
+                  const { error } = await supabase.storage.from("gallery-videos").upload(filePath, file);
+                  if (error) { toast({ title: "Upload failed", variant: "destructive" }); setVideoUploading(false); return; }
+                  const { data: urlData } = supabase.storage.from("gallery-videos").getPublicUrl(filePath);
+                  const title = prompt("Enter a title for this video:") || file.name;
+                  await supabase.from("gallery_videos").insert([{ title, video_url: urlData.publicUrl, category: "choir" }]);
+                  fetchPerformances();
+                  setVideoUploading(false);
+                  toast({ title: "Video uploaded" });
+                }} />
+                {videoUploading && <p className="text-sm text-muted-foreground mt-1">Uploading...</p>}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader><CardTitle className="text-lg">Choir Performances ({performances.length})</CardTitle></CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Caption</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {performances.map((v) => (
+                    <TableRow key={v.id}>
+                      <TableCell className="font-medium">{v.title}</TableCell>
+                      <TableCell>{v.caption || "—"}</TableCell>
+                      <TableCell>
+                        <Button size="sm" variant="destructive" onClick={async () => {
+                          await supabase.from("gallery_videos").delete().eq("id", v.id);
+                          fetchPerformances();
+                          toast({ title: "Video removed" });
+                        }}><Trash2 className="h-3 w-3" /></Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  {performances.length === 0 && (
+                    <TableRow><TableCell colSpan={3} className="text-center text-muted-foreground italic">No performance videos yet.</TableCell></TableRow>
+                  )}
                 </TableBody>
               </Table>
             </CardContent>
