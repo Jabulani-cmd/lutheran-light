@@ -140,7 +140,7 @@ const Index = () => {
         <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center px-4 max-w-3xl animate-fade-in">
             <img src={roseLogo} alt="Mzilikazi Congregation Rose Logo" className="h-[80px] sm:h-[100px] md:h-[120px] w-auto mx-auto mb-4 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
-            <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-relaxed px-2 font-serif font-semibold tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">{t.home_hero_subtitle}</p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6 sm:mt-8">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-sm sm:text-base px-6 sm:px-8 shadow-medium">
                 <Link to="/register">{t.home_join_us}</Link>
@@ -167,6 +167,9 @@ const Index = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary leading-tight tracking-tight">
             {t.home_hero_title_prefix} ELCZ Mzilikazi {t.home_hero_title_suffix}
           </h1>
+          <p className="mt-3 text-lg sm:text-xl md:text-2xl text-foreground/80 font-serif font-semibold leading-relaxed max-w-2xl mx-auto">
+            {t.home_hero_subtitle}
+          </p>
         </div>
       </section>
 
