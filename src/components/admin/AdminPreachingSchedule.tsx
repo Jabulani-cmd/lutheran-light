@@ -23,6 +23,7 @@ const AdminPreachingSchedule = () => {
   const [editing, setEditing] = useState<PreachingEntry | null>(null);
   const [preacherName, setPreacherName] = useState("");
   const [serviceDate, setServiceDate] = useState("");
+  const [serviceType, setServiceType] = useState("sunday_worship");
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +40,7 @@ const AdminPreachingSchedule = () => {
   const resetForm = () => {
     setPreacherName("");
     setServiceDate("");
+    setServiceType("sunday_worship");
     setNotes("");
     setEditing(null);
   };
@@ -47,6 +49,7 @@ const AdminPreachingSchedule = () => {
     setEditing(entry);
     setPreacherName(entry.preacher_name);
     setServiceDate(entry.service_date);
+    setServiceType(entry.service_type);
     setNotes(entry.notes || "");
     setOpen(true);
   };
@@ -59,6 +62,7 @@ const AdminPreachingSchedule = () => {
         const { error } = await supabase.from("preaching_schedule").update({
           preacher_name: preacherName,
           service_date: serviceDate,
+          service_type: serviceType,
           notes: notes || null,
         }).eq("id", editing.id);
         if (error) throw error;
@@ -67,6 +71,7 @@ const AdminPreachingSchedule = () => {
         const { error } = await supabase.from("preaching_schedule").insert({
           preacher_name: preacherName,
           service_date: serviceDate,
+          service_type: serviceType,
           notes: notes || null,
         });
         if (error) throw error;
@@ -99,12 +104,23 @@ const AdminPreachingSchedule = () => {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{editing ? "Edit Entry" : "Add Preacher to Schedule"}</DialogTitle>
+              <DialogTitle>{editing ? "Edit Entry" : "Add to Schedule"}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label>Preacher Name</Label>
+                <Label>{serviceType === "bible_study" ? "Facilitator Name" : "Preacher Name"}</Label>
                 <Input value={preacherName} onChange={(e) => setPreacherName(e.target.value)} required />
+              </div>
+              <div>
+                <Label>Service Type</Label>
+                <select
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <option value="sunday_worship">Sunday Worship Service</option>
+                  <option value="bible_study">Bible Study</option>
+                </select>
               </div>
               <div>
                 <Label>Service Date (Sunday)</Label>
@@ -130,9 +146,9 @@ const AdminPreachingSchedule = () => {
             <Card key={entry.id} className="border-border">
               <CardContent className="p-4 flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-foreground">{entry.preacher_name}</p>
+                <p className="font-semibold text-foreground">{entry.preacher_name}</p>
                   <p className="text-sm text-muted-foreground">
-                    {format(new Date(entry.service_date + "T00:00:00"), "EEEE, dd MMMM yyyy")}
+                    {format(new Date(entry.service_date + "T00:00:00"), "EEEE, dd MMMM yyyy")} · {entry.service_type === "bible_study" ? "Bible Study" : "Worship Service"}
                   </p>
                   {entry.notes && <p className="text-xs text-muted-foreground mt-1">{entry.notes}</p>}
                 </div>

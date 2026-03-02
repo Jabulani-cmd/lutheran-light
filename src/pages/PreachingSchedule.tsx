@@ -12,6 +12,7 @@ interface PreachingEntry {
   id: string;
   preacher_name: string;
   service_date: string;
+  service_type: string;
   notes: string | null;
 }
 
@@ -33,8 +34,8 @@ const PreachingSchedule = () => {
   const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
   const startDay = getDay(monthStart); // 0=Sun
 
-  const getEntryForDate = (date: Date) => {
-    return entries.find((e) => isSameDay(new Date(e.service_date + "T00:00:00"), date));
+  const getEntriesForDate = (date: Date) => {
+    return entries.filter((e) => isSameDay(new Date(e.service_date + "T00:00:00"), date));
   };
 
   return (
@@ -73,8 +74,8 @@ const PreachingSchedule = () => {
               <div key={`empty-${i}`} className="aspect-square" />
             ))}
             {days.map((day) => {
-              const entry = getDay(day) === 0 ? getEntryForDate(day) : null; // Only Sundays
               const isSunday = getDay(day) === 0;
+              const dayEntries = isSunday ? getEntriesForDate(day) : [];
               return (
                 <div
                   key={day.toISOString()}
@@ -86,11 +87,11 @@ const PreachingSchedule = () => {
                   <span className={`font-semibold ${isSunday ? "text-primary" : "text-foreground"}`}>
                     {format(day, "d")}
                   </span>
-                  {entry && (
-                    <span className="text-[10px] sm:text-xs text-center leading-tight mt-1 text-primary font-medium truncate w-full">
-                      {entry.preacher_name}
+                  {dayEntries.map((entry) => (
+                    <span key={entry.id} className={`text-[10px] sm:text-xs text-center leading-tight mt-0.5 font-medium truncate w-full ${entry.service_type === "bible_study" ? "text-accent-foreground" : "text-primary"}`}>
+                      {entry.service_type === "bible_study" ? "📖 " : "⛪ "}{entry.preacher_name}
                     </span>
-                  )}
+                  ))}
                 </div>
               );
             })}
@@ -115,9 +116,11 @@ const PreachingSchedule = () => {
                         </span>
                       </div>
                       <div>
-                        <p className="font-display font-semibold text-foreground">{entry.preacher_name}</p>
+                        <p className="font-display font-semibold text-foreground">
+                          {entry.service_type === "bible_study" ? "📖 " : "⛪ "}{entry.preacher_name}
+                        </p>
                         <p className="text-sm text-muted-foreground">
-                          {format(new Date(entry.service_date + "T00:00:00"), "EEEE, dd MMMM yyyy")}
+                          {format(new Date(entry.service_date + "T00:00:00"), "EEEE, dd MMMM yyyy")} · {entry.service_type === "bible_study" ? "Bible Study" : "Worship Service"}
                         </p>
                         {entry.notes && <p className="text-xs text-muted-foreground mt-1">{entry.notes}</p>}
                       </div>
