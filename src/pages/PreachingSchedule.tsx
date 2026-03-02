@@ -34,7 +34,10 @@ const PreachingSchedule = () => {
   const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
   const startDay = getDay(monthStart); // 0=Sun
 
+  const today = new Date(new Date().toDateString());
+
   const getEntriesForDate = (date: Date) => {
+    if (date < today) return [];
     return entries.filter((e) => isSameDay(new Date(e.service_date + "T00:00:00"), date));
   };
 
