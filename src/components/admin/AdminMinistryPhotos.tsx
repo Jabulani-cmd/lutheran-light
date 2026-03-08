@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import { Trash2, Upload } from "lucide-react";
 
-const ministries = ["youth", "men", "women", "sunday_school", "choir"];
+const ministries = ["youth", "men", "women", "sunday_school", "choir", "widows"];
 
 const AdminMinistryPhotos = () => {
   const [photos, setPhotos] = useState<any[]>([]);
