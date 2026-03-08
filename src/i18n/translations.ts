@@ -342,7 +342,7 @@ const translations: Record<Language, TranslationKeys> = {
     about_subtitle: "Rooted in the Lutheran tradition since 1952, Mzilikazi Congregation has been a beacon of faith, hope, and community.",
     about_history_title: "Our History",
     about_history_p1: "The history of the Evangelical Lutheran Church in Zimbabwe (ELCZ) dates back to 1903, when it was established by missionaries from the Church of Sweden Mission alongside African evangelists from Natal, South Africa. While the church's early work began in the Mberengwa district, its presence soon expanded across the country, leading to the formation of three dioceses. The Mzilikazi congregation falls under the Western Diocese, which serves Matabeleland North and South and the Bulawayo Metropolitan Province. Within this diocese, the congregation is part of the Northern Deanery and functions as the parish for the Bulawayo North area, representing a longstanding Lutheran community in that part of the city.",
-    about_history_p2: "Although the national church gained autonomy in 1962 and has a well-documented history, further details regarding the founding date and early years of the Mzilikazi congregation itself are still being gathered as part of our ongoing efforts to preserve our local heritage.",
+    about_history_p2: "",
     about_beliefs_title: "Our Beliefs",
     about_beliefs_subtitle: "The core pillars of our Lutheran faith.",
     about_grace: "Grace Alone",
