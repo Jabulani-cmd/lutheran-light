@@ -1133,6 +1133,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Boena ba basadi ba tumelo ba ineetseng thapelong, bongateng, le ho thuseng. Re tshehetsa e mong le e mong mme re sebeletsa setjhaba mmoho.",
     ministries_sunday_school: "Sekolo sa Sontaha",
     ministries_sunday_school_desc: "Thuto ya Bibele bakeng sa bana le batjha. Matichere a rona a koetlisitsweng a hodisa tumelo ka dithuto tse kgahlisang.",
+    ministries_widows: "Sehlopha sa Bahlolohadi",
+    ministries_widows_desc: "Tshebeletso e nang le lerato e ineetseng ho tshehetsa le ho phahamisa bahlolohadi sebokeng sa rona ka bongata, thapelo, tlhokomelo ya moruti, le thuso e sebetsang.",
     ministries_upcoming: "Tse Tlang",
     ministries_contact: "Ikopanye",
     gallery_title: "Dinepe",
