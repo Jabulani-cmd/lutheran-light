@@ -627,6 +627,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Hukama hwevakadzi hwakazvipira kumunamato, ushamwari, nekubatsira. Tinotsigirana uye tinoshandira ungano pamwe chete.",
     ministries_sunday_school: "Chikoro cheSvondo",
     ministries_sunday_school_desc: "Kudzidzisa Bhaibheri kuvana nevechidiki. Vadzidzisi vedu vakadzidza vanorera kutenda nemazvidzidzo anofadza.",
+    ministries_widows: "Komiti yeChirikadzi",
+    ministries_widows_desc: "Komiti yehanya yakazvipira kutsigira nekusimudza chirikadzi muungano yedu nekushamwaridzana, munamato, kuchengeta kwemufundisi, nerubatsiro rwezuva nezuva.",
     ministries_upcoming: "Zvinouya",
     ministries_contact: "Bata",
     gallery_title: "Mifananidzo",
