@@ -106,6 +106,8 @@ type TranslationKeys = {
   ministries_women_desc: string;
   ministries_sunday_school: string;
   ministries_sunday_school_desc: string;
+  ministries_widows: string;
+  ministries_widows_desc: string;
   ministries_upcoming: string;
   ministries_contact: string;
 
