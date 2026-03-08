@@ -60,9 +60,11 @@ const Index = () => {
       .limit(5)
       .then(({ data }) => { if (data) setAnnouncements(data); });
 
+    const today = new Date().toISOString().split("T")[0];
     supabase
       .from("events")
       .select("*")
+      .gte("event_date", today)
       .order("event_date", { ascending: true })
       .then(({ data }) => {
         const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" };
@@ -277,7 +279,7 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{e.date} · {e.time}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{(() => { const d = new Date(e.date + "T00:00:00"); if (isNaN(d.getTime())) return e.date; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; })()} · {e.time}</p>
                       <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
                     </div>
                   </CardContent>
