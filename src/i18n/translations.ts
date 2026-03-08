@@ -106,6 +106,8 @@ type TranslationKeys = {
   ministries_women_desc: string;
   ministries_sunday_school: string;
   ministries_sunday_school_desc: string;
+  ministries_widows: string;
+  ministries_widows_desc: string;
   ministries_upcoming: string;
   ministries_contact: string;
 
@@ -372,6 +374,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "A sisterhood of faith dedicated to prayer, fellowship, and outreach. We support each other and serve the community together.",
     ministries_sunday_school: "Sunday School",
     ministries_sunday_school_desc: "Biblical education for children and young people. Our trained teachers nurture faith through engaging lessons and activities.",
+    ministries_widows: "Widows Ministry",
+    ministries_widows_desc: "A caring ministry dedicated to supporting and uplifting widows in our congregation through fellowship, prayer, pastoral care, and practical assistance.",
     ministries_upcoming: "Upcoming",
     ministries_contact: "Contact",
     gallery_title: "Photo Gallery",
@@ -623,6 +627,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Hukama hwevakadzi hwakazvipira kumunamato, ushamwari, nekubatsira. Tinotsigirana uye tinoshandira ungano pamwe chete.",
     ministries_sunday_school: "Chikoro cheSvondo",
     ministries_sunday_school_desc: "Kudzidzisa Bhaibheri kuvana nevechidiki. Vadzidzisi vedu vakadzidza vanorera kutenda nemazvidzidzo anofadza.",
+    ministries_widows: "Komiti yeChirikadzi",
+    ministries_widows_desc: "Komiti yehanya yakazvipira kutsigira nekusimudza chirikadzi muungano yedu nekushamwaridzana, munamato, kuchengeta kwemufundisi, nerubatsiro rwezuva nezuva.",
     ministries_upcoming: "Zvinouya",
     ministries_contact: "Bata",
     gallery_title: "Mifananidzo",
@@ -874,6 +880,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Udadewethu bokukholwa obazinikele emkhulekweni, ebunganini, lekuncedeni. Siyasekana njalo sisebenzele ibandla ndawonye.",
     ministries_sunday_school: "ISonto School",
     ministries_sunday_school_desc: "Ukufundiswa kweBhayibhili kubantwana labatsha. Abafdundisi bethu abaqeqetshiweyo bakhulisa ukukholwa ngezifundo ezijabulisayo.",
+    ministries_widows: "Iqembu labaFelokazi",
+    ministries_widows_desc: "Inkonzo yokunakekela ezinikele ekusekeleni lekuphakamiseni abafelokazi ebandleni lethu ngobungane, umkhuleko, ukunakekelwa ngumfundisi, losizo oluzimele.",
     ministries_upcoming: "Okuzayo",
     ministries_contact: "Xhumana",
     gallery_title: "Imifanekiso",
@@ -1125,6 +1133,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Boena ba basadi ba tumelo ba ineetseng thapelong, bongateng, le ho thuseng. Re tshehetsa e mong le e mong mme re sebeletsa setjhaba mmoho.",
     ministries_sunday_school: "Sekolo sa Sontaha",
     ministries_sunday_school_desc: "Thuto ya Bibele bakeng sa bana le batjha. Matichere a rona a koetlisitsweng a hodisa tumelo ka dithuto tse kgahlisang.",
+    ministries_widows: "Sehlopha sa Bahlolohadi",
+    ministries_widows_desc: "Tshebeletso e nang le lerato e ineetseng ho tshehetsa le ho phahamisa bahlolohadi sebokeng sa rona ka bongata, thapelo, tlhokomelo ya moruti, le thuso e sebetsang.",
     ministries_upcoming: "Tse Tlang",
     ministries_contact: "Ikopanye",
     gallery_title: "Dinepe",
@@ -1376,6 +1386,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Vhushaka ha vhafumakadzi vha lutendo vho ḓiṋekedzaho kha thabelo, vhushaka, na u thusa. Ri a ṱuṱuwedzana nahone ri shumela tshivhidzo roṱhe.",
     ministries_sunday_school: "Tshikolo tsha Swondaha",
     ministries_sunday_school_desc: "U funza Bivhili kha vhana na vhaswa. Vhadededzi vashu vho gudisiwaho vha alusa lutendo nga pfunzo dzi takadzaho.",
+    ministries_widows: "Tshigwada tsha Tshilikadzi",
+    ministries_widows_desc: "Mushumo wa ndavha wo ḓiṋekedzaho kha u tikedza na u takadza tshilikadzi kha tshivhidzo tshashu nga vhushaka, thabelo, ndavha ya mufunzi, na thuso dzi shumaho.",
     ministries_upcoming: "Zwi Ḓaho",
     ministries_contact: "Ḓi Kwame",
     gallery_title: "Zwifanyiso",

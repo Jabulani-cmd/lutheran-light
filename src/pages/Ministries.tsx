@@ -31,6 +31,7 @@ const Ministries = () => {
     { key: "men", name: t.ministries_men, desc: t.ministries_men_desc },
     { key: "women", name: t.ministries_women, desc: t.ministries_women_desc },
     { key: "sunday_school", name: t.ministries_sunday_school, desc: t.ministries_sunday_school_desc },
+    { key: "widows", name: t.ministries_widows, desc: t.ministries_widows_desc },
   ];
 
   return (
