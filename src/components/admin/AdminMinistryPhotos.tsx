@@ -59,7 +59,8 @@ const AdminMinistryPhotos = () => {
                   <SelectItem value="men">Men's League</SelectItem>
                   <SelectItem value="women">Women's League</SelectItem>
                   <SelectItem value="sunday_school">Sunday School</SelectItem>
-                  <SelectItem value="choir">Choir</SelectItem>
+                   <SelectItem value="choir">Choir</SelectItem>
+                   <SelectItem value="widows">Widows Ministry</SelectItem>
                 </SelectContent>
               </Select>
             </div>

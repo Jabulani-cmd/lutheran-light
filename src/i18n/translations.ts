@@ -1386,6 +1386,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Vhushaka ha vhafumakadzi vha lutendo vho ḓiṋekedzaho kha thabelo, vhushaka, na u thusa. Ri a ṱuṱuwedzana nahone ri shumela tshivhidzo roṱhe.",
     ministries_sunday_school: "Tshikolo tsha Swondaha",
     ministries_sunday_school_desc: "U funza Bivhili kha vhana na vhaswa. Vhadededzi vashu vho gudisiwaho vha alusa lutendo nga pfunzo dzi takadzaho.",
+    ministries_widows: "Tshigwada tsha Tshilikadzi",
+    ministries_widows_desc: "Mushumo wa ndavha wo ḓiṋekedzaho kha u tikedza na u takadza tshilikadzi kha tshivhidzo tshashu nga vhushaka, thabelo, ndavha ya mufunzi, na thuso dzi shumaho.",
     ministries_upcoming: "Zwi Ḓaho",
     ministries_contact: "Ḓi Kwame",
     gallery_title: "Zwifanyiso",
