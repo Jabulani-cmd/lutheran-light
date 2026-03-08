@@ -880,6 +880,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "Udadewethu bokukholwa obazinikele emkhulekweni, ebunganini, lekuncedeni. Siyasekana njalo sisebenzele ibandla ndawonye.",
     ministries_sunday_school: "ISonto School",
     ministries_sunday_school_desc: "Ukufundiswa kweBhayibhili kubantwana labatsha. Abafdundisi bethu abaqeqetshiweyo bakhulisa ukukholwa ngezifundo ezijabulisayo.",
+    ministries_widows: "Iqembu labaFelokazi",
+    ministries_widows_desc: "Inkonzo yokunakekela ezinikele ekusekeleni lekuphakamiseni abafelokazi ebandleni lethu ngobungane, umkhuleko, ukunakekelwa ngumfundisi, losizo oluzimele.",
     ministries_upcoming: "Okuzayo",
     ministries_contact: "Xhumana",
     gallery_title: "Imifanekiso",
