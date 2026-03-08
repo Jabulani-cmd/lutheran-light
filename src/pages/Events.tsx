@@ -6,15 +6,23 @@ import { Clock, MapPin, Calendar } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 
-
+const formatDateOrdinal = (dateStr: string) => {
+  const d = new Date(dateStr + "T00:00:00");
+  if (isNaN(d.getTime())) return dateStr;
+  const day = d.getDate();
+  const suffix = [11,12,13].includes(day % 100) ? "th" : {1:"st",2:"nd",3:"rd"}[day % 10] || "th";
+  const month = d.toLocaleString("en", { month: "long" });
+  return `${day}${suffix} ${month} ${d.getFullYear()}`;
+};
 
 const Events = () => {
   const { t } = useTranslation();
   const [dbEvents, setDbEvents] = useState<any[]>([]);
 
   useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
     const fetch = async () => {
-      const { data } = await supabase.from("events").select("*").order("event_date", { ascending: true });
+      const { data } = await supabase.from("events").select("*").gte("event_date", today).order("event_date", { ascending: true });
       if (data) setDbEvents(data);
     };
     fetch();
@@ -85,7 +93,7 @@ const Events = () => {
                     <div className="flex-1">
                       <h3 className="font-display text-xl font-semibold text-foreground">{e.title}</h3>
                       <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{e.date}</span>
+                        <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{formatDateOrdinal(e.date)}</span>
                         <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{e.time}</span>
                         <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
                       </div>
