@@ -9,9 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
-import { Trash2, Check, X, Upload, Plus, Clock } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
-import { Video } from "lucide-react";
+import { Trash2, Check, X, Plus, Clock, Video } from "lucide-react";
+import ImageCropDialog, { useImageCrop } from "./ImageCropDialog";
 
 const AdminChoir = () => {
   const [members, setMembers] = useState<any[]>([]);
@@ -23,6 +22,8 @@ const AdminChoir = () => {
   const [newPerformance, setNewPerformance] = useState({ title: "", video_url: "", caption: "" });
   const [uploading, setUploading] = useState(false);
   const [videoUploading, setVideoUploading] = useState(false);
+  const [pendingGroupPhoto, setPendingGroupPhoto] = useState(false);
+  const { cropDialogOpen, setCropDialogOpen, imageSrc, openCropDialog, resetCrop } = useImageCrop();
 
   const fetchMembers = async () => {
     const { data } = await supabase.from("choir_members").select("*").order("created_at", { ascending: false });
@@ -66,18 +67,30 @@ const AdminChoir = () => {
     toast({ title: "Member added" });
   };
 
-  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>, isGroupPhoto: boolean) => {
+  const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>, isGroupPhoto: boolean) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setPendingGroupPhoto(isGroupPhoto);
+    openCropDialog(file);
+  };
+
+  const handleCropDone = async (blob: Blob) => {
+    setCropDialogOpen(false);
     setUploading(true);
-    const filePath = `${Date.now()}-${file.name}`;
-    const { error: uploadError } = await supabase.storage.from("choir-photos").upload(filePath, file);
-    if (uploadError) { toast({ title: "Upload failed", variant: "destructive" }); setUploading(false); return; }
-    const { data: urlData } = supabase.storage.from("choir-photos").getPublicUrl(filePath);
-    await supabase.from("choir_photos").insert([{ image_url: urlData.publicUrl, is_group_photo: isGroupPhoto, caption: isGroupPhoto ? "Choir group photo" : "" }]);
-    fetchPhotos();
-    setUploading(false);
-    toast({ title: "Photo uploaded" });
+    try {
+      const filePath = `${Date.now()}.jpeg`;
+      const { error: uploadError } = await supabase.storage.from("choir-photos").upload(filePath, blob, { contentType: "image/jpeg" });
+      if (uploadError) throw uploadError;
+      const { data: urlData } = supabase.storage.from("choir-photos").getPublicUrl(filePath);
+      await supabase.from("choir_photos").insert([{ image_url: urlData.publicUrl, is_group_photo: pendingGroupPhoto, caption: pendingGroupPhoto ? "Choir group photo" : "" }]);
+      fetchPhotos();
+      toast({ title: "Photo uploaded" });
+    } catch (err: any) {
+      toast({ title: "Upload failed", description: err.message, variant: "destructive" });
+    } finally {
+      setUploading(false);
+      resetCrop();
+    }
   };
 
   const deletePhoto = async (id: string) => {
@@ -88,6 +101,14 @@ const AdminChoir = () => {
 
   return (
     <div className="space-y-6">
+      <ImageCropDialog
+        open={cropDialogOpen}
+        onOpenChange={setCropDialogOpen}
+        imageSrc={imageSrc}
+        onCropComplete={handleCropDone}
+        aspect={pendingGroupPhoto ? 16 / 9 : 1}
+      />
+
       <Tabs defaultValue="members">
         <TabsList>
           <TabsTrigger value="members">Members</TabsTrigger>
@@ -97,7 +118,6 @@ const AdminChoir = () => {
         </TabsList>
 
         <TabsContent value="members" className="space-y-6">
-          {/* Add Member */}
           <Card>
             <CardHeader><CardTitle className="text-lg">Add Choir Member</CardTitle></CardHeader>
             <CardContent>
@@ -119,7 +139,6 @@ const AdminChoir = () => {
             </CardContent>
           </Card>
 
-          {/* Members Table */}
           <Card>
             <CardHeader><CardTitle className="text-lg">All Choir Members ({members.length})</CardTitle></CardHeader>
             <CardContent>
@@ -161,13 +180,14 @@ const AdminChoir = () => {
             <CardHeader><CardTitle className="text-lg">Upload Photos</CardTitle></CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label>Group Photo</Label>
-                <Input type="file" accept="image/*" onChange={(e) => handlePhotoUpload(e, true)} disabled={uploading} />
+                <Label>Group Photo (opens crop tool)</Label>
+                <Input type="file" accept="image/*" onChange={(e) => handlePhotoSelect(e, true)} disabled={uploading} />
               </div>
               <div>
-                <Label>Additional Photo</Label>
-                <Input type="file" accept="image/*" onChange={(e) => handlePhotoUpload(e, false)} disabled={uploading} />
+                <Label>Additional Photo (opens crop tool)</Label>
+                <Input type="file" accept="image/*" onChange={(e) => handlePhotoSelect(e, false)} disabled={uploading} />
               </div>
+              {uploading && <p className="text-sm text-muted-foreground">Uploading...</p>}
             </CardContent>
           </Card>
 

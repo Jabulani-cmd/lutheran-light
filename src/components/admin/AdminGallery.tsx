@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2 } from "lucide-react";
+import ImageCropDialog, { useImageCrop } from "./ImageCropDialog";
 
 const categories = ["worship", "fellowship", "outreach", "league", "choir", "general"];
 
@@ -27,8 +28,9 @@ const AdminGallery = () => {
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
   const [category, setCategory] = useState("general");
-  const [file, setFile] = useState<File | null>(null);
+  const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
+  const { cropDialogOpen, setCropDialogOpen, imageSrc, openCropDialog, resetCrop } = useImageCrop();
 
   const fetchPhotos = async () => {
     const { data } = await supabase.from("gallery_photos").select("*").order("created_at", { ascending: false });
@@ -41,8 +43,9 @@ const AdminGallery = () => {
     setTitle("");
     setCaption("");
     setCategory("general");
-    setFile(null);
+    setCroppedBlob(null);
     setEditing(null);
+    resetCrop();
   };
 
   const openEdit = (photo: Photo) => {
@@ -53,6 +56,18 @@ const AdminGallery = () => {
     setOpen(true);
   };
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    openCropDialog(file);
+  };
+
+  const handleCropDone = (blob: Blob) => {
+    setCroppedBlob(blob);
+    setCropDialogOpen(false);
+    toast({ title: "Image cropped successfully" });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -60,23 +75,22 @@ const AdminGallery = () => {
     try {
       let image_url = editing?.image_url || "";
 
-      if (file) {
-        const ext = file.name.split(".").pop();
-        const path = `${crypto.randomUUID()}.${ext}`;
-        const { error: uploadError } = await supabase.storage.from("gallery").upload(path, file);
+      if (croppedBlob) {
+        const path = `${crypto.randomUUID()}.jpeg`;
+        const { error: uploadError } = await supabase.storage.from("gallery").upload(path, croppedBlob, { contentType: "image/jpeg" });
         if (uploadError) throw uploadError;
         const { data: urlData } = supabase.storage.from("gallery").getPublicUrl(path);
         image_url = urlData.publicUrl;
       }
 
       if (!image_url) {
-        toast({ title: "Please select an image", variant: "destructive" });
+        toast({ title: "Please select and crop an image", variant: "destructive" });
         setLoading(false);
         return;
       }
 
       if (editing) {
-        const { error } = await supabase.from("gallery_photos").update({ title, caption, category, ...(file ? { image_url } : {}) }).eq("id", editing.id);
+        const { error } = await supabase.from("gallery_photos").update({ title, caption, category, ...(croppedBlob ? { image_url } : {}) }).eq("id", editing.id);
         if (error) throw error;
         toast({ title: "Photo updated" });
       } else {
@@ -138,15 +152,24 @@ const AdminGallery = () => {
               </div>
               <div>
                 <Label>Image {editing ? "(leave empty to keep current)" : ""}</Label>
-                <Input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] || null)} required={!editing} />
+                <Input type="file" accept="image/*" onChange={handleFileSelect} />
+                {croppedBlob && <p className="text-sm text-green-600 mt-1">✓ Image cropped and ready</p>}
               </div>
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full" disabled={loading || (!editing && !croppedBlob)}>
                 {loading ? "Saving..." : editing ? "Update" : "Add Photo"}
               </Button>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
+      <ImageCropDialog
+        open={cropDialogOpen}
+        onOpenChange={setCropDialogOpen}
+        imageSrc={imageSrc}
+        onCropComplete={handleCropDone}
+        aspect={1}
+      />
 
       {photos.length === 0 ? (
         <p className="text-muted-foreground text-center py-12">No photos yet. Add your first photo!</p>

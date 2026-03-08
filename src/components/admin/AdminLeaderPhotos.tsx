@@ -6,11 +6,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Slider } from "@/components/ui/slider";
 import { toast } from "@/hooks/use-toast";
-import { Upload, Trash2, Crop } from "lucide-react";
-import Cropper, { Area } from "react-easy-crop";
+import { Trash2 } from "lucide-react";
+import ImageCropDialog, { useImageCrop } from "./ImageCropDialog";
 
 const leaders = [
   "Rev. M. Ndlovu",
@@ -29,56 +27,11 @@ interface LeaderPhoto {
   url: string;
 }
 
-function createImage(url: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const image = new Image();
-    image.addEventListener("load", () => resolve(image));
-    image.addEventListener("error", (error) => reject(error));
-    if (!url.startsWith("data:")) {
-      image.setAttribute("crossOrigin", "anonymous");
-    }
-    image.src = url;
-  });
-}
-
-async function getCroppedImg(imageSrc: string, pixelCrop: Area): Promise<Blob> {
-  const image = await createImage(imageSrc);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
-  canvas.width = pixelCrop.width;
-  canvas.height = pixelCrop.height;
-  ctx.drawImage(
-    image,
-    pixelCrop.x,
-    pixelCrop.y,
-    pixelCrop.width,
-    pixelCrop.height,
-    0,
-    0,
-    pixelCrop.width,
-    pixelCrop.height
-  );
-  return new Promise((resolve) => {
-    canvas.toBlob((blob) => resolve(blob!), "image/jpeg", 0.92);
-  });
-}
-
 const AdminLeaderPhotos = () => {
   const [photos, setPhotos] = useState<LeaderPhoto[]>([]);
   const [selectedLeader, setSelectedLeader] = useState("");
-  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-
-  // Crop state
-  const [cropDialogOpen, setCropDialogOpen] = useState(false);
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
-
-  const onCropComplete = useCallback((_: Area, croppedPixels: Area) => {
-    setCroppedAreaPixels(croppedPixels);
-  }, []);
+  const { cropDialogOpen, setCropDialogOpen, imageSrc, openCropDialog, resetCrop } = useImageCrop();
 
   const fetchPhotos = async () => {
     const { data } = await supabase.storage.from("leader-photos").list();
@@ -94,82 +47,40 @@ const AdminLeaderPhotos = () => {
     }
   };
 
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
+  useEffect(() => { fetchPhotos(); }, []);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = e.target.files?.[0];
-    if (!selected) return;
-    setFile(selected);
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImageSrc(reader.result as string);
-      setCrop({ x: 0, y: 0 });
-      setZoom(1);
-      setCropDialogOpen(true);
-    };
-    reader.readAsDataURL(selected);
-  };
-
-  const handleCropConfirm = async () => {
-    if (!imageSrc || !croppedAreaPixels || !selectedLeader) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!selectedLeader) {
       toast({ title: "Please select a leader first", variant: "destructive" });
       return;
     }
-    setLoading(true);
-    setCropDialogOpen(false);
-    try {
-      const croppedBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
-      const fileName = `${selectedLeader.replace(/\s+/g, "-").replace(/\./g, "")}.jpeg`;
+    openCropDialog(file);
+  };
 
+  const handleCropDone = async (blob: Blob) => {
+    setCropDialogOpen(false);
+    setLoading(true);
+    try {
+      const fileName = `${selectedLeader.replace(/\s+/g, "-").replace(/\./g, "")}.jpeg`;
       const existing = photos.find((p) => p.name.toLowerCase() === selectedLeader.toLowerCase());
       if (existing) {
         await supabase.storage.from("leader-photos").remove([existing.fileName]);
       }
-
-      const { error } = await supabase.storage.from("leader-photos").upload(fileName, croppedBlob, {
+      const { error } = await supabase.storage.from("leader-photos").upload(fileName, blob, {
         upsert: true,
         contentType: "image/jpeg",
       });
       if (error) throw error;
-
       toast({ title: "Photo uploaded successfully" });
-      setFile(null);
-      setImageSrc(null);
       setSelectedLeader("");
       fetchPhotos();
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleUploadWithoutCrop = async () => {
-    if (!selectedLeader || !file) {
-      toast({ title: "Please select a leader and an image", variant: "destructive" });
-      return;
-    }
-    setLoading(true);
-    try {
-      const ext = file.name.split(".").pop();
-      const fileName = `${selectedLeader.replace(/\s+/g, "-").replace(/\./g, "")}.${ext}`;
-      const existing = photos.find((p) => p.name.toLowerCase() === selectedLeader.toLowerCase());
-      if (existing) {
-        await supabase.storage.from("leader-photos").remove([existing.fileName]);
-      }
-      const { error } = await supabase.storage.from("leader-photos").upload(fileName, file, { upsert: true });
-      if (error) throw error;
-      toast({ title: "Photo uploaded successfully" });
-      setFile(null);
-      setImageSrc(null);
-      setSelectedLeader("");
-      fetchPhotos();
-    } catch (err: any) {
-      toast({ title: "Error", description: err.message, variant: "destructive" });
-    } finally {
-      setLoading(false);
+      resetCrop();
     }
   };
 
@@ -202,52 +113,22 @@ const AdminLeaderPhotos = () => {
             </Select>
           </div>
           <div>
-            <Label>Photo (selecting opens crop tool)</Label>
-            <Input type="file" accept="image/*" onChange={handleFileSelect} />
-          </div>
-          <div className="flex gap-2">
-            <Button onClick={() => imageSrc && setCropDialogOpen(true)} disabled={!imageSrc || !selectedLeader} variant="outline">
-              <Crop className="h-4 w-4 mr-2" /> Re-crop
-            </Button>
-            <Button onClick={handleUploadWithoutCrop} disabled={loading || !selectedLeader || !file} variant="secondary">
-              <Upload className="h-4 w-4 mr-2" /> Upload Original
-            </Button>
+            <Label>Photo (opens crop tool)</Label>
+            <Input type="file" accept="image/*" onChange={handleFileSelect} disabled={loading} />
+            {loading && <p className="text-sm text-muted-foreground mt-1">Uploading...</p>}
           </div>
         </CardContent>
       </Card>
 
-      {/* Crop Dialog */}
-      <Dialog open={cropDialogOpen} onOpenChange={setCropDialogOpen}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Crop Photo</DialogTitle>
-          </DialogHeader>
-          <div className="relative w-full h-72 bg-muted rounded-md overflow-hidden">
-            {imageSrc && (
-              <Cropper
-                image={imageSrc}
-                crop={crop}
-                zoom={zoom}
-                aspect={1}
-                cropShape="round"
-                onCropChange={setCrop}
-                onZoomChange={setZoom}
-                onCropComplete={onCropComplete}
-              />
-            )}
-          </div>
-          <div className="flex items-center gap-3 mt-2">
-            <Label className="shrink-0 text-sm">Zoom</Label>
-            <Slider min={1} max={3} step={0.05} value={[zoom]} onValueChange={(v) => setZoom(v[0])} />
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setCropDialogOpen(false)}>Cancel</Button>
-            <Button onClick={handleCropConfirm} disabled={loading || !selectedLeader}>
-              {loading ? "Uploading..." : "Crop & Upload"}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <ImageCropDialog
+        open={cropDialogOpen}
+        onOpenChange={setCropDialogOpen}
+        imageSrc={imageSrc}
+        onCropComplete={handleCropDone}
+        aspect={1}
+        cropShape="round"
+        title="Crop Leader Photo"
+      />
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {photos.map((photo) => (
