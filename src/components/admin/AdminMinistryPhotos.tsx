@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { Trash2, Upload } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import ImageCropDialog, { useImageCrop } from "./ImageCropDialog";
 
 const ministries = ["youth", "men", "women", "sunday_school", "choir", "widows"];
 
@@ -14,6 +15,7 @@ const AdminMinistryPhotos = () => {
   const [photos, setPhotos] = useState<any[]>([]);
   const [selectedMinistry, setSelectedMinistry] = useState("youth");
   const [uploading, setUploading] = useState(false);
+  const { cropDialogOpen, setCropDialogOpen, imageSrc, openCropDialog, resetCrop } = useImageCrop();
 
   const fetchPhotos = async () => {
     const { data } = await supabase.from("ministry_photos").select("*").order("created_at", { ascending: false });
@@ -22,18 +24,29 @@ const AdminMinistryPhotos = () => {
 
   useEffect(() => { fetchPhotos(); }, []);
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    openCropDialog(file);
+  };
+
+  const handleCropDone = async (blob: Blob) => {
+    setCropDialogOpen(false);
     setUploading(true);
-    const filePath = `${selectedMinistry}/${Date.now()}-${file.name}`;
-    const { error } = await supabase.storage.from("ministry-photos").upload(filePath, file);
-    if (error) { toast({ title: "Upload failed", variant: "destructive" }); setUploading(false); return; }
-    const { data: urlData } = supabase.storage.from("ministry-photos").getPublicUrl(filePath);
-    await supabase.from("ministry_photos").insert([{ ministry: selectedMinistry, image_url: urlData.publicUrl }]);
-    fetchPhotos();
-    setUploading(false);
-    toast({ title: "Photo uploaded" });
+    try {
+      const filePath = `${selectedMinistry}/${Date.now()}.jpeg`;
+      const { error } = await supabase.storage.from("ministry-photos").upload(filePath, blob, { contentType: "image/jpeg" });
+      if (error) throw error;
+      const { data: urlData } = supabase.storage.from("ministry-photos").getPublicUrl(filePath);
+      await supabase.from("ministry_photos").insert([{ ministry: selectedMinistry, image_url: urlData.publicUrl }]);
+      fetchPhotos();
+      toast({ title: "Photo uploaded" });
+    } catch (err: any) {
+      toast({ title: "Upload failed", description: err.message, variant: "destructive" });
+    } finally {
+      setUploading(false);
+      resetCrop();
+    }
   };
 
   const deletePhoto = async (id: string) => {
@@ -59,18 +72,27 @@ const AdminMinistryPhotos = () => {
                   <SelectItem value="men">Men's League</SelectItem>
                   <SelectItem value="women">Women's League</SelectItem>
                   <SelectItem value="sunday_school">Sunday School</SelectItem>
-                   <SelectItem value="choir">Choir</SelectItem>
-                   <SelectItem value="widows">Widows Ministry</SelectItem>
+                  <SelectItem value="choir">Choir</SelectItem>
+                  <SelectItem value="widows">Widows Ministry</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="flex-1">
-              <Label>Upload Photo</Label>
-              <Input type="file" accept="image/*" onChange={handleUpload} disabled={uploading} />
+              <Label>Upload Photo (opens crop tool)</Label>
+              <Input type="file" accept="image/*" onChange={handleFileSelect} disabled={uploading} />
+              {uploading && <p className="text-sm text-muted-foreground mt-1">Uploading...</p>}
             </div>
           </div>
         </CardContent>
       </Card>
+
+      <ImageCropDialog
+        open={cropDialogOpen}
+        onOpenChange={setCropDialogOpen}
+        imageSrc={imageSrc}
+        onCropComplete={handleCropDone}
+        aspect={1}
+      />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {filtered.map((p) => (

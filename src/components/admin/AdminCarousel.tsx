@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Switch } from "@/components/ui/switch";
 import { toast } from "@/hooks/use-toast";
 import { Plus, Trash2, ArrowUp, ArrowDown } from "lucide-react";
+import ImageCropDialog, { useImageCrop } from "./ImageCropDialog";
 
 interface CarouselImage {
   id: string;
@@ -22,8 +23,9 @@ const AdminCarousel = () => {
   const [images, setImages] = useState<CarouselImage[]>([]);
   const [open, setOpen] = useState(false);
   const [altText, setAltText] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
+  const { cropDialogOpen, setCropDialogOpen, imageSrc, openCropDialog, resetCrop } = useImageCrop();
 
   const fetchImages = async () => {
     const { data } = await supabase
@@ -35,14 +37,25 @@ const AdminCarousel = () => {
 
   useEffect(() => { fetchImages(); }, []);
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    openCropDialog(file);
+  };
+
+  const handleCropDone = (blob: Blob) => {
+    setCroppedBlob(blob);
+    setCropDialogOpen(false);
+    toast({ title: "Image cropped successfully" });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) return;
+    if (!croppedBlob) return;
     setLoading(true);
     try {
-      const ext = file.name.split(".").pop();
-      const path = `carousel/${crypto.randomUUID()}.${ext}`;
-      const { error: uploadError } = await supabase.storage.from("gallery").upload(path, file);
+      const path = `carousel/${crypto.randomUUID()}.jpeg`;
+      const { error: uploadError } = await supabase.storage.from("gallery").upload(path, croppedBlob, { contentType: "image/jpeg" });
       if (uploadError) throw uploadError;
       const { data: urlData } = supabase.storage.from("gallery").getPublicUrl(path);
 
@@ -58,7 +71,8 @@ const AdminCarousel = () => {
       toast({ title: "Carousel image added" });
       setOpen(false);
       setAltText("");
-      setFile(null);
+      setCroppedBlob(null);
+      resetCrop();
       fetchImages();
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
@@ -97,7 +111,7 @@ const AdminCarousel = () => {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-display text-2xl font-bold text-foreground">Carousel Management</h2>
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) { setCroppedBlob(null); resetCrop(); } }}>
           <DialogTrigger asChild>
             <Button><Plus className="h-4 w-4 mr-2" /> Add Image</Button>
           </DialogTrigger>
@@ -112,15 +126,24 @@ const AdminCarousel = () => {
               </div>
               <div>
                 <Label>Image</Label>
-                <Input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] || null)} required />
+                <Input type="file" accept="image/*" onChange={handleFileSelect} />
+                {croppedBlob && <p className="text-sm text-green-600 mt-1">✓ Image cropped and ready</p>}
               </div>
-              <Button type="submit" className="w-full" disabled={loading || !file}>
+              <Button type="submit" className="w-full" disabled={loading || !croppedBlob}>
                 {loading ? "Uploading..." : "Add Image"}
               </Button>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
+      <ImageCropDialog
+        open={cropDialogOpen}
+        onOpenChange={setCropDialogOpen}
+        imageSrc={imageSrc}
+        onCropComplete={handleCropDone}
+        aspect={16 / 9}
+      />
 
       {images.length === 0 ? (
         <p className="text-muted-foreground text-center py-12">No carousel images. The default images will be used. Add images to customize the hero carousel.</p>
