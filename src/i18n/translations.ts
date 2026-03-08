@@ -374,6 +374,8 @@ const translations: Record<Language, TranslationKeys> = {
     ministries_women_desc: "A sisterhood of faith dedicated to prayer, fellowship, and outreach. We support each other and serve the community together.",
     ministries_sunday_school: "Sunday School",
     ministries_sunday_school_desc: "Biblical education for children and young people. Our trained teachers nurture faith through engaging lessons and activities.",
+    ministries_widows: "Widows Ministry",
+    ministries_widows_desc: "A caring ministry dedicated to supporting and uplifting widows in our congregation through fellowship, prayer, pastoral care, and practical assistance.",
     ministries_upcoming: "Upcoming",
     ministries_contact: "Contact",
     gallery_title: "Photo Gallery",
