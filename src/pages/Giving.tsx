@@ -54,7 +54,7 @@ const Giving = () => {
       {/* Scripture / Encouragement */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <img src={roseLogo} alt="Rose Logo" className="h-14 w-14 object-contain mx-auto mb-4" />
+          <img src={roseLogo} alt="Church Logo" className="h-[78px] w-[78px] object-contain mx-auto mb-4" />
           <blockquote className="text-lg sm:text-xl italic text-foreground font-display leading-relaxed">
             "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
           </blockquote>
