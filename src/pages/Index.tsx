@@ -14,7 +14,7 @@ import heroImage1 from "@/assets/hero-church.jpg";
 import heroImage2 from "@/assets/hero-church-2.jpg";
 import heroImage3 from "@/assets/hero-church-3.jpg";
 import heroImage4 from "@/assets/hero-church-4.jpg";
-import roseLogo from "@/assets/umplogo2.png";
+import roseLogo from "@/assets/Logo15.png";
 import blackClock from "@/assets/black-clock.png";
 
 

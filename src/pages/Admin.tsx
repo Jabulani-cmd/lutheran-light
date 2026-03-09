@@ -5,7 +5,7 @@ import { useAdmin } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LogOut, Image, Megaphone, CalendarDays, HandHeart, Users, Download, SlidersHorizontal, UserCircle, Video, BookOpen, Home, Music, Camera, FolderKanban } from "lucide-react";
-import logo from "@/assets/umplogo2.png";
+import logo from "@/assets/Logo15.png";
 import AdminGallery from "@/components/admin/AdminGallery";
 import AdminAnnouncements from "@/components/admin/AdminAnnouncements";
 import AdminEvents from "@/components/admin/AdminEvents";

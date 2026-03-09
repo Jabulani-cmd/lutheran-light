@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { Eye, EyeOff } from "lucide-react";
-import logo from "@/assets/umplogo2.png";
+import logo from "@/assets/Logo15.png";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");

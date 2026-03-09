@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useTranslation } from "@/hooks/useTranslation";
-import logo from "@/assets/church-cross-logo-new.jpg";
+import logo from "@/assets/Logo15.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
