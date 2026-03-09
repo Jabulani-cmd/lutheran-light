@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { useTranslation } from "@/hooks/useTranslation";
 import { CreditCard } from "lucide-react";
-import roseLogo from "@/assets/umplogo2.png";
+import roseLogo from "@/assets/Logo15.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

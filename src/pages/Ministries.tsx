@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { ImageIcon } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
-import roseLogo from "@/assets/umplogo2.png";
+import roseLogo from "@/assets/Logo15.png";
 
 const Ministries = () => {
   const { t } = useTranslation();
