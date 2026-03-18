@@ -116,14 +116,6 @@ const Index = () => {
     { label: t.home_explore_events, desc: t.home_explore_events_desc, to: "/events" },
   ];
 
-  const eventDates = useMemo(() => {
-    return upcomingEvents
-      .map((e) => {
-        const parsed = new Date(e.date);
-        return isNaN(parsed.getTime()) ? null : parsed;
-      })
-      .filter(Boolean) as Date[];
-  }, [upcomingEvents]);
 
   return (
     <Layout>
