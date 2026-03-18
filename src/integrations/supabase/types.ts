@@ -212,6 +212,8 @@ export type Database = {
           event_time: string | null
           id: string
           location: string | null
+          poster_image_url: string | null
+          programme_document_url: string | null
           title: string
           updated_at: string
         }
@@ -223,6 +225,8 @@ export type Database = {
           event_time?: string | null
           id?: string
           location?: string | null
+          poster_image_url?: string | null
+          programme_document_url?: string | null
           title: string
           updated_at?: string
         }
@@ -234,6 +238,8 @@ export type Database = {
           event_time?: string | null
           id?: string
           location?: string | null
+          poster_image_url?: string | null
+          programme_document_url?: string | null
           title?: string
           updated_at?: string
         }

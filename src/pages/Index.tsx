@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import { useEffect, useCallback, useState, useMemo } from "react";
-import { Calendar as CalendarWidget } from "@/components/ui/calendar";
+import { useEffect, useCallback, useState } from "react";
+
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -73,6 +73,8 @@ const Index = () => {
           date: e.event_date,
           time: e.event_time || "",
           category: e.category,
+          poster_image_url: e.poster_image_url || "",
+          programme_document_url: e.programme_document_url || "",
         }));
         setUpcomingEvents([sundayService, ...dbEvents]);
       });
@@ -114,14 +116,6 @@ const Index = () => {
     { label: t.home_explore_events, desc: t.home_explore_events_desc, to: "/events" },
   ];
 
-  const eventDates = useMemo(() => {
-    return upcomingEvents
-      .map((e) => {
-        const parsed = new Date(e.date);
-        return isNaN(parsed.getTime()) ? null : parsed;
-      })
-      .filter(Boolean) as Date[];
-  }, [upcomingEvents]);
 
   return (
     <Layout>
@@ -249,14 +243,23 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_events_title} subtitle={t.home_events_subtitle} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Calendar Widget */}
-            <Card className="shadow-soft border-border flex justify-center items-start p-4">
-              <CalendarWidget
-                mode="multiple"
-                selected={eventDates}
-                className="pointer-events-auto"
-              />
-            </Card>
+            {/* Event Posters */}
+            <div className="space-y-4">
+              {upcomingEvents.filter((e) => e.poster_image_url).length > 0 ? (
+                upcomingEvents.filter((e) => e.poster_image_url).map((e, i) => (
+                  <Card key={i} className="shadow-soft border-border overflow-hidden">
+                    <img src={e.poster_image_url} alt={e.title} className="w-full h-auto object-cover" />
+                  </Card>
+                ))
+              ) : (
+                <Card className="shadow-soft border-border flex items-center justify-center p-8 min-h-[300px]">
+                  <div className="text-center text-muted-foreground">
+                    <Calendar className="h-12 w-12 mx-auto mb-3 opacity-40" />
+                    <p className="text-sm">{t.home_no_announcements || "No event posters available"}</p>
+                  </div>
+                </Card>
+              )}
+            </div>
             {/* Event List */}
             <div className="flex flex-col gap-4">
               {upcomingEvents.map((e) => {
@@ -280,7 +283,15 @@ const Index = () => {
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
                       <p className="text-sm text-muted-foreground mt-1">{(() => { const d = new Date(e.date + "T00:00:00"); if (isNaN(d.getTime())) return e.date; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; })()} · {e.time}</p>
-                      <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
+                      <div className="flex flex-wrap items-center gap-2 mt-2">
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
+                        {e.programme_document_url && (
+                          <a href={e.programme_document_url} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs bg-accent/10 text-accent px-2 py-0.5 rounded-full hover:bg-accent/20 transition-colors font-medium">
+                            <BookOpen className="h-3 w-3" /> Programme
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
