@@ -283,7 +283,15 @@ const Index = () => {
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
                       <p className="text-sm text-muted-foreground mt-1">{(() => { const d = new Date(e.date + "T00:00:00"); if (isNaN(d.getTime())) return e.date; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; })()} · {e.time}</p>
-                      <span className="inline-block mt-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
+                      <div className="flex flex-wrap items-center gap-2 mt-2">
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
+                        {e.programme_document_url && (
+                          <a href={e.programme_document_url} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs bg-accent/10 text-accent px-2 py-0.5 rounded-full hover:bg-accent/20 transition-colors font-medium">
+                            <BookOpen className="h-3 w-3" /> Programme
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
