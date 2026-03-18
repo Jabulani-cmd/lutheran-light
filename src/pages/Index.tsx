@@ -73,6 +73,8 @@ const Index = () => {
           date: e.event_date,
           time: e.event_time || "",
           category: e.category,
+          poster_image_url: e.poster_image_url || "",
+          programme_document_url: e.programme_document_url || "",
         }));
         setUpcomingEvents([sundayService, ...dbEvents]);
       });
