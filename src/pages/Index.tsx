@@ -64,14 +64,40 @@ const Index = () => {
     supabase
       .from("events")
       .select("*")
-      .gte("event_date", today)
       .order("event_date", { ascending: true })
       .then(({ data }) => {
+        const now = new Date();
+        const todayStr = now.toISOString().split("T")[0];
+        const filtered = (data || []).filter((e: any) => {
+          // Use end_date if available, otherwise use event_date
+          const effectiveEndDate = e.end_date || e.event_date;
+          // If end_time is set, parse it roughly; otherwise event is valid for the whole day
+          if (effectiveEndDate < todayStr) return false;
+          if (effectiveEndDate === todayStr && e.end_time) {
+            // Simple time parsing for "HH:MM AM/PM" format
+            const match = e.end_time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
+            if (match) {
+              let hours = parseInt(match[1]);
+              const mins = parseInt(match[2]);
+              const ampm = match[3];
+              if (ampm && ampm.toUpperCase() === "PM" && hours !== 12) hours += 12;
+              if (ampm && ampm.toUpperCase() === "AM" && hours === 12) hours = 0;
+              const endDateTime = new Date(effectiveEndDate + "T00:00:00");
+              endDateTime.setHours(hours, mins);
+              if (now > endDateTime) return false;
+            }
+          } else if (effectiveEndDate === todayStr && !e.end_time && e.event_time) {
+            // No end time, use start time as fallback for single-time events
+          }
+          return true;
+        });
         const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" };
-        const dbEvents = (data || []).map((e: any) => ({
+        const dbEvents = filtered.map((e: any) => ({
           title: e.title,
           date: e.event_date,
+          endDate: e.end_date || "",
           time: e.event_time || "",
+          endTime: e.end_time || "",
           category: e.category,
           poster_image_url: e.poster_image_url || "",
           programme_document_url: e.programme_document_url || "",
@@ -282,7 +308,7 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{(() => { const d = new Date(e.date + "T00:00:00"); if (isNaN(d.getTime())) return e.date; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; })()} · {e.time}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{(() => { const fmt = (ds: string) => { const d = new Date(ds + "T00:00:00"); if (isNaN(d.getTime())) return ds; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; }; let result = fmt(e.date); if (e.time) result += ` ${e.time}`; if (e.endDate) { result += ` → ${fmt(e.endDate)}`; if (e.endTime) result += ` ${e.endTime}`; } else if (e.endTime) { result += ` → ${e.endTime}`; } return result; })()}</p>
                       <div className="flex flex-wrap items-center gap-2 mt-2">
                         <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
                         {e.programme_document_url && (
