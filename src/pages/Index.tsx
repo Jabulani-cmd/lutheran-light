@@ -64,14 +64,40 @@ const Index = () => {
     supabase
       .from("events")
       .select("*")
-      .gte("event_date", today)
       .order("event_date", { ascending: true })
       .then(({ data }) => {
+        const now = new Date();
+        const todayStr = now.toISOString().split("T")[0];
+        const filtered = (data || []).filter((e: any) => {
+          // Use end_date if available, otherwise use event_date
+          const effectiveEndDate = e.end_date || e.event_date;
+          // If end_time is set, parse it roughly; otherwise event is valid for the whole day
+          if (effectiveEndDate < todayStr) return false;
+          if (effectiveEndDate === todayStr && e.end_time) {
+            // Simple time parsing for "HH:MM AM/PM" format
+            const match = e.end_time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
+            if (match) {
+              let hours = parseInt(match[1]);
+              const mins = parseInt(match[2]);
+              const ampm = match[3];
+              if (ampm && ampm.toUpperCase() === "PM" && hours !== 12) hours += 12;
+              if (ampm && ampm.toUpperCase() === "AM" && hours === 12) hours = 0;
+              const endDateTime = new Date(effectiveEndDate + "T00:00:00");
+              endDateTime.setHours(hours, mins);
+              if (now > endDateTime) return false;
+            }
+          } else if (effectiveEndDate === todayStr && !e.end_time && e.event_time) {
+            // No end time, use start time as fallback for single-time events
+          }
+          return true;
+        });
         const sundayService = { title: "Sunday Worship Service", date: "Every Sunday", time: "10:00 AM", category: "Worship", recurringIcon: "☀️" };
-        const dbEvents = (data || []).map((e: any) => ({
+        const dbEvents = filtered.map((e: any) => ({
           title: e.title,
           date: e.event_date,
+          endDate: e.end_date || "",
           time: e.event_time || "",
+          endTime: e.end_time || "",
           category: e.category,
           poster_image_url: e.poster_image_url || "",
           programme_document_url: e.programme_document_url || "",
