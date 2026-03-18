@@ -308,7 +308,7 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-display font-semibold text-foreground">{e.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{(() => { const d = new Date(e.date + "T00:00:00"); if (isNaN(d.getTime())) return e.date; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; })()} · {e.time}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{(() => { const fmt = (ds: string) => { const d = new Date(ds + "T00:00:00"); if (isNaN(d.getTime())) return ds; const day = d.getDate(); const s = [11,12,13].includes(day%100)?"th":{1:"st",2:"nd",3:"rd"}[day%10]||"th"; return `${day}${s} ${d.toLocaleString("en",{month:"long"})} ${d.getFullYear()}`; }; let result = fmt(e.date); if (e.time) result += ` ${e.time}`; if (e.endDate) { result += ` → ${fmt(e.endDate)}`; if (e.endTime) result += ` ${e.endTime}`; } else if (e.endTime) { result += ` → ${e.endTime}`; } return result; })()}</p>
                       <div className="flex flex-wrap items-center gap-2 mt-2">
                         <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{e.category}</span>
                         {e.programme_document_url && (

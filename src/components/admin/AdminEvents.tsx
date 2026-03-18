@@ -18,6 +18,8 @@ interface Event {
   description: string | null;
   event_date: string;
   event_time: string | null;
+  end_date: string | null;
+  end_time: string | null;
   location: string | null;
   category: string;
   poster_image_url: string | null;
@@ -33,6 +35,8 @@ const AdminEvents = () => {
   const [description, setDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("Worship");
   const [loading, setLoading] = useState(false);
@@ -51,12 +55,12 @@ const AdminEvents = () => {
   useEffect(() => { fetchItems(); }, []);
 
   const reset = () => {
-    setTitle(""); setDescription(""); setEventDate(""); setEventTime(""); setLocation(""); setCategory("Worship"); setEditing(null);
+    setTitle(""); setDescription(""); setEventDate(""); setEventTime(""); setEndDate(""); setEndTime(""); setLocation(""); setCategory("Worship"); setEditing(null);
     setPosterFile(null); setProgrammeFile(null); setPosterPreview(null); setProgrammeFileName(null);
   };
 
   const openEdit = (item: Event) => {
-    setEditing(item); setTitle(item.title); setDescription(item.description || ""); setEventDate(item.event_date); setEventTime(item.event_time || ""); setLocation(item.location || ""); setCategory(item.category);
+    setEditing(item); setTitle(item.title); setDescription(item.description || ""); setEventDate(item.event_date); setEventTime(item.event_time || ""); setEndDate(item.end_date || ""); setEndTime(item.end_time || ""); setLocation(item.location || ""); setCategory(item.category);
     setPosterPreview(item.poster_image_url || null);
     setProgrammeFileName(item.programme_document_url ? item.programme_document_url.split("/").pop() || "Document" : null);
     setPosterFile(null); setProgrammeFile(null);
@@ -87,7 +91,9 @@ const AdminEvents = () => {
       }
 
       const payload = {
-        title, description, event_date: eventDate, event_time: eventTime, location, category,
+        title, description, event_date: eventDate, event_time: eventTime,
+        end_date: endDate || null, end_time: endTime || null,
+        location, category,
         poster_image_url: posterUrl, programme_document_url: programmeUrl,
       };
 
@@ -129,6 +135,24 @@ const AdminEvents = () => {
     }
   };
 
+  const formatDateRange = (item: Event) => {
+    const start = item.event_date;
+    const end = item.end_date;
+    const startTime = item.event_time || "";
+    const endTime = item.end_time || "";
+    
+    let result = start;
+    if (startTime) result += ` ${startTime}`;
+    if (end) {
+      result += ` → ${end}`;
+      if (endTime) result += ` ${endTime}`;
+    } else if (endTime) {
+      result += ` → ${endTime}`;
+    }
+    if (item.location) result += ` • ${item.location}`;
+    return result;
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -140,10 +164,26 @@ const AdminEvents = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div><Label>Title</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} required /></div>
               <div><Label>Description</Label><Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={3} /></div>
-              <div className="grid grid-cols-2 gap-4">
-                <div><Label>Date</Label><Input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} required /></div>
-                <div><Label>Time</Label><Input value={eventTime} onChange={(e) => setEventTime(e.target.value)} placeholder="e.g. 9:00 AM" /></div>
+              
+              {/* Start Date & Time */}
+              <div className="space-y-1">
+                <Label className="text-sm font-semibold">Start Date & Time</Label>
+                <div className="grid grid-cols-2 gap-4">
+                  <div><Label className="text-xs text-muted-foreground">Start Date</Label><Input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} required /></div>
+                  <div><Label className="text-xs text-muted-foreground">Start Time</Label><Input value={eventTime} onChange={(e) => setEventTime(e.target.value)} placeholder="e.g. 9:00 AM" /></div>
+                </div>
               </div>
+
+              {/* End Date & Time */}
+              <div className="space-y-1">
+                <Label className="text-sm font-semibold">End Date & Time</Label>
+                <div className="grid grid-cols-2 gap-4">
+                  <div><Label className="text-xs text-muted-foreground">End Date</Label><Input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} /></div>
+                  <div><Label className="text-xs text-muted-foreground">End Time</Label><Input value={endTime} onChange={(e) => setEndTime(e.target.value)} placeholder="e.g. 5:00 PM" /></div>
+                </div>
+                <p className="text-xs text-muted-foreground">Leave blank if the event is a single day/time. Events disappear after end date/time passes.</p>
+              </div>
+
               <div><Label>Location</Label><Input value={location} onChange={(e) => setLocation(e.target.value)} /></div>
               <div>
                 <Label>Category</Label>
@@ -197,7 +237,7 @@ const AdminEvents = () => {
                   )}
                   <div>
                     <h3 className="font-semibold">{item.title}</h3>
-                    <p className="text-xs text-muted-foreground">{item.event_date} {item.event_time && `• ${item.event_time}`} {item.location && `• ${item.location}`}</p>
+                    <p className="text-xs text-muted-foreground">{formatDateRange(item)}</p>
                     <div className="flex gap-2 mt-1">
                       <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{item.category}</span>
                       {item.poster_image_url && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-1"><ImageIcon className="h-3 w-3" />Poster</span>}

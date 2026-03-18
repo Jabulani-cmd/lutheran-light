@@ -15,15 +15,37 @@ const formatDateOrdinal = (dateStr: string) => {
   return `${day}${suffix} ${month} ${d.getFullYear()}`;
 };
 
+const isEventOver = (e: any) => {
+  const now = new Date();
+  const todayStr = now.toISOString().split("T")[0];
+  const effectiveEndDate = e.end_date || e.event_date;
+  if (effectiveEndDate < todayStr) return true;
+  if (effectiveEndDate === todayStr && e.end_time) {
+    const match = e.end_time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
+    if (match) {
+      let hours = parseInt(match[1]);
+      const mins = parseInt(match[2]);
+      const ampm = match[3];
+      if (ampm && ampm.toUpperCase() === "PM" && hours !== 12) hours += 12;
+      if (ampm && ampm.toUpperCase() === "AM" && hours === 12) hours = 0;
+      const endDateTime = new Date(effectiveEndDate + "T00:00:00");
+      endDateTime.setHours(hours, mins);
+      if (now > endDateTime) return true;
+    }
+  }
+  return false;
+};
+
 const Events = () => {
   const { t } = useTranslation();
   const [dbEvents, setDbEvents] = useState<any[]>([]);
 
   useEffect(() => {
-    const today = new Date().toISOString().split("T")[0];
     const fetch = async () => {
-      const { data } = await supabase.from("events").select("*").gte("event_date", today).order("event_date", { ascending: true });
-      if (data) setDbEvents(data);
+      const { data } = await supabase.from("events").select("*").order("event_date", { ascending: true });
+      if (data) {
+        setDbEvents(data.filter((e: any) => !isEventOver(e)));
+      }
     };
     fetch();
   }, []);
@@ -31,7 +53,9 @@ const Events = () => {
   const allEvents = dbEvents.map((e) => ({
     title: e.title,
     date: e.event_date,
+    endDate: e.end_date || "",
     time: e.event_time || "",
+    endTime: e.end_time || "",
     location: e.location || "",
     desc: e.description || "",
     category: e.category,
@@ -49,6 +73,22 @@ const Events = () => {
   const categories = ["All", "Worship", "Fellowship", "Outreach", "Youth"];
   const [filter, setFilter] = useState("All");
   const filtered = filter === "All" ? allEvents : allEvents.filter((e) => e.category === filter);
+
+  const formatDateRange = (e: any) => {
+    let result = formatDateOrdinal(e.date);
+    if (e.endDate) {
+      result += ` → ${formatDateOrdinal(e.endDate)}`;
+    }
+    return result;
+  };
+
+  const formatTimeRange = (e: any) => {
+    let result = e.time;
+    if (e.endTime) {
+      result += ` – ${e.endTime}`;
+    }
+    return result;
+  };
 
   return (
     <Layout>
@@ -74,7 +114,6 @@ const Events = () => {
               <Card key={i} className="shadow-soft border-border hover:shadow-medium transition-shadow overflow-hidden">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
-                    {/* Poster Image */}
                     {e.poster_image_url && (
                       <div className="md:w-48 shrink-0">
                         <img src={e.poster_image_url} alt={e.title} className="w-full h-48 md:h-full object-cover" />
@@ -103,9 +142,9 @@ const Events = () => {
                         <div className="flex-1">
                           <h3 className="font-display text-xl font-semibold text-foreground">{e.title}</h3>
                           <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
-                            <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{formatDateOrdinal(e.date)}</span>
-                            <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{e.time}</span>
-                            <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
+                            <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{formatDateRange(e)}</span>
+                            {(e.time || e.endTime) && <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{formatTimeRange(e)}</span>}
+                            {e.location && <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{e.location}</span>}
                           </div>
                           <p className="mt-3 text-muted-foreground">{e.desc}</p>
                           <div className="flex flex-wrap items-center gap-2 mt-3">
