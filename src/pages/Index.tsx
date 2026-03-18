@@ -249,14 +249,23 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <SectionHeading title={t.home_events_title} subtitle={t.home_events_subtitle} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Calendar Widget */}
-            <Card className="shadow-soft border-border flex justify-center items-start p-4">
-              <CalendarWidget
-                mode="multiple"
-                selected={eventDates}
-                className="pointer-events-auto"
-              />
-            </Card>
+            {/* Event Posters */}
+            <div className="space-y-4">
+              {upcomingEvents.filter((e) => e.poster_image_url).length > 0 ? (
+                upcomingEvents.filter((e) => e.poster_image_url).map((e, i) => (
+                  <Card key={i} className="shadow-soft border-border overflow-hidden">
+                    <img src={e.poster_image_url} alt={e.title} className="w-full h-auto object-cover" />
+                  </Card>
+                ))
+              ) : (
+                <Card className="shadow-soft border-border flex items-center justify-center p-8 min-h-[300px]">
+                  <div className="text-center text-muted-foreground">
+                    <Calendar className="h-12 w-12 mx-auto mb-3 opacity-40" />
+                    <p className="text-sm">{t.home_no_announcements || "No event posters available"}</p>
+                  </div>
+                </Card>
+              )}
+            </div>
             {/* Event List */}
             <div className="flex flex-col gap-4">
               {upcomingEvents.map((e) => {
