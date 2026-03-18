@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { useEffect, useCallback, useState, useMemo } from "react";
-import { Calendar as CalendarWidget } from "@/components/ui/calendar";
+
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
