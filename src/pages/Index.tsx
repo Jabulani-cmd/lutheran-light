@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import { useEffect, useCallback, useState, useMemo } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import useEmblaCarousel from "embla-carousel-react";
 import { useTranslation } from "@/hooks/useTranslation";

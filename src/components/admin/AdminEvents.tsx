@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { Plus, Pencil, Trash2, Calendar } from "lucide-react";
+import { Plus, Pencil, Trash2, Calendar, ImageIcon, FileText } from "lucide-react";
 
 const eventCategories = ["Worship", "Fellowship", "Outreach", "Youth"];
 
@@ -20,6 +20,8 @@ interface Event {
   event_time: string | null;
   location: string | null;
   category: string;
+  poster_image_url: string | null;
+  programme_document_url: string | null;
   created_at: string;
 }
 
@@ -34,6 +36,12 @@ const AdminEvents = () => {
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("Worship");
   const [loading, setLoading] = useState(false);
+  const [posterFile, setPosterFile] = useState<File | null>(null);
+  const [programmeFile, setProgrammeFile] = useState<File | null>(null);
+  const [posterPreview, setPosterPreview] = useState<string | null>(null);
+  const [programmeFileName, setProgrammeFileName] = useState<string | null>(null);
+  const posterRef = useRef<HTMLInputElement>(null);
+  const programmeRef = useRef<HTMLInputElement>(null);
 
   const fetchItems = async () => {
     const { data } = await supabase.from("events").select("*").order("event_date", { ascending: true });
@@ -42,17 +50,47 @@ const AdminEvents = () => {
 
   useEffect(() => { fetchItems(); }, []);
 
-  const reset = () => { setTitle(""); setDescription(""); setEventDate(""); setEventTime(""); setLocation(""); setCategory("Worship"); setEditing(null); };
+  const reset = () => {
+    setTitle(""); setDescription(""); setEventDate(""); setEventTime(""); setLocation(""); setCategory("Worship"); setEditing(null);
+    setPosterFile(null); setProgrammeFile(null); setPosterPreview(null); setProgrammeFileName(null);
+  };
 
   const openEdit = (item: Event) => {
-    setEditing(item); setTitle(item.title); setDescription(item.description || ""); setEventDate(item.event_date); setEventTime(item.event_time || ""); setLocation(item.location || ""); setCategory(item.category); setOpen(true);
+    setEditing(item); setTitle(item.title); setDescription(item.description || ""); setEventDate(item.event_date); setEventTime(item.event_time || ""); setLocation(item.location || ""); setCategory(item.category);
+    setPosterPreview(item.poster_image_url || null);
+    setProgrammeFileName(item.programme_document_url ? item.programme_document_url.split("/").pop() || "Document" : null);
+    setPosterFile(null); setProgrammeFile(null);
+    setOpen(true);
+  };
+
+  const uploadFile = async (file: File, bucket: string, folder: string): Promise<string> => {
+    const ext = file.name.split(".").pop();
+    const fileName = `${folder}/${Date.now()}.${ext}`;
+    const { error } = await supabase.storage.from(bucket).upload(fileName, file);
+    if (error) throw error;
+    const { data } = supabase.storage.from(bucket).getPublicUrl(fileName);
+    return data.publicUrl;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const payload = { title, description, event_date: eventDate, event_time: eventTime, location, category };
+      let posterUrl = editing?.poster_image_url || null;
+      let programmeUrl = editing?.programme_document_url || null;
+
+      if (posterFile) {
+        posterUrl = await uploadFile(posterFile, "event-posters", "posters");
+      }
+      if (programmeFile) {
+        programmeUrl = await uploadFile(programmeFile, "event-programmes", "programmes");
+      }
+
+      const payload = {
+        title, description, event_date: eventDate, event_time: eventTime, location, category,
+        poster_image_url: posterUrl, programme_document_url: programmeUrl,
+      };
+
       if (editing) {
         const { error } = await supabase.from("events").update(payload).eq("id", editing.id);
         if (error) throw error;
@@ -75,13 +113,29 @@ const AdminEvents = () => {
     else { toast({ title: "Deleted" }); fetchItems(); }
   };
 
+  const handlePosterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setPosterFile(file);
+      setPosterPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleProgrammeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setProgrammeFile(file);
+      setProgrammeFileName(file.name);
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-display text-2xl font-bold text-foreground">Events Management</h2>
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DialogTrigger asChild><Button><Plus className="h-4 w-4 mr-2" /> Add Event</Button></DialogTrigger>
-          <DialogContent>
+          <DialogContent className="max-h-[90vh] overflow-y-auto">
             <DialogHeader><DialogTitle>{editing ? "Edit" : "Add"} Event</DialogTitle></DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div><Label>Title</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} required /></div>
@@ -100,6 +154,28 @@ const AdminEvents = () => {
                   </SelectContent>
                 </Select>
               </div>
+              {/* Poster Upload */}
+              <div>
+                <Label>Event Poster Image</Label>
+                <input ref={posterRef} type="file" accept="image/*" onChange={handlePosterChange} className="hidden" />
+                <Button type="button" variant="outline" className="w-full mt-1" onClick={() => posterRef.current?.click()}>
+                  <ImageIcon className="h-4 w-4 mr-2" /> {posterFile ? posterFile.name : posterPreview ? "Change Poster" : "Upload Poster"}
+                </Button>
+                {posterPreview && (
+                  <img src={posterPreview} alt="Poster preview" className="mt-2 rounded-lg max-h-40 object-contain mx-auto" />
+                )}
+              </div>
+              {/* Programme Document Upload */}
+              <div>
+                <Label>Programme Document (PDF)</Label>
+                <input ref={programmeRef} type="file" accept=".pdf,.doc,.docx" onChange={handleProgrammeChange} className="hidden" />
+                <Button type="button" variant="outline" className="w-full mt-1" onClick={() => programmeRef.current?.click()}>
+                  <FileText className="h-4 w-4 mr-2" /> {programmeFile ? programmeFile.name : programmeFileName ? "Change Document" : "Upload Programme"}
+                </Button>
+                {programmeFileName && !programmeFile && (
+                  <p className="text-xs text-muted-foreground mt-1">Current: {programmeFileName}</p>
+                )}
+              </div>
               <Button type="submit" className="w-full" disabled={loading}>{loading ? "Saving..." : "Save"}</Button>
             </form>
           </DialogContent>
@@ -114,11 +190,19 @@ const AdminEvents = () => {
             <Card key={item.id}>
               <CardContent className="p-4 flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3 flex-1">
-                  <div className="bg-primary/10 rounded-lg p-2 shrink-0"><Calendar className="h-5 w-5 text-primary" /></div>
+                  {item.poster_image_url ? (
+                    <img src={item.poster_image_url} alt={item.title} className="w-14 h-14 object-cover rounded-lg shrink-0" />
+                  ) : (
+                    <div className="bg-primary/10 rounded-lg p-2 shrink-0"><Calendar className="h-5 w-5 text-primary" /></div>
+                  )}
                   <div>
                     <h3 className="font-semibold">{item.title}</h3>
                     <p className="text-xs text-muted-foreground">{item.event_date} {item.event_time && `• ${item.event_time}`} {item.location && `• ${item.location}`}</p>
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full mt-1 inline-block">{item.category}</span>
+                    <div className="flex gap-2 mt-1">
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">{item.category}</span>
+                      {item.poster_image_url && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-1"><ImageIcon className="h-3 w-3" />Poster</span>}
+                      {item.programme_document_url && <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full flex items-center gap-1"><FileText className="h-3 w-3" />Programme</span>}
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-2 shrink-0">
