@@ -211,7 +211,7 @@ const AdminCommittees = () => {
       {cropImage && (
         <ImageCropDialog
           open={!!cropImage}
-          onClose={() => { setCropImage(null); setPendingFile(null); }}
+          onOpenChange={(open) => { if (!open) { setCropImage(null); setPendingFile(null); } }}
           imageSrc={cropImage}
           onCropComplete={handleCropComplete}
           aspect={1}

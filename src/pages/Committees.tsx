@@ -57,7 +57,7 @@ const Committees = () => {
       <section className="bg-gradient-purple py-12 sm:py-20 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            {t.nav_committees || "Committees"}
+            {"Committees"}
           </h1>
           <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
             Meet the dedicated members who serve on our various church committees.
