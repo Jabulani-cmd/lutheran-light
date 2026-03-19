@@ -21,6 +21,7 @@ import AdminGalleryVideos from "@/components/admin/AdminGalleryVideos";
 import AdminChoir from "@/components/admin/AdminChoir";
 import AdminMinistryPhotos from "@/components/admin/AdminMinistryPhotos";
 import AdminProjects from "@/components/admin/AdminProjects";
+import AdminCommittees from "@/components/admin/AdminCommittees";
 
 const Admin = () => {
   const { isAdmin, loading } = useAdmin();
