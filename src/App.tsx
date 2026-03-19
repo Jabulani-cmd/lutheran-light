@@ -22,6 +22,7 @@ import PreachingSchedule from "./pages/PreachingSchedule";
 import HomePrayers from "./pages/HomePrayers";
 import Choir from "./pages/Choir";
 import Giving from "./pages/Giving";
+import Committees from "./pages/Committees";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
