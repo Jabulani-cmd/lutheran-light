@@ -90,6 +90,7 @@ const Admin = () => {
           <TabsContent value="choir"><AdminChoir /></TabsContent>
           <TabsContent value="ministry-photos"><AdminMinistryPhotos /></TabsContent>
           <TabsContent value="projects"><AdminProjects /></TabsContent>
+          <TabsContent value="committees"><AdminCommittees /></TabsContent>
         </Tabs>
       </div>
     </div>
