@@ -167,6 +167,77 @@ export type Database = {
         }
         Relationships: []
       }
+      committee_members: {
+        Row: {
+          committee_id: string
+          created_at: string
+          description: string | null
+          full_name: string
+          id: string
+          photo_url: string | null
+          sort_order: number
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          committee_id: string
+          created_at?: string
+          description?: string | null
+          full_name: string
+          id?: string
+          photo_url?: string | null
+          sort_order?: number
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          committee_id?: string
+          created_at?: string
+          description?: string | null
+          full_name?: string
+          id?: string
+          photo_url?: string | null
+          sort_order?: number
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "committee_members_committee_id_fkey"
+            columns: ["committee_id"]
+            isOneToOne: false
+            referencedRelation: "committees"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      committees: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       downloadable_resources: {
         Row: {
           category: string

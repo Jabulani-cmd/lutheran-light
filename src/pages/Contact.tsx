@@ -45,7 +45,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <div><p className="font-medium text-foreground">{t.contact_email_label}</p><p className="text-muted-foreground text-sm">info@mzilikazi-elcz.org</p></div>
+                  <div><p className="font-medium text-foreground">{t.contact_email_label}</p><p className="text-muted-foreground text-sm">mzilikazielcz@gmail.com / bongisingo@gmail.com</p></div>
                 </div>
               </div>
               <div className="flex gap-3 mb-8">

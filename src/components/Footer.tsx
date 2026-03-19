@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-primary-foreground/70">
               <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" /><span>Stand 44038, Mzilikazi, Bulawayo, Zimbabwe</span></li>
               <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-accent" /><span>+263 71 206 4556 / +263 77 500 7746</span></li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-accent" /><span>info@mzilikazi-elcz.org</span></li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0 text-accent" /><span>mzilikazielcz@gmail.com / bongisingo@gmail.com</span></li>
             </ul>
             <div className="flex gap-3 mt-4">
               <a href="https://www.facebook.com/profile.php?id=100064839849337" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-accent transition-colors" aria-label="Facebook"><Facebook className="h-5 w-5" /></a>
