@@ -72,6 +72,7 @@ const Admin = () => {
             <TabsTrigger value="choir" className="flex items-center gap-2"><Music className="h-4 w-4" /> Choir</TabsTrigger>
             <TabsTrigger value="ministry-photos" className="flex items-center gap-2"><Camera className="h-4 w-4" /> Ministry Photos</TabsTrigger>
             <TabsTrigger value="projects" className="flex items-center gap-2"><FolderKanban className="h-4 w-4" /> Projects</TabsTrigger>
+            <TabsTrigger value="committees" className="flex items-center gap-2"><UsersRound className="h-4 w-4" /> Committees</TabsTrigger>
           </TabsList>
 
           <TabsContent value="members"><AdminMembers /></TabsContent>
