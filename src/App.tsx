@@ -51,6 +51,7 @@ const App = () => (
             <Route path="/preaching-schedule" element={<PreachingSchedule />} />
             <Route path="/home-prayers" element={<HomePrayers />} />
             <Route path="/choir" element={<Choir />} />
+            <Route path="/committees" element={<Committees />} />
             <Route path="/giving" element={<Giving />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
